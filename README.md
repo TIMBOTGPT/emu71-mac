@@ -9,7 +9,7 @@ Rosetta is being removed from macOS, so this runs natively on Apple Silicon.
 ## What works
 
 - Boots the HP-71B, full keyboard (mouse and Mac keyboard, US layout), LCD, annunciators
-- Math and Forth/Assembler ROM modules mounted
+- Math and Forth/Assembler ROM modules mounted, plus extra RAM modules (about 147 KB free with the default 2x64K)
 - State saved on quit and restored on start (`~/Library/Application Support/Emu71/state.bin`)
 - Scalable skins: PNG skins at any integer multiple of the reference sheet; window keeps its aspect ratio
 
@@ -29,7 +29,8 @@ The HP-71B ROM images are copyrighted by HP and are **not** in this repository. 
 
 Run from the build directory with `./emu71 --skin skin --roms roms`, or open `Emu71.app`.
 
-Options: `--kml REAL71P.KML` (skin layout), `--image file.png` (skin image), `--scale 1.5` (initial window scale),
+Options: `--ram 3:64,4:64` (extra RAM modules as port:KB, default 128K in ports 3 and 4; `--ram none` for stock memory;
+changing it starts the calculator fresh), `--kml REAL71P.KML` (skin layout), `--image file.png` (skin image), `--scale 1.5` (initial window scale),
 `--refw N` (reference sheet width for unusual images).
 
 ## Skins

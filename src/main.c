@@ -288,6 +288,35 @@ static int add_rom_module(int port, const char *path)
 	return 1;
 }
 
+static char ramSpec[64] = "3:64,4:64";	/* extra RAM modules: port:KB,... ("none" for no expansion) */
+static int add_ram_module(int port, int kb)
+{
+	DWORD n = (DWORD)kb * 2048, chip; PPORTDATA p, *pp;
+	if (port < 1 || port > 5 || kb < 1 || kb > 192) return 0;
+	chip = (n % (32 * 2048) == 0) ? (32 * 2048) : (n < 2048 ? n : 2048);
+	p = (PPORTDATA)calloc(1, sizeof *p);
+	p->sInfo.dwStructSize = sizeof p->sInfo;
+	p->sInfo.nType = TYPE_RAM;
+	p->sInfo.dwSize = n;
+	p->sInfo.dwChips = n / chip;
+	p->sInfo.dwCfgSize = sizeof(SATCFG) * p->sInfo.dwChips;
+	p->sInfo.bHybrid = TRUE;
+	p->psCfg = (PSATCFG)calloc(1, p->sInfo.dwCfgSize);
+	p->pbyData = (LPBYTE)calloc(n, 1);
+	for (pp = &psExtPortData[port]; *pp; pp = &(*pp)->pNext) ;
+	*pp = p;
+	return 1;
+}
+static void add_ram_from_spec(const char *spec)
+{
+	char buf[64], *tok, *save; strncpy(buf, spec, sizeof buf - 1); buf[sizeof buf - 1] = 0;
+	if (!strcmp(buf, "none")) return;
+	for (tok = strtok_r(buf, ",", &save); tok; tok = strtok_r(NULL, ",", &save)) {
+		int port, kb;
+		if (sscanf(tok, "%d:%d", &port, &kb) != 2 || !add_ram_module(port, kb)) fprintf(stderr, "bad --ram entry '%s'\n", tok);
+	}
+}
+
 /* ---------- key handling ---------- */
 static int pressedBtn = -1;
 
@@ -419,16 +448,21 @@ static void state_path(char *out, size_t n)
 	mkdir(dir, 0755);
 	snprintf(out, n, "%s/state.bin", dir);
 }
+#define STATE_MAGIC2 0x32374D45u
+typedef struct { uint32_t magic, chipsetSize; char ram[64]; } STATEHDR;
 static int state_load(void)
 {
-	char path[1100]; FILE *f; uint32_t hdr[2]; static CHIPSET tmp;
+	char path[1100]; FILE *f; STATEHDR hdr; static CHIPSET tmp; int pt; PPORTDATA m;
 	if (getenv("EMU71_NOSTATE")) return 0;
 	state_path(path, sizeof path);
 	f = fopen(path, "rb"); if (!f) return 0;
-	if (fread(hdr, sizeof hdr, 1, f) != 1 || hdr[0] != STATE_MAGIC || hdr[1] != sizeof(CHIPSET)
-	    || fread(&tmp, sizeof tmp, 1, f) != 1) { fclose(f); return 0; }
+	if (fread(&hdr, sizeof hdr, 1, f) != 1 || hdr.magic != STATE_MAGIC2 || hdr.chipsetSize != sizeof(CHIPSET)
+	    || strncmp(hdr.ram, ramSpec, sizeof hdr.ram) != 0 || fread(&tmp, sizeof tmp, 1, f) != 1 || tmp.type != 'T') { fclose(f); return 0; }
+	/* RAM module contents follow, in port order */
+	for (pt = 0; pt < NOEXTPORTS; ++pt)
+		for (m = psExtPortData[pt]; m; m = m->pNext)
+			if (m->sInfo.nType == TYPE_RAM && fread(m->pbyData, 1, m->sInfo.dwSize, f) != m->sInfo.dwSize) { fclose(f); return 0; }
 	fclose(f);
-	if (tmp.type != 'T') return 0;
 	Chipset = tmp;
 	memset(Chipset.Keyboard_Row, 0, sizeof Chipset.Keyboard_Row);	/* a key held at save time must not stay 'pressed' */
 	Chipset.in = 0; Chipset.IR15X = 0;
@@ -436,12 +470,16 @@ static int state_load(void)
 }
 static void state_save(void)
 {
-	char path[1100], tmpPath[1110]; FILE *f; uint32_t hdr[2] = { STATE_MAGIC, sizeof(CHIPSET) };
+	char path[1100], tmpPath[1110]; FILE *f; STATEHDR hdr; int pt; PPORTDATA m;
 	if (getenv("EMU71_NOSTATE")) return;
+	memset(&hdr, 0, sizeof hdr); hdr.magic = STATE_MAGIC2; hdr.chipsetSize = sizeof(CHIPSET); strncpy(hdr.ram, ramSpec, sizeof hdr.ram - 1);
 	state_path(path, sizeof path);
 	snprintf(tmpPath, sizeof tmpPath, "%s.tmp", path);
 	f = fopen(tmpPath, "wb"); if (!f) return;
-	fwrite(hdr, sizeof hdr, 1, f); fwrite(&Chipset, sizeof Chipset, 1, f);
+	fwrite(&hdr, sizeof hdr, 1, f); fwrite(&Chipset, sizeof Chipset, 1, f);
+	for (pt = 0; pt < NOEXTPORTS; ++pt)
+		for (m = psExtPortData[pt]; m; m = m->pNext)
+			if (m->sInfo.nType == TYPE_RAM) fwrite(m->pbyData, 1, m->sInfo.dwSize, f);
 	fclose(f); rename(tmpPath, path);
 }
 
@@ -469,6 +507,7 @@ int main(int argc, char **argv)
 		if (!strcmp(argv[i], "--kml")) strncpy(kmlName, argv[i + 1], sizeof kmlName - 1);
 		if (!strcmp(argv[i], "--image")) strncpy(imgOverride, argv[i + 1], sizeof imgOverride - 1);
 		if (!strcmp(argv[i], "--scale")) winScale = atof(argv[i + 1]);
+		if (!strcmp(argv[i], "--ram")) strncpy(ramSpec, argv[i + 1], sizeof ramSpec - 1);
 		if (!strcmp(argv[i], "--refw")) refW = atoi(argv[i + 1]);
 		if (!strcmp(argv[i], "--roms")) strncpy(romDir, argv[i + 1], sizeof romDir - 1);
 	}
@@ -497,6 +536,7 @@ int main(int argc, char **argv)
 	ZeroMemory(psExtPortData, sizeof psExtPortData);
 	snprintf(path, sizeof path, "%s/MATHROM.BIN", romDir);  add_rom_module(1, path);
 	snprintf(path, sizeof path, "%s/FORTHROM.BIN", romDir); add_rom_module(2, path);
+	add_ram_from_spec(ramSpec);
 
 	ZeroMemory(&Chipset, sizeof Chipset);
 	if (state_load()) {
