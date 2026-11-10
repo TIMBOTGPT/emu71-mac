@@ -33,6 +33,16 @@ Options: `--ram 3:64,4:64` (extra RAM modules as port:KB, default 128K in ports 
 changing it starts the calculator fresh), `--kml REAL71P.KML` (skin layout), `--image file.png` (skin image), `--scale 1.5` (initial window scale),
 `--refw N` (reference sheet width for unusual images).
 
+## HP-IL (disk/printer loop over TCP/IP)
+
+`--hpil localhost:60001:60000` mounts the HP-IL module (`Hpilrom.bin`, port 5) and connects the virtual loop to
+an external HP-IL emulator such as [pyILPER](https://github.com/bug400/pyilper) (host:out-port:in-port, matching
+pyILPER's defaults: it listens on 60001 and sends to 60000). Start the loop partner first, then the calculator;
+the module is initialised at power-on and needs a partner that answers (a broken loop at power-up stalls the
+ROM, restart the app). `tools/il_echo.py` is a minimal empty-loop partner for testing. Then use
+`RESTORE IO`, `CAT :TAPE`, `COPY`, with LIF disk images served by pyILPER. Changing `--hpil` starts the
+calculator fresh. Status: loop transport verified with the echo partner, not yet against pyILPER itself.
+
 ## Skins
 
 `skin/REAL71P.*` (default), `REAL71N.*` and `REAL71L.*` are original scalable designs generated from

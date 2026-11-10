@@ -1,3 +1,4 @@
+#include <signal.h>
 /*
  * Emu71 for macOS (arm64) - SDL2 front end
  *
@@ -288,6 +289,7 @@ static int add_rom_module(int port, const char *path)
 	return 1;
 }
 
+static int hpilOn = 0; static int hpilIn = 60000, hpilOut = 60001; static char hpilHost[128] = "localhost";
 static char ramSpec[64] = "3:64,4:64";	/* extra RAM modules: port:KB,... ("none" for no expansion) */
 static int add_ram_module(int port, int kb)
 {
@@ -306,6 +308,27 @@ static int add_ram_module(int port, int kb)
 	for (pp = &psExtPortData[port]; *pp; pp = &(*pp)->pNext) ;
 	*pp = p;
 	return 1;
+}
+static int add_hpil_module(int port, const char *path)
+{
+	PPORTDATA p, *pp;
+	p = (PPORTDATA)calloc(1, sizeof *p);
+	p->sInfo.dwStructSize = sizeof p->sInfo;
+	p->sInfo.nType = TYPE_HPIL;
+	p->sInfo.dwSize = 16;
+	p->sInfo.dwChips = 1;
+	p->sInfo.bHybrid = FALSE;
+	p->sInfo.dwCfgSize = sizeof(SATCFG);
+	p->psCfg = (PSATCFG)calloc(1, sizeof(SATCFG));
+	p->psTcp = (PPORTTCPIP)calloc(1, sizeof *p->psTcp);
+	p->psTcp->dwAddrSize = (DWORD)strlen(hpilHost);
+	p->psTcp->lpszAddrOut = strdup(hpilHost);
+	p->psTcp->wPortOut = (WORD)hpilOut;
+	p->psTcp->wPortIn = (WORD)hpilIn;
+	p->pbyData = (LPBYTE)calloc(16, 1);
+	for (pp = &psExtPortData[port]; *pp; pp = &(*pp)->pNext) ;
+	*pp = p;
+	return add_rom_module(port, path);
 }
 static void add_ram_from_spec(const char *spec)
 {
@@ -508,6 +531,7 @@ int main(int argc, char **argv)
 		if (!strcmp(argv[i], "--image")) strncpy(imgOverride, argv[i + 1], sizeof imgOverride - 1);
 		if (!strcmp(argv[i], "--scale")) winScale = atof(argv[i + 1]);
 		if (!strcmp(argv[i], "--ram")) strncpy(ramSpec, argv[i + 1], sizeof ramSpec - 1);
+		if (!strcmp(argv[i], "--hpil")) { hpilOn = 1; if (i + 1 < argc && argv[i + 1][0] != '-') { /* host:out:in */ char *c = strdup(argv[i + 1]); char *a = strtok(c, ":"), *b = strtok(NULL, ":"), *d = strtok(NULL, ":"); if (a) strncpy(hpilHost, a, sizeof hpilHost - 1); if (b) hpilOut = atoi(b); if (d) hpilIn = atoi(d); free(c); } }
 		if (!strcmp(argv[i], "--refw")) refW = atoi(argv[i + 1]);
 		if (!strcmp(argv[i], "--roms")) strncpy(romDir, argv[i + 1], sizeof romDir - 1);
 	}
@@ -537,6 +561,7 @@ int main(int argc, char **argv)
 	snprintf(path, sizeof path, "%s/MATHROM.BIN", romDir);  add_rom_module(1, path);
 	snprintf(path, sizeof path, "%s/FORTHROM.BIN", romDir); add_rom_module(2, path);
 	add_ram_from_spec(ramSpec);
+	if (hpilOn) { snprintf(path, sizeof path, "%s/Hpilrom.bin", romDir); add_hpil_module(getenv("HPILPORT") ? atoi(getenv("HPILPORT")) : 5, path); signal(SIGPIPE, SIG_IGN); strncat(ramSpec, "+hpil", sizeof ramSpec - strlen(ramSpec) - 1); }
 
 	ZeroMemory(&Chipset, sizeof Chipset);
 	if (state_load()) {
@@ -625,6 +650,7 @@ int main(int argc, char **argv)
 			fprintf(stderr, "pc=%05X shutdn=%d state=%u dispOn=%d annOn:", Chipset.pc, Chipset.Shutdn, nState, Chipset.dd[MASTER].IORam[DD1CTL & 0xFF] & DON);
 			for (rr = 0; rr < 64; ++rr) if (annOn[rr]) fprintf(stderr, " %d", rr + 1);
 			fputc('\n', stderr);
+			if (getenv("EMU71_TRACE")) { DWORD a = Chipset.pc; int k; fprintf(stderr, "nibbles@pc:"); for (k = 0; k < 40; ++k) fprintf(stderr, "%X", Read2(a+k) & 0xF); fprintf(stderr, "\nA=%05X C=%05X D0=%05X D1=%05X ST=%02X%02X\n", (unsigned)(Chipset.A[0]|Chipset.A[1]<<4|Chipset.A[2]<<8|Chipset.A[3]<<12|Chipset.A[4]<<16),(unsigned)(Chipset.C[0]|Chipset.C[1]<<4|Chipset.C[2]<<8|Chipset.C[3]<<12|Chipset.C[4]<<16),Chipset.d0,Chipset.d1,Chipset.ST[1],Chipset.ST[0]); }
 			dumpAfter = 0; if (getenv("EMU71_EXIT")) running = 0;
 		}
 	}
