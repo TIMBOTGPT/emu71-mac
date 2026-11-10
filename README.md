@@ -41,7 +41,8 @@ pyILPER's defaults: it listens on 60001 and sends to 60000). Start the loop part
 the module is initialised at power-on and needs a partner that answers (a broken loop at power-up stalls the
 ROM, restart the app). `tools/il_echo.py` is a minimal empty-loop partner for testing. Then use
 `RESTORE IO`, `CAT :TAPE`, `COPY`, with LIF disk images served by pyILPER. Changing `--hpil` starts the
-calculator fresh. Status: loop transport verified with the echo partner, not yet against pyILPER itself.
+calculator fresh. Verified against pyILPER 1.9.1: `RESTORE IO`, `CAT :TAPE`, and `COPY T1 TO :TAPE` wrote a TEXT file into the LIF image on the Mac.
+Test hooks: `EMU71_KEYS` (comma separated Windows VK codes, `s` prefix = shifted), `EMU71_DUMP`/`EMU71_EVERY`/`EMU71_STOP` (ASCII LCD dumps), `tools/lcd2png.py`.
 
 ## Skins
 

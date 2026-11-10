@@ -636,9 +636,9 @@ int main(int argc, char **argv)
 			}
 		}
 		if (script && SDL_GetTicks() > nextKey) {
-			static int phase = 0, cur = 0;
-			if (!phase) { cur = atoi(script); vk_event(cur, 1); phase = 1; }
-			else { vk_event(cur, 0); phase = 0; while (*script && *script != ',') ++script; if (*script == ',') ++script; if (!*script) script = NULL; }
+			static int phase = 0, cur = 0, sh = 0;	/* "s186" = shifted key */
+			if (!phase) { sh = (*script == 's'); cur = atoi(script + sh); if (sh) vk_event(16, 1); vk_event(cur, 1); phase = 1; }
+			else { vk_event(cur, 0); if (sh) vk_event(16, 0); phase = 0; while (*script && *script != ',') ++script; if (*script == ',') ++script; if (!*script) script = NULL; }
 			nextKey = SDL_GetTicks() + 250;
 		}
 		draw(ren, skin, lcdTex, lcdPix);
@@ -651,7 +651,7 @@ int main(int argc, char **argv)
 			for (rr = 0; rr < 64; ++rr) if (annOn[rr]) fprintf(stderr, " %d", rr + 1);
 			fputc('\n', stderr);
 			if (getenv("EMU71_TRACE")) { DWORD a = Chipset.pc; int k; fprintf(stderr, "nibbles@pc:"); for (k = 0; k < 40; ++k) fprintf(stderr, "%X", Read2(a+k) & 0xF); fprintf(stderr, "\nA=%05X C=%05X D0=%05X D1=%05X ST=%02X%02X\n", (unsigned)(Chipset.A[0]|Chipset.A[1]<<4|Chipset.A[2]<<8|Chipset.A[3]<<12|Chipset.A[4]<<16),(unsigned)(Chipset.C[0]|Chipset.C[1]<<4|Chipset.C[2]<<8|Chipset.C[3]<<12|Chipset.C[4]<<16),Chipset.d0,Chipset.d1,Chipset.ST[1],Chipset.ST[0]); }
-			dumpAfter = 0; if (getenv("EMU71_EXIT")) running = 0;
+			dumpAfter = getenv("EMU71_EVERY") ? SDL_GetTicks() + (Uint32)(atof(getenv("EMU71_EVERY")) * 1000) : 0; if (!dumpAfter && getenv("EMU71_EXIT")) running = 0; if (dumpAfter && SDL_GetTicks() > (Uint32)(atof(getenv("EMU71_STOP") ? getenv("EMU71_STOP") : "1e6") * 1000)) running = 0;
 		}
 	}
 
