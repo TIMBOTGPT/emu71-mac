@@ -9,6 +9,7 @@
 #include "Emu71.h"
 #include "io.h"
 #include <SDL.h>
+#include "video.h"
 #define STB_IMAGE_IMPLEMENTATION
 #define STBI_ONLY_PNG
 #define STBI_ONLY_JPEG
@@ -289,6 +290,17 @@ static int add_rom_module(int port, const char *path)
 	return 1;
 }
 
+/* hard-configured ROM (Forth/Assembler system part): fixed base, ignores bus configuration commands */
+static int add_hrd_module(int port, const char *path, DWORD base)
+{
+	PPORTDATA *pp; DWORD c, chip = 16 * 2048;
+	if (!add_rom_module(port, path)) return 0;
+	for (pp = &psExtPortData[port]; (*pp)->pNext; pp = &(*pp)->pNext) ;
+	(*pp)->sInfo.nType = TYPE_HRD;
+	for (c = 0; c < (*pp)->sInfo.dwChips; ++c) { (*pp)->psCfg[c].bCfg = TRUE; (*pp)->psCfg[c].dwBase = base + c * chip; }
+	return 1;
+}
+
 static int hpilOn = 0; static int hpilIn = 60000, hpilOut = 60001; static char hpilHost[128] = "localhost";
 static char ramSpec[64] = "3:64,4:64";	/* extra RAM modules: port:KB,... ("none" for no expansion) */
 static int add_ram_module(int port, int kb)
@@ -329,6 +341,22 @@ static int add_hpil_module(int port, const char *path)
 	for (pp = &psExtPortData[port]; *pp; pp = &(*pp)->pNext) ;
 	*pp = p;
 	return add_rom_module(port, path);
+}
+static int vidOn = 0, vidW = 800, vidH = 600;
+static int add_video_module(int port)
+{
+	PPORTDATA p, *pp;
+	p = (PPORTDATA)calloc(1, sizeof *p);
+	p->sInfo.dwStructSize = sizeof p->sInfo;
+	p->sInfo.nType = TYPE_VIDEO;
+	p->sInfo.dwSize = VID_NIBBLES;
+	p->sInfo.dwChips = 1;
+	p->sInfo.bHybrid = FALSE;
+	p->sInfo.dwCfgSize = sizeof(SATCFG);
+	p->psCfg = (PSATCFG)calloc(1, sizeof(SATCFG));
+	for (pp = &psExtPortData[port]; *pp; pp = &(*pp)->pNext) ;
+	*pp = p;
+	return 1;
 }
 static void add_ram_from_spec(const char *spec)
 {
@@ -518,18 +546,20 @@ int main(int argc, char **argv)
 {
 	char base[1024], skinDir[1024], romDir[1024], path[1100];
 	SDL_Window *win; SDL_Renderer *ren; SDL_Texture *skin, *lcdTex; SDL_Surface *surf;
-	uint32_t *lcdPix; int running = 1, i; const char *script = getenv("EMU71_KEYS"); Uint32 nextKey = 3000; Uint32 dumpAfter = getenv("EMU71_DUMP") ? (Uint32)(atof(getenv("EMU71_DUMP")) * 1000) : 0;
+	uint32_t *lcdPix; int running = 1, i; const char *script = getenv("EMU71_KEYS"); Uint32 nextKey = 3000; Uint32 vidTestAt = getenv("EMU71_VIDTEST") ? (Uint32)(atof(getenv("EMU71_VIDTEST")) * 1000) : 0; Uint32 dumpAfter = getenv("EMU71_DUMP") ? (Uint32)(atof(getenv("EMU71_DUMP")) * 1000) : 0;
 
 	exe_dir(base, sizeof base);
 	/* layout: <base>/../Resources/{skin,roms} in a bundle, or <base>/{skin,roms}; argv overrides */
 	snprintf(skinDir, sizeof skinDir, "%s/../Resources/skin", base);
 	snprintf(romDir, sizeof romDir, "%s/../Resources/roms", base);
 	if (access(skinDir, R_OK)) { snprintf(skinDir, sizeof skinDir, "%s/skin", base); snprintf(romDir, sizeof romDir, "%s/roms", base); }
+	for (i = 1; i < argc; ++i) if (!strcmp(argv[i], "--vid")) { vidOn = 1; if (i + 1 < argc && argv[i + 1][0] != '-') { int w = 0, h = 0; if (sscanf(argv[i + 1], "%dx%d", &w, &h) == 2) { vidW = w; vidH = h; } } }
 	for (i = 1; i + 1 < argc; i += 2) {
 		if (!strcmp(argv[i], "--skin")) strncpy(skinDir, argv[i + 1], sizeof skinDir - 1);
 		if (!strcmp(argv[i], "--kml")) strncpy(kmlName, argv[i + 1], sizeof kmlName - 1);
 		if (!strcmp(argv[i], "--image")) strncpy(imgOverride, argv[i + 1], sizeof imgOverride - 1);
 		if (!strcmp(argv[i], "--scale")) winScale = atof(argv[i + 1]);
+		if (!strcmp(argv[i], "--vid")) { vidOn = 1; if (i + 1 < argc && argv[i + 1][0] != '-') { int w = 0, h = 0; if (sscanf(argv[i + 1], "%dx%d", &w, &h) == 2) { vidW = w; vidH = h; } } }
 		if (!strcmp(argv[i], "--ram")) strncpy(ramSpec, argv[i + 1], sizeof ramSpec - 1);
 		if (!strcmp(argv[i], "--hpil")) { hpilOn = 1; if (i + 1 < argc && argv[i + 1][0] != '-') { /* host:out:in */ char *c = strdup(argv[i + 1]); char *a = strtok(c, ":"), *b = strtok(NULL, ":"), *d = strtok(NULL, ":"); if (a) strncpy(hpilHost, a, sizeof hpilHost - 1); if (b) hpilOut = atoi(b); if (d) hpilIn = atoi(d); free(c); } }
 		if (!strcmp(argv[i], "--refw")) refW = atoi(argv[i + 1]);
@@ -560,8 +590,13 @@ int main(int argc, char **argv)
 	ZeroMemory(psExtPortData, sizeof psExtPortData);
 	snprintf(path, sizeof path, "%s/MATHROM.BIN", romDir);  add_rom_module(1, path);
 	snprintf(path, sizeof path, "%s/FORTHROM.BIN", romDir); add_rom_module(2, path);
+	snprintf(path, sizeof path, "%s/HRDFORTH.BIN", romDir); if (!getenv("EMU71_NOHRD")) add_hrd_module(2, path, 0xE0000);
 	add_ram_from_spec(ramSpec);
 	if (hpilOn) { snprintf(path, sizeof path, "%s/Hpilrom.bin", romDir); add_hpil_module(getenv("HPILPORT") ? atoi(getenv("HPILPORT")) : 5, path); signal(SIGPIPE, SIG_IGN); strncat(ramSpec, "+hpil", sizeof ramSpec - strlen(ramSpec) - 1); }
+
+	if (vidOn) { char sp[24]; VideoSetSize(vidW, vidH); add_video_module(getenv("VIDPORT") ? atoi(getenv("VIDPORT")) : 5); snprintf(sp, sizeof sp, "+vid%dx%d", vidW, vidH); strncat(ramSpec, sp, sizeof ramSpec - strlen(ramSpec) - 1); }
+
+	if (getenv("EMU71_LEXROM")) { if (add_rom_module(3, getenv("EMU71_LEXROM"))) strncat(ramSpec, "+lex", sizeof ramSpec - strlen(ramSpec) - 1); }
 
 	ZeroMemory(&Chipset, sizeof Chipset);
 	if (state_load()) {
@@ -622,6 +657,7 @@ int main(int argc, char **argv)
 	while (running) {
 		SDL_Event e;
 		while (SDL_PollEvent(&e)) {
+			if (VideoEvent(&e)) continue;
 			if (e.type == SDL_QUIT) running = 0;
 			else if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
 				for (i = 0; i < nbtn; ++i)
@@ -635,13 +671,16 @@ int main(int argc, char **argv)
 				vk_event(sdl_to_vk(e.key.keysym.sym), e.type == SDL_KEYDOWN);
 			}
 		}
+		{ static int fastDone = 0; if (!fastDone && getenv("EMU71_FASTAT") && SDL_GetTicks() > (Uint32)(atof(getenv("EMU71_FASTAT")) * 1000)) { fastDone = 1; SetSpeed(FALSE); } }
 		if (script && SDL_GetTicks() > nextKey) {
 			static int phase = 0, cur = 0, sh = 0;	/* "s186" = shifted key */
 			if (!phase) { sh = (*script == 's'); cur = atoi(script + sh); if (sh) vk_event(16, 1); vk_event(cur, 1); phase = 1; }
-			else { vk_event(cur, 0); if (sh) vk_event(16, 0); phase = 0; while (*script && *script != ',') ++script; if (*script == ',') ++script; if (!*script) script = NULL; }
-			nextKey = SDL_GetTicks() + 250;
+			else { vk_event(cur, 0); if (sh) vk_event(16, 0); phase = 0; while (*script && *script != ',') ++script; if (*script == ',') ++script; if (!*script) { script = NULL; if (getenv("EMU71_FAST")) SetSpeed(FALSE); } }
+			nextKey = SDL_GetTicks() + (getenv("EMU71_KEYMS") ? (Uint32)atoi(getenv("EMU71_KEYMS")) : 250);
 		}
 		draw(ren, skin, lcdTex, lcdPix);
+		VideoPump();
+		if (vidTestAt && SDL_GetTicks() > vidTestAt) { vidTestAt = 0; VideoSelfTest(getenv("EMU71_VIDPPM")); if (getenv("EMU71_VIDEXIT")) running = 0; }
 		if (dumpAfter && SDL_GetTicks() > dumpAfter) {
 			int rr, cc;
 			EnterCriticalSection(&csGDILock);
@@ -650,6 +689,37 @@ int main(int argc, char **argv)
 			fprintf(stderr, "pc=%05X shutdn=%d state=%u dispOn=%d annOn:", Chipset.pc, Chipset.Shutdn, nState, Chipset.dd[MASTER].IORam[DD1CTL & 0xFF] & DON);
 			for (rr = 0; rr < 64; ++rr) if (annOn[rr]) fprintf(stderr, " %d", rr + 1);
 			fputc('\n', stderr);
+			if (getenv("EMU71_DUMPMEM")) {	/* nibble-per-byte dump of 20000-EFFFF through the bus (system RAM + mapped RAM) */
+				FILE *mf = fopen(getenv("EMU71_DUMPMEM"), "wb"); DWORD ad;
+				if (mf) { for (ad = 0x2E000; ad < 0xF0000; ++ad) fputc(Read2(ad) & 0xF, mf); fclose(mf); }
+			}
+			if (getenv("EMU71_FIND")) {	/* EMU71_FIND=hexdigits[,hexdigits]: ascending-address nibble pattern search, 30000-EFFFF */
+				char buf[256], *tok, *sv; strncpy(buf, getenv("EMU71_FIND"), sizeof buf - 1); buf[sizeof buf - 1] = 0;
+				for (tok = strtok_r(buf, ",", &sv); tok; tok = strtok_r(NULL, ",", &sv)) {
+					int n = (int)strlen(tok), pat[64], k, hits = 0; DWORD ad;
+					for (k = 0; k < n && k < 64; ++k) pat[k] = (tok[k] <= '9') ? tok[k] - '0' : (tok[k] & 7) + 9;
+					fprintf(stderr, "FIND %s:\n", tok);
+					for (ad = 0x30000; ad < 0xF0000 && hits < 6; ++ad) {
+						for (k = 0; k < n && (Read2(ad + k) & 0xF) == pat[k]; ++k) ;
+						if (k == n) {
+							int j; ++hits; fprintf(stderr, "  @%05X: ", (unsigned)ad);
+							for (j = -6; j < n + 10; ++j) fprintf(stderr, "%X%s", Read2(ad + j) & 0xF, j == -1 || j == n - 1 ? "|" : "");
+							fputc('\n', stderr);
+						}
+					}
+					{	/* internal RAM chips, searched directly (no bus reads) */
+						int c, o, base = 0; hits = 0;
+						for (c = 0; c < 4; ++c, base += 8192)
+							for (o = 0; o + n <= 8192 && hits < 8; ++o) {
+								for (k = 0; k < n && Chipset.ir[c].Ram[o + k] == pat[k]; ++k) ;
+								if (k == n) { int j; ++hits; fprintf(stderr, "  IR%d@%04X (ir offset %05X): ", c, o, base + o);
+									for (j = -6; j < n + 10; ++j) if (o + j >= 0 && o + j < 8192) fprintf(stderr, "%X%s", Chipset.ir[c].Ram[o + j] & 0xF, j == -1 || j == n - 1 ? "|" : "");
+									fputc('\n', stderr); }
+							}
+					}
+					if (!hits) fprintf(stderr, "  not found\n");
+				}
+			}
 			if (getenv("EMU71_TRACE")) { DWORD a = Chipset.pc; int k; fprintf(stderr, "nibbles@pc:"); for (k = 0; k < 40; ++k) fprintf(stderr, "%X", Read2(a+k) & 0xF); fprintf(stderr, "\nA=%05X C=%05X D0=%05X D1=%05X ST=%02X%02X\n", (unsigned)(Chipset.A[0]|Chipset.A[1]<<4|Chipset.A[2]<<8|Chipset.A[3]<<12|Chipset.A[4]<<16),(unsigned)(Chipset.C[0]|Chipset.C[1]<<4|Chipset.C[2]<<8|Chipset.C[3]<<12|Chipset.C[4]<<16),Chipset.d0,Chipset.d1,Chipset.ST[1],Chipset.ST[0]); }
 			dumpAfter = getenv("EMU71_EVERY") ? SDL_GetTicks() + (Uint32)(atof(getenv("EMU71_EVERY")) * 1000) : 0; if (!dumpAfter && getenv("EMU71_EXIT")) running = 0; if (dumpAfter && SDL_GetTicks() > (Uint32)(atof(getenv("EMU71_STOP") ? getenv("EMU71_STOP") : "1e6") * 1000)) running = 0;
 		}
@@ -658,6 +728,8 @@ int main(int argc, char **argv)
 	SwitchToState(SM_INVALID);
 	state_save();
 	SwitchToState(SM_RETURN);
+	if (getenv("EMU71_VIDSHOT")) VideoSnapshot(getenv("EMU71_VIDSHOT"));
+	VideoShutdown();
 	SDL_Quit();
 	return 0;
 }
