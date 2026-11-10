@@ -1,0 +1,25 @@
+CC      = clang
+ARCH    = arm64
+CFLAGS  = -arch $(ARCH) -O2 -w -I shim -I orig $(shell sdl2-config --cflags)
+LDFLAGS = -arch $(ARCH) $(shell sdl2-config --libs) -lpthread -framework Cocoa
+
+CORE = fetch opcodes mops satmem keyboard timer portmem engine hpil hpilbuf hpilcmd hpildev
+OBJS = $(addprefix build/,$(addsuffix .o,$(CORE))) build/tcpip_stub.o build/main.o build/aspect.o
+
+emu71: $(OBJS)
+	$(CC) -o $@ $(OBJS) $(LDFLAGS)
+
+build/%.o: orig/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+build/tcpip_stub.o: stubs/tcpip_stub.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+build/aspect.o: src/aspect.m
+	$(CC) $(CFLAGS) -c $< -o $@
+
+build/main.o: src/main.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f build/*.o emu71

@@ -1,0 +1,880 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="992" height="623" viewBox="0 0 992 623" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs>
+<linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a7a7a"/><stop offset="1" stop-color="#555"/></linearGradient>
+<linearGradient id="top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#333"/><stop offset="1" stop-color="#252525"/></linearGradient>
+<linearGradient id="cap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4e4e4e"/><stop offset="0.55" stop-color="#2e2e2e"/><stop offset="1" stop-color="#232323"/></linearGradient>
+<linearGradient id="capdn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#262626"/><stop offset="1" stop-color="#1b1b1b"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8bd5c"/><stop offset="1" stop-color="#b88a30"/></linearGradient>
+<linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fb4e2"/><stop offset="1" stop-color="#3b7eae"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a9b93"/><stop offset="1" stop-color="#7e7f79"/></linearGradient>
+<linearGradient id="caplt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f2f2"/><stop offset="1" stop-color="#c4c4c4"/></linearGradient>
+</defs>
+<rect id="sheet-bg" width="992" height="623" fill="#000"/>
+<g id="faceplate">
+<rect id="case" width="991" height="501" rx="10" fill="url(#body)"/>
+<rect id="top-panel" x="6" y="6" width="979" height="170" rx="8" fill="url(#top)" stroke="#444"/>
+<rect id="lcd-bezel" x="124" y="62" width="540" height="74" rx="7" fill="#0e0e0e" stroke="#555"/>
+<rect id="lcd-glass" x="180" y="82" width="408" height="32" rx="2" fill="url(#glass)"/>
+<text id="model" x="951" y="48" fill="#c9a24a" font-size="26" font-weight="700" font-style="italic" text-anchor="end">71B</text>
+<rect id="module-slot" x="700" y="64" width="150" height="48" rx="4" fill="#1a1a1a" stroke="#444"/>
+<rect id="key-frame" x="38" y="190" width="915" height="276" rx="8" fill="none" stroke="#e6e6e6" stroke-width="2"/>
+<g id="orange-legends" fill="#d9a846" font-size="9" font-weight="700" text-anchor="middle">
+<text x="87.0" y="214">IF</text>
+<text x="146.0" y="214">THEN</text>
+<text x="205.0" y="214">ELSE</text>
+<text x="264.0" y="214">FOR</text>
+<text x="323.0" y="214">TO</text>
+<text x="382.0" y="214">NEXT</text>
+<text x="441.0" y="214">DEF</text>
+<text x="500.0" y="214">KEY</text>
+<text x="559.0" y="214">ADD</text>
+<text x="618.0" y="214">LR</text>
+<text x="684.5" y="213">PREDV</text>
+<text x="756.5" y="213">MEAN</text>
+<text x="828.5" y="213">SDEV</text>
+<text x="900.5" y="213">SQR</text>
+<text x="87.0" y="281">CALL</text>
+<text x="146.0" y="281">GOSUB</text>
+<text x="205.0" y="281">RETURN</text>
+<text x="264.0" y="281">GOTO</text>
+<text x="323.0" y="281">INPUT</text>
+<text x="382.0" y="281">PRINT</text>
+<text x="441.0" y="281">DISP</text>
+<text x="500.0" y="281">DIM</text>
+<text x="559.0" y="281">BEEP</text>
+<text x="618.0" y="281">FACT</text>
+<text x="684.5" y="280">SIN</text>
+<text x="756.5" y="280">COS</text>
+<text x="828.5" y="280">TAN</text>
+<text x="900.5" y="280">EXP</text>
+<text x="87.0" y="346">EDIT</text>
+<text x="146.0" y="346">CAT</text>
+<text x="205.0" y="346">NAME</text>
+<text x="264.0" y="346">PURGE</text>
+<text x="323.0" y="346">FETCH</text>
+<text x="382.0" y="346">LIST</text>
+<text x="441.0" y="346">DELETE</text>
+<text x="500.0" y="346">AUTO</text>
+<text x="559.0" y="346">COPY</text>
+<text x="618.0" y="346">RES</text>
+<text x="684.5" y="345">ASIN</text>
+<text x="756.5" y="345">ACOS</text>
+<text x="828.5" y="345">ATAN</text>
+<text x="900.5" y="345">LOG</text>
+<text x="87.0" y="411">OFF</text>
+<text x="264.0" y="411">SST</text>
+<text x="323.0" y="411">BACK</text>
+<text x="382.0" y="411">−CHAR</text>
+<text x="441.0" y="411">I/R</text>
+<text x="500.0" y="411">LC</text>
+<text x="559.0" y="411">−LINE</text>
+<text x="684.5" y="411">USER</text>
+<text x="756.5" y="410">VIEW</text>
+<text x="828.5" y="410">CALC</text>
+<text x="900.5" y="410">CONT</text>
+</g>
+<g id="keys-up">
+<g id="key101" transform="translate(66,219)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">Q</text>
+</g>
+<g id="key102" transform="translate(125,219)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">W</text>
+</g>
+<g id="key103" transform="translate(184,219)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">E</text>
+</g>
+<g id="key104" transform="translate(243,219)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">R</text>
+</g>
+<g id="key105" transform="translate(302,219)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">T</text>
+</g>
+<g id="key106" transform="translate(361,219)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">Y</text>
+</g>
+<g id="key107" transform="translate(420,219)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">U</text>
+</g>
+<g id="key108" transform="translate(479,219)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">I</text>
+</g>
+<g id="key109" transform="translate(538,219)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">O</text>
+</g>
+<g id="key110" transform="translate(597,219)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">P</text>
+</g>
+<g id="key111" transform="translate(658,218)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">7</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">!</text>
+</g>
+<g id="key112" transform="translate(730,218)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">8</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">(</text>
+</g>
+<g id="key113" transform="translate(802,218)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">9</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">)</text>
+</g>
+<g id="key114" transform="translate(874,218)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">/</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">^</text>
+</g>
+<g id="key201" transform="translate(66,286)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">A</text>
+</g>
+<g id="key202" transform="translate(125,286)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">S</text>
+</g>
+<g id="key203" transform="translate(184,286)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">D</text>
+</g>
+<g id="key204" transform="translate(243,286)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">F</text>
+</g>
+<g id="key205" transform="translate(302,286)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">G</text>
+</g>
+<g id="key206" transform="translate(361,286)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">H</text>
+</g>
+<g id="key207" transform="translate(420,286)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">J</text>
+</g>
+<g id="key208" transform="translate(479,286)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">K</text>
+</g>
+<g id="key209" transform="translate(538,286)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">L</text>
+</g>
+<g id="key210" transform="translate(597,286)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">=</text>
+</g>
+<g id="key211" transform="translate(658,285)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">4</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">$</text>
+</g>
+<g id="key212" transform="translate(730,285)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">5</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">%</text>
+</g>
+<g id="key213" transform="translate(802,285)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">6</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">&amp;</text>
+</g>
+<g id="key214" transform="translate(874,285)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">*</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">:</text>
+</g>
+<g id="key301" transform="translate(66,351)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">Z</text>
+</g>
+<g id="key302" transform="translate(125,351)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">X</text>
+</g>
+<g id="key303" transform="translate(184,351)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">C</text>
+</g>
+<g id="key304" transform="translate(243,351)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">V</text>
+</g>
+<g id="key305" transform="translate(302,351)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">B</text>
+</g>
+<g id="key306" transform="translate(361,351)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">N</text>
+</g>
+<g id="key307" transform="translate(420,351)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">M</text>
+</g>
+<g id="key308" transform="translate(479,351)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">(</text>
+</g>
+<g id="key309" transform="translate(538,351)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">)</text>
+</g>
+<g id="key310" transform="translate(597,351)">
+<rect width="42" height="99" fill="#232323"/>
+<rect width="42" height="99" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="97" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="43.5" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">END</text>
+<text x="21.0" y="57.5" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">LINE</text>
+<text x="21.0" y="92" fill="#6fb4e2" font-size="8" text-anchor="middle">CMDS</text>
+</g>
+<g id="key311" transform="translate(658,350)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">1</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">&#x27;</text>
+</g>
+<g id="key312" transform="translate(730,350)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">2</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">&quot;</text>
+</g>
+<g id="key313" transform="translate(802,350)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">3</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">#</text>
+</g>
+<g id="key314" transform="translate(874,350)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">−</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">@</text>
+</g>
+<g id="key401" transform="translate(66,416)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="19.5" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">ON</text>
+<rect x="1" y="22" width="40" height="10" rx="3" fill="#000" fill-opacity="0.28"/>
+<text x="21.0" y="30" fill="#6fb4e2" font-size="8" text-anchor="middle">ATTN</text>
+</g>
+<g id="key402" transform="translate(125,416)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#gold)" stroke="#0a0a0a" stroke-width="1"/>
+<text x="21.0" y="21.2" fill="#10151a" font-size="13" font-weight="700" text-anchor="middle">f</text>
+</g>
+<g id="key403" transform="translate(184,416)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#blue)" stroke="#0a0a0a" stroke-width="1"/>
+<text x="21.0" y="21.2" fill="#10151a" font-size="13" font-weight="700" text-anchor="middle">g</text>
+</g>
+<g id="key404" transform="translate(243,416)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="18.8" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">RUN</text>
+<rect x="1" y="22" width="40" height="10" rx="3" fill="#000" fill-opacity="0.28"/>
+<text x="21.0" y="30" fill="#6fb4e2" font-size="8" text-anchor="middle">CTRL</text>
+</g>
+<g id="key405" transform="translate(302,416)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="19.5" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">◀</text>
+<rect x="1" y="22" width="40" height="10" rx="3" fill="#000" fill-opacity="0.28"/>
+<text x="21.0" y="30" fill="#6fb4e2" font-size="8" text-anchor="middle">|◀</text>
+</g>
+<g id="key406" transform="translate(361,416)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="19.5" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">▶</text>
+<rect x="1" y="22" width="40" height="10" rx="3" fill="#000" fill-opacity="0.28"/>
+<text x="21.0" y="30" fill="#6fb4e2" font-size="8" text-anchor="middle">▶|</text>
+</g>
+<g id="key407" transform="translate(420,416)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="18.8" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">SPC</text>
+<rect x="1" y="22" width="40" height="10" rx="3" fill="#000" fill-opacity="0.28"/>
+<text x="21.0" y="30" fill="#6fb4e2" font-size="8" text-anchor="middle">ERRM</text>
+</g>
+<g id="key408" transform="translate(479,416)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">▲</text>
+</g>
+<g id="key409" transform="translate(538,416)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#cap)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="21.0" y="21.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">▼</text>
+</g>
+<g id="key411" transform="translate(658,416)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">0</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">1 USER</text>
+</g>
+<g id="key412" transform="translate(730,415)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">.</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">&lt;</text>
+</g>
+<g id="key413" transform="translate(802,415)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">,</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">&gt;</text>
+</g>
+<g id="key414" transform="translate(874,415)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<text x="26.5" y="19.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">+</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">?</text>
+</g>
+</g>
+<g id="annunciators-dim" fill="#4a4a4a" font-weight="700" text-anchor="middle">
+<text id="ann4-dim" x="143.0" y="87" font-size="8" textLength="12" lengthAdjust="spacingAndGlyphs">←</text>
+<text id="ann5-dim" x="144.5" y="98" font-size="9" textLength="15" lengthAdjust="spacingAndGlyphs">AC</text>
+<text id="ann6-dim" x="155.5" y="109" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">USER</text>
+<text id="ann7-dim" x="157.5" y="120" font-size="9" textLength="23" lengthAdjust="spacingAndGlyphs">RAD</text>
+<text id="ann11-dim" x="174.5" y="87" font-size="9" textLength="7" lengthAdjust="spacingAndGlyphs">f</text>
+<text id="ann12-dim" x="166.5" y="87" font-size="9" textLength="7" lengthAdjust="spacingAndGlyphs">g</text>
+<text id="ann13-dim" x="166.5" y="98" font-size="9" textLength="23" lengthAdjust="spacingAndGlyphs">BAT</text>
+<text id="ann20-dim" x="592.0" y="84" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">0</text>
+<text id="ann21-dim" x="591.5" y="93" font-size="8" textLength="5" lengthAdjust="spacingAndGlyphs">1</text>
+<text id="ann22-dim" x="592.0" y="102" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">2</text>
+<text id="ann23-dim" x="592.0" y="111" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">3</text>
+<text id="ann24-dim" x="592.0" y="120" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">4</text>
+<text id="ann28-dim" x="605.5" y="86" font-size="9" textLength="15" lengthAdjust="spacingAndGlyphs">((*))</text>
+<text id="ann29-dim" x="623.0" y="86" font-size="8" textLength="12" lengthAdjust="spacingAndGlyphs">→</text>
+<text id="ann30-dim" x="612.5" y="97" font-size="9" textLength="33" lengthAdjust="spacingAndGlyphs">PRGM</text>
+<text id="ann31-dim" x="612.5" y="108" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">SUSP</text>
+<text id="ann32-dim" x="612.5" y="119" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">CALC</text>
+</g>
+</g>
+<g id="annunciators-lit" font-weight="700" text-anchor="middle" fill="#ffc94d">
+<rect x="263" y="502" width="12" height="9" fill="#0e0e0e"/>
+<text id="ann4-lit" x="269.0" y="510" font-size="8" textLength="12" lengthAdjust="spacingAndGlyphs">←</text>
+<rect x="0" y="502" width="15" height="10" fill="#0e0e0e"/>
+<text id="ann5-lit" x="7.5" y="511" font-size="9" textLength="15" lengthAdjust="spacingAndGlyphs">AC</text>
+<rect x="42" y="502" width="31" height="10" fill="#0e0e0e"/>
+<text id="ann6-lit" x="57.5" y="511" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">USER</text>
+<rect x="75" y="502" width="23" height="10" fill="#0e0e0e"/>
+<text id="ann7-lit" x="86.5" y="511" font-size="9" textLength="23" lengthAdjust="spacingAndGlyphs">RAD</text>
+<rect x="209" y="502" width="7" height="10" fill="#0e0e0e"/>
+<text id="ann11-lit" x="212.5" y="511" font-size="9" textLength="7" lengthAdjust="spacingAndGlyphs">f</text>
+<rect x="201" y="502" width="7" height="10" fill="#0e0e0e"/>
+<text id="ann12-lit" x="204.5" y="511" font-size="9" textLength="7" lengthAdjust="spacingAndGlyphs">g</text>
+<rect x="17" y="502" width="23" height="10" fill="#0e0e0e"/>
+<text id="ann13-lit" x="28.5" y="511" font-size="9" textLength="23" lengthAdjust="spacingAndGlyphs">BAT</text>
+<rect x="233" y="502" width="6" height="9" fill="#0e0e0e"/>
+<text id="ann20-lit" x="236.0" y="510" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">0</text>
+<rect x="239" y="502" width="5" height="9" fill="#0e0e0e"/>
+<text id="ann21-lit" x="241.5" y="510" font-size="8" textLength="5" lengthAdjust="spacingAndGlyphs">1</text>
+<rect x="244" y="502" width="6" height="9" fill="#0e0e0e"/>
+<text id="ann22-lit" x="247.0" y="510" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">2</text>
+<rect x="250" y="502" width="6" height="9" fill="#0e0e0e"/>
+<text id="ann23-lit" x="253.0" y="510" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">3</text>
+<rect x="256" y="502" width="6" height="9" fill="#0e0e0e"/>
+<text id="ann24-lit" x="259.0" y="510" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">4</text>
+<rect x="217" y="502" width="15" height="10" fill="#0e0e0e"/>
+<text id="ann28-lit" x="224.5" y="511" font-size="9" textLength="15" lengthAdjust="spacingAndGlyphs">((*))</text>
+<rect x="276" y="502" width="12" height="9" fill="#0e0e0e"/>
+<text id="ann29-lit" x="282.0" y="510" font-size="8" textLength="12" lengthAdjust="spacingAndGlyphs">→</text>
+<rect x="100" y="502" width="33" height="10" fill="#0e0e0e"/>
+<text id="ann30-lit" x="116.5" y="511" font-size="9" textLength="33" lengthAdjust="spacingAndGlyphs">PRGM</text>
+<rect x="135" y="502" width="31" height="10" fill="#0e0e0e"/>
+<text id="ann31-lit" x="150.5" y="511" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">SUSP</text>
+<rect x="168" y="502" width="31" height="10" fill="#0e0e0e"/>
+<text id="ann32-lit" x="183.5" y="511" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">CALC</text>
+</g>
+<g id="keys-down">
+<g id="key101-down" transform="translate(926,514)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">Q</text>
+</g>
+<g id="key102-down" transform="translate(46,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">W</text>
+</g>
+<g id="key103-down" transform="translate(90,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">E</text>
+</g>
+<g id="key104-down" transform="translate(134,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">R</text>
+</g>
+<g id="key105-down" transform="translate(178,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">T</text>
+</g>
+<g id="key106-down" transform="translate(222,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">Y</text>
+</g>
+<g id="key107-down" transform="translate(266,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">U</text>
+</g>
+<g id="key108-down" transform="translate(310,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">I</text>
+</g>
+<g id="key109-down" transform="translate(354,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">O</text>
+</g>
+<g id="key110-down" transform="translate(398,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">P</text>
+</g>
+<g id="key111-down" transform="translate(46,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">7</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">!</text>
+</g>
+<g id="key112-down" transform="translate(101,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">8</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">(</text>
+</g>
+<g id="key113-down" transform="translate(156,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">9</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">)</text>
+</g>
+<g id="key114-down" transform="translate(211,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">/</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">^</text>
+</g>
+<g id="key201-down" transform="translate(442,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">A</text>
+</g>
+<g id="key202-down" transform="translate(486,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">S</text>
+</g>
+<g id="key203-down" transform="translate(530,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">D</text>
+</g>
+<g id="key204-down" transform="translate(574,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">F</text>
+</g>
+<g id="key205-down" transform="translate(618,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">G</text>
+</g>
+<g id="key206-down" transform="translate(662,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">H</text>
+</g>
+<g id="key207-down" transform="translate(706,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">J</text>
+</g>
+<g id="key208-down" transform="translate(750,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">K</text>
+</g>
+<g id="key209-down" transform="translate(794,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">L</text>
+</g>
+<g id="key210-down" transform="translate(838,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">=</text>
+</g>
+<g id="key211-down" transform="translate(266,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">4</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">$</text>
+</g>
+<g id="key212-down" transform="translate(321,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">5</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">%</text>
+</g>
+<g id="key213-down" transform="translate(376,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">6</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">&amp;</text>
+</g>
+<g id="key214-down" transform="translate(431,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">*</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">:</text>
+</g>
+<g id="key301-down" transform="translate(882,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">Z</text>
+</g>
+<g id="key302-down" transform="translate(926,549)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">X</text>
+</g>
+<g id="key303-down" transform="translate(46,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">C</text>
+</g>
+<g id="key304-down" transform="translate(90,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">V</text>
+</g>
+<g id="key305-down" transform="translate(134,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">B</text>
+</g>
+<g id="key306-down" transform="translate(178,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">N</text>
+</g>
+<g id="key307-down" transform="translate(222,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">M</text>
+</g>
+<g id="key308-down" transform="translate(266,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">(</text>
+</g>
+<g id="key309-down" transform="translate(310,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">)</text>
+</g>
+<g id="key310-down" transform="translate(0,514)">
+<rect width="42" height="99" fill="#232323"/>
+<rect width="42" height="99" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="97" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="44.5" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">END</text>
+<text x="21.0" y="58.5" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">LINE</text>
+<text x="21.0" y="92" fill="#6fb4e2" font-size="8" text-anchor="middle">CMDS</text>
+</g>
+<g id="key311-down" transform="translate(486,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">1</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">&#x27;</text>
+</g>
+<g id="key312-down" transform="translate(541,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">2</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">&quot;</text>
+</g>
+<g id="key313-down" transform="translate(596,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">3</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">#</text>
+</g>
+<g id="key314-down" transform="translate(651,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">−</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">@</text>
+</g>
+<g id="key401-down" transform="translate(354,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="20.5" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">ON</text>
+<rect x="1" y="22" width="40" height="10" rx="3" fill="#000" fill-opacity="0.28"/>
+<text x="21.0" y="30" fill="#6fb4e2" font-size="8" text-anchor="middle">ATTN</text>
+</g>
+<g id="key402-down" transform="translate(398,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#gold)" stroke="#0a0a0a" stroke-width="1"/>
+<text x="21.0" y="22.2" fill="#10151a" font-size="13" font-weight="700" text-anchor="middle">f</text>
+</g>
+<g id="key403-down" transform="translate(442,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#blue)" stroke="#0a0a0a" stroke-width="1"/>
+<text x="21.0" y="22.2" fill="#10151a" font-size="13" font-weight="700" text-anchor="middle">g</text>
+</g>
+<g id="key404-down" transform="translate(486,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="19.8" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">RUN</text>
+<rect x="1" y="22" width="40" height="10" rx="3" fill="#000" fill-opacity="0.28"/>
+<text x="21.0" y="30" fill="#6fb4e2" font-size="8" text-anchor="middle">CTRL</text>
+</g>
+<g id="key405-down" transform="translate(530,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="20.5" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">◀</text>
+<rect x="1" y="22" width="40" height="10" rx="3" fill="#000" fill-opacity="0.28"/>
+<text x="21.0" y="30" fill="#6fb4e2" font-size="8" text-anchor="middle">|◀</text>
+</g>
+<g id="key406-down" transform="translate(574,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="20.5" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">▶</text>
+<rect x="1" y="22" width="40" height="10" rx="3" fill="#000" fill-opacity="0.28"/>
+<text x="21.0" y="30" fill="#6fb4e2" font-size="8" text-anchor="middle">▶|</text>
+</g>
+<g id="key407-down" transform="translate(618,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="19.8" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">SPC</text>
+<rect x="1" y="22" width="40" height="10" rx="3" fill="#000" fill-opacity="0.28"/>
+<text x="21.0" y="30" fill="#6fb4e2" font-size="8" text-anchor="middle">ERRM</text>
+</g>
+<g id="key408-down" transform="translate(662,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">▲</text>
+</g>
+<g id="key409-down" transform="translate(706,584)">
+<rect width="42" height="33" fill="#232323"/>
+<rect width="42" height="33" rx="4" fill="url(#capdn)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="40" height="31" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="21.0" y="22.2" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">▼</text>
+</g>
+<g id="key411-down" transform="translate(706,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">0</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">1 USER</text>
+</g>
+<g id="key412-down" transform="translate(761,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">.</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">&lt;</text>
+</g>
+<g id="key413-down" transform="translate(816,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">,</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">&gt;</text>
+</g>
+<g id="key414-down" transform="translate(871,514)">
+<rect width="53" height="32" fill="#232323"/>
+<rect width="53" height="32" rx="4" fill="url(#caplt)" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="1" y="1" width="51" height="30" rx="3" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+<text x="26.5" y="20.8" fill="#10151a" font-size="15" font-weight="700" text-anchor="middle">+</text>
+<rect x="1" y="21" width="51" height="10" rx="3" fill="#000" fill-opacity="0.12"/>
+<text x="26.5" y="29" fill="#2d5fb0" font-size="8" text-anchor="middle">?</text>
+</g>
+</g>
+</svg>

@@ -1,0 +1,1362 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="992" height="634" viewBox="0 0 992 634" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs>
+<linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2c2c"/><stop offset="1" stop-color="#1f1f1f"/></linearGradient>
+<linearGradient id="top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#333"/><stop offset="1" stop-color="#252525"/></linearGradient>
+<linearGradient id="cap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4e4e4e"/><stop offset="0.55" stop-color="#2e2e2e"/><stop offset="1" stop-color="#232323"/></linearGradient>
+<linearGradient id="capdn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#262626"/><stop offset="1" stop-color="#1b1b1b"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8bd5c"/><stop offset="1" stop-color="#b88a30"/></linearGradient>
+<linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fb4e2"/><stop offset="1" stop-color="#3b7eae"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a9b93"/><stop offset="1" stop-color="#7e7f79"/></linearGradient>
+<linearGradient id="caplt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f2f2"/><stop offset="1" stop-color="#c4c4c4"/></linearGradient>
+</defs>
+<defs>
+<linearGradient id="silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4e5e7"/><stop offset="0.5" stop-color="#c3c5c8"/><stop offset="1" stop-color="#a4a6aa"/></linearGradient>
+<linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f4f5"/><stop offset="0.45" stop-color="#9a9ca0"/><stop offset="1" stop-color="#d8d9db"/></linearGradient>
+<linearGradient id="plate" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2e2e2e"/><stop offset="0.5" stop-color="#212121"/><stop offset="1" stop-color="#292929"/></linearGradient>
+<linearGradient id="pface" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5e5e5e"/><stop offset="1" stop-color="#363636"/></linearGradient>
+<linearGradient id="pfacedn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#383838"/><stop offset="1" stop-color="#2a2a2a"/></linearGradient>
+<linearGradient id="prim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000"/><stop offset="1" stop-color="#555"/></linearGradient>
+<linearGradient id="pband" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0a0a"/><stop offset="1" stop-color="#181818"/></linearGradient>
+<linearGradient id="pgloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="pgloss2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.6"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="pshade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.16"/></linearGradient>
+<linearGradient id="pbsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0.16"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+<linearGradient id="pcream" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8e8dd"/><stop offset="0.5" stop-color="#d0d0c5"/><stop offset="1" stop-color="#bbbbb0"/></linearGradient>
+<linearGradient id="pcreamdn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c2c2b7"/><stop offset="1" stop-color="#b6b6ab"/></linearGradient>
+<linearGradient id="pcband" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcbcb1"/><stop offset="1" stop-color="#c6c6bb"/></linearGradient>
+<linearGradient id="porange" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f09a5a"/><stop offset="0.6" stop-color="#d9733a"/><stop offset="1" stop-color="#b9561f"/></linearGradient>
+<linearGradient id="pblue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8cc8f4"/><stop offset="0.6" stop-color="#4a96d8"/><stop offset="1" stop-color="#2c6fb0"/></linearGradient>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 -0.35"/></filter>
+<filter id="brushed" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.004 0.8" numOctaves="2" seed="3" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 -0.3"/></filter>
+</defs>
+<rect id="sheet-bg" width="992" height="634" fill="#000"/>
+<g id="faceplate" transform="translate(0,-22)">
+<clipPath id="clip-top"><path d="M6,32 Q6,26 12,26 H979 Q985,26 985,32 V184 H654 L642,172 H6 Z"/></clipPath><clipPath id="clip-plate"><path d="M28,186 H636 L648,198 H963 V466 H28 Z"/></clipPath>
+<rect id="case" width="991" height="501" rx="10" fill="#0a0a0a"/>
+<path id="top-panel" d="M6,32 Q6,26 12,26 H979 Q985,26 985,32 V184 H654 L642,172 H6 Z" fill="url(#silver)"/>
+<rect id="top-brushed" x="6" y="26" width="979" height="158" clip-path="url(#clip-top)" filter="url(#brushed)" opacity="0.35"/>
+<rect id="lcd-bezel" x="118" y="56" width="552" height="86" rx="6" fill="url(#chrome)" stroke="#6d6f73"/>
+<rect id="lcd-well" x="124" y="62" width="540" height="74" rx="3" fill="#2a2a2a"/>
+<rect id="lcd-glass" x="128" y="66" width="532" height="66" rx="2" fill="#7e7f79"/>
+<g id="logo-block">
+<rect id="logo-plate" x="690" y="56" width="260" height="38" rx="4" fill="#1b1b1b" stroke="#080808" stroke-width="2"/>
+<rect id="logo-plate-edge" x="691" y="57" width="258" height="36" rx="3" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+<g id="logo-area"><g id="saturn-logo" transform="translate(698,60) scale(0.22222)">
+<rect width="183.0" height="135.0" rx="20" fill="#e8e8e8"/>
+<circle cx="90.5" cy="68.5" r="59" fill="#1b1b1b"/>
+<path d="M2.0761363636363637 -5.4 8.502272727272727 -17.914285714285715Q13.148863636363636 -15.257142857142858 19.27840909090909 -13.62857142857143Q25.407954545454544 -12.0 31.339772727272727 -12.0Q42.61022727272727 -12.0 42.61022727272727 -16.885714285714286Q42.61022727272727 -19.45714285714286 39.397159090909085 -20.700000000000003Q36.184090909090905 -21.942857142857143 29.06590909090909 -23.314285714285713Q21.255681818181817 -24.771428571428572 16.01590909090909 -26.442857142857143Q10.776136363636363 -28.114285714285714 7.019318181818181 -31.8Q3.2624999999999997 -35.48571428571429 3.2624999999999997 -41.74285714285714Q3.2624999999999997 -47.22857142857143 6.722727272727273 -51.64285714285714Q10.182954545454546 -56.05714285714286 17.053977272727273 -58.62857142857143Q23.925 -61.2 33.91022727272727 -61.2Q40.731818181818184 -61.2 47.35568181818182 -59.871428571428574Q53.97954545454545 -58.542857142857144 59.02159090909091 -55.971428571428575L52.99090909090909 -43.371428571428574Q43.10454545454545 -48.0 33.81136363636364 -48.0Q27.97840909090909 -48.0 25.30909090909091 -46.5Q22.639772727272728 -45.0 22.639772727272728 -42.6Q22.639772727272728 -40.2 25.803409090909092 -39.0Q28.967045454545453 -37.8 35.986363636363635 -36.51428571428571Q43.89545454545455 -35.05714285714286 49.085795454545455 -33.385714285714286Q54.27613636363636 -31.714285714285715 58.08238636363636 -28.07142857142857Q61.888636363636365 -24.428571428571427 61.888636363636365 -18.17142857142857Q61.888636363636365 -12.771428571428572 58.42840909090909 -8.4Q54.96818181818182 -4.0285714285714285 48.04772727272727 -1.4142857142857141Q41.127272727272725 1.2 31.240909090909092 1.2Q22.8375 1.2 14.92840909090909 -0.6Q7.019318181818182 -2.4 2.0761363636363637 -5.4Z M117.25227272727273 -11.657142857142857H87.98863636363636L82.55113636363636 0.0H62.580681818181816L93.12954545454545 -60.0H112.40795454545454L143.05568181818182 0.0H122.68977272727273ZM111.51818181818182 -24.17142857142857 102.62045454545455 -43.371428571428574 93.72272727272727 -24.17142857142857Z M163.32272727272726 -46.542857142857144H142.06704545454545V-60.0H204.05454545454543V-46.542857142857144H182.89772727272725V0.0H163.32272727272726Z M210.7772727272727 -26.742857142857144V-60.0H230.35227272727272V-27.257142857142856Q230.35227272727272 -12.857142857142858 243.50113636363636 -12.857142857142858Q256.5511363636364 -12.857142857142858 256.5511363636364 -27.257142857142856V-60.0H275.82954545454544V-26.742857142857144Q275.82954545454544 -13.371428571428572 267.27784090909086 -6.085714285714286Q258.72613636363633 1.2 243.30340909090907 1.2Q227.8806818181818 1.2 219.32897727272726 -6.085714285714286Q210.7772727272727 -13.371428571428572 210.7772727272727 -26.742857142857144Z M319.32954545454544 -15.942857142857143H308.6522727272727V0.0H289.0772727272727V-60.0H320.71363636363634Q330.1056818181818 -60.0 337.02613636363634 -57.3Q343.9465909090909 -54.6 347.7034090909091 -49.58571428571429Q351.46022727272725 -44.57142857142857 351.46022727272725 -37.8Q351.46022727272725 -31.285714285714285 347.95056818181814 -26.442857142857143Q344.44090909090903 -21.6 337.91590909090905 -18.857142857142858L352.84431818181815 0.0H331.88522727272726ZM319.5272727272727 -46.628571428571426H308.6522727272727V-29.057142857142857H319.5272727272727Q325.5579545454545 -29.057142857142857 328.6227272727273 -31.32857142857143Q331.6875 -33.6 331.6875 -37.8Q331.6875 -42.0 328.6227272727273 -44.31428571428572Q325.5579545454545 -46.628571428571426 319.5272727272727 -46.628571428571426Z M428.0795454545454 -60.0V0.0H411.96477272727265L381.41590909090905 -31.97142857142857V0.0H362.2363636363636V-60.0H378.35113636363633L408.8999999999999 -28.02857142857143V-60.0Z" transform="translate(217.0,60.0)" fill="#e8e8e8"/>
+<path d="M3.2125685821542023 -21.5Q3.2125685821542023 -27.704285714285714 5.987059630378285 -32.68Q8.761550678602369 -37.65571428571429 13.580403551833673 -40.48142857142857Q18.399256425064976 -43.30714285714286 24.415521224371936 -43.30714285714286Q28.85470690153047 -43.30714285714286 32.59296852440082 -41.802142857142854Q36.33123014727116 -40.29714285714286 38.95969535085187 -37.34857142857143L37.0905645394167 -35.32142857142857Q32.18409615939937 -40.42 24.532341900086635 -40.42Q19.39223216863991 -40.42 15.186687842910773 -37.962857142857146Q10.981143517181636 -35.505714285714284 8.586319665030322 -31.174999999999997Q6.191495812879007 -26.844285714285714 6.191495812879007 -21.5Q6.191495812879007 -16.155714285714286 8.586319665030322 -11.825Q10.981143517181636 -7.494285714285715 15.186687842910773 -5.037142857142857Q19.39223216863991 -2.58 24.532341900086635 -2.58Q32.12568582154202 -2.58 37.0905645394167 -7.74L38.95969535085187 -5.712857142857143Q36.33123014727116 -2.7642857142857142 32.56376335547214 -1.2285714285714286Q28.79629656367312 0.30714285714285716 24.415521224371936 0.30714285714285716Q18.399256425064976 0.30714285714285716 13.580403551833673 -2.5185714285714287Q8.761550678602369 -5.344285714285714 5.987059630378285 -10.32Q3.2125685821542023 -15.295714285714286 3.2125685821542023 -21.5Z M77.62287275002407 -12.101428571428572H53.90827557994032L48.70975551063625 0.0H45.497186928482044L64.30531571854847 -43.0H67.28424294927328L86.09237173933968 0.0H82.87980315718548ZM76.51307633073444 -14.742857142857144 65.7655741649822 -39.56 55.0764823370873 -14.742857142857144Z M96.89381798055635 -43.0H99.87274521128116V-2.8257142857142856H123.41211136779286V0.0H96.89381798055635Z M130.5337063239965 -21.5Q130.5337063239965 -27.704285714285714 133.3081973722206 -32.68Q136.0826884204447 -37.65571428571429 140.901541293676 -40.48142857142857Q145.72039416690728 -43.30714285714286 151.73665896621426 -43.30714285714286Q156.17584464337278 -43.30714285714286 159.91410626624312 -41.802142857142854Q163.65236788911346 -40.29714285714286 166.2808330926942 -37.34857142857143L164.411702281259 -35.32142857142857Q159.5052339012417 -40.42 151.85347964192897 -40.42Q146.71336991048224 -40.42 142.5078255847531 -37.962857142857146Q138.30228125902397 -35.505714285714284 135.90745740687265 -31.174999999999997Q133.51263355472133 -26.844285714285714 133.51263355472133 -21.5Q133.51263355472133 -16.155714285714286 135.90745740687265 -11.825Q138.30228125902397 -7.494285714285715 142.5078255847531 -5.037142857142857Q146.71336991048224 -2.58 151.85347964192897 -2.58Q159.44682356338433 -2.58 164.411702281259 -7.74L166.2808330926942 -5.712857142857143Q163.65236788911346 -2.7642857142857142 159.88490109731447 -1.2285714285714286Q156.11743430551545 0.30714285714285716 151.73665896621426 0.30714285714285716Q145.72039416690728 0.30714285714285716 140.901541293676 -2.5185714285714287Q136.0826884204447 -5.344285714285714 133.3081973722206 -10.32Q130.5337063239965 -15.295714285714286 130.5337063239965 -21.5Z M179.3018721724901 -18.244285714285713V-43.0H182.2807994032149V-18.36714285714286Q182.2807994032149 -10.442857142857143 185.72700933679852 -6.511428571428572Q189.1732192703821 -2.58 195.71517711040522 -2.58Q202.19872461257097 -2.58 205.64493454615456 -6.511428571428572Q209.09114447973815 -10.442857142857143 209.09114447973815 -18.36714285714286V-43.0H212.07007171046297V-18.244285714285713Q212.07007171046297 -9.152857142857142 207.74770670901913 -4.422857142857143Q203.42534170757528 0.30714285714285716 195.65676677254785 0.30714285714285716Q187.88819183752042 0.30714285714285716 183.59503200500527 -4.422857142857143Q179.3018721724901 -9.152857142857142 179.3018721724901 -18.244285714285713Z M229.35506545384538 -43.0H232.3339926845702V-2.8257142857142856H255.87335884108188V0.0H229.35506545384538Z M292.2001227259601 -12.101428571428572H268.48552555587634L263.2870054865723 0.0H260.07443690441806L278.8825656944845 -43.0H281.8614929252093L300.66962171527575 0.0H297.4570531331215ZM291.0903263066705 -14.742857142857144 280.34282414091825 -39.56 269.65373231302334 -14.742857142857144Z M319.29805322937716 -40.174285714285716H304.5786480893252V-43.0H336.996385600154V-40.174285714285716H322.276980460102V0.0H319.29805322937716Z M343.82592886707084 -21.5Q343.82592886707084 -27.642857142857142 346.60041991529494 -32.61857142857143Q349.374910963519 -37.59428571428572 354.22296900567903 -40.450714285714284Q359.071027047839 -43.30714285714286 365.08729184714593 -43.30714285714286Q371.1035566464529 -43.30714285714286 375.95161468861284 -40.48142857142857Q380.79967273077284 -37.65571428571429 383.57416377899693 -32.68Q386.348654827221 -27.704285714285714 386.348654827221 -21.5Q386.348654827221 -15.295714285714286 383.57416377899693 -10.32Q380.79967273077284 -5.344285714285714 375.95161468861284 -2.5185714285714287Q371.1035566464529 0.30714285714285716 365.08729184714593 0.30714285714285716Q359.071027047839 0.30714285714285716 354.22296900567903 -2.5492857142857144Q349.374910963519 -5.405714285714286 346.60041991529494 -10.381428571428572Q343.82592886707084 -15.357142857142858 343.82592886707084 -21.5ZM383.3113172586389 -21.5Q383.3113172586389 -26.844285714285714 380.9164934064876 -31.174999999999997Q378.52166955433626 -35.505714285714284 374.3745355664645 -37.962857142857146Q370.22740157859266 -40.42 365.08729184714593 -40.42Q359.9471821156992 -40.42 355.77084295889875 -37.962857142857146Q351.5945038020983 -35.505714285714284 349.199679949947 -31.174999999999997Q346.80485609779566 -26.844285714285714 346.80485609779566 -21.5Q346.80485609779566 -16.155714285714286 349.199679949947 -11.825Q351.5945038020983 -7.494285714285715 355.77084295889875 -5.037142857142857Q359.9471821156992 -2.58 365.08729184714593 -2.58Q370.22740157859266 -2.58 374.3745355664645 -5.037142857142857Q378.52166955433626 -7.494285714285715 380.9164934064876 -11.825Q383.3113172586389 -16.155714285714286 383.3113172586389 -21.5Z M428.45804215997686 0.0 418.70351573779953 -14.374285714285714Q416.5423332370776 -14.067142857142857 414.7316127634998 -14.067142857142857H403.04954519203V0.0H400.0706179613052V-43.0H414.7316127634998Q422.4417773606699 -43.0 426.8225526999711 -39.160714285714285Q431.20332803927226 -35.32142857142857 431.20332803927226 -28.502857142857142Q431.20332803927226 -23.404285714285713 428.72088868033495 -19.933571428571426Q426.2384493213976 -16.462857142857143 421.624032630667 -15.05L431.8458417557031 0.0ZM414.7316127634998 -16.83142857142857Q421.2735706035229 -16.83142857142857 424.71978053710654 -19.872142857142855Q428.16599047069013 -22.912857142857142 428.16599047069013 -28.502857142857142Q428.16599047069013 -34.09285714285714 424.71978053710654 -37.13357142857143Q421.2735706035229 -40.174285714285716 414.7316127634998 -40.174285714285716H403.04954519203V-16.83142857142857Z" transform="translate(217.0,135.0)" fill="#e8e8e8"/>
+</g></g>
+<text id="model" x="936" y="84" fill="#e6e6e6" font-size="24" font-weight="800" font-style="italic" text-anchor="end">71B</text>
+</g>
+<g id="card-reader">
+<rect id="card-housing" x="690" y="98" width="260" height="66" rx="4" fill="#1b1b1b" stroke="#080808" stroke-width="2"/>
+<rect x="691" y="99" width="258" height="64" rx="3" fill="none" stroke="#fff" stroke-opacity="0.15"/>
+<rect x="700" y="108" width="3" height="46" fill="#0c0c0c"/><rect x="703" y="108" width="1" height="46" fill="#fff" fill-opacity="0.12"/>
+<rect x="707" y="108" width="3" height="46" fill="#0c0c0c"/><rect x="710" y="108" width="1" height="46" fill="#fff" fill-opacity="0.12"/>
+<rect x="714" y="108" width="3" height="46" fill="#0c0c0c"/><rect x="717" y="108" width="1" height="46" fill="#fff" fill-opacity="0.12"/>
+<rect x="721" y="108" width="3" height="46" fill="#0c0c0c"/><rect x="724" y="108" width="1" height="46" fill="#fff" fill-opacity="0.12"/>
+<rect x="728" y="108" width="3" height="46" fill="#0c0c0c"/><rect x="731" y="108" width="1" height="46" fill="#fff" fill-opacity="0.12"/>
+<rect x="735" y="108" width="3" height="46" fill="#0c0c0c"/><rect x="738" y="108" width="1" height="46" fill="#fff" fill-opacity="0.12"/>
+<rect x="742" y="108" width="3" height="46" fill="#0c0c0c"/><rect x="745" y="108" width="1" height="46" fill="#fff" fill-opacity="0.12"/>
+<rect x="749" y="108" width="3" height="46" fill="#0c0c0c"/><rect x="752" y="108" width="1" height="46" fill="#fff" fill-opacity="0.12"/>
+<rect id="card-label" x="762" y="104" width="180" height="54" rx="2" fill="#f1f1ec" stroke="#000"/>
+<rect x="762" y="104" width="180" height="5" rx="2" fill="#000" fill-opacity="0.18"/>
+</g>
+<path id="key-plate" d="M22,180 H634 L646,192 H969 V472 H22 Z" fill="url(#chrome)"/>
+<path id="key-plate-inner" d="M28,186 H636 L648,198 H963 V466 H28 Z" fill="url(#plate)"/>
+<rect id="key-plate-grain" x="28" y="186" width="935" height="280" clip-path="url(#clip-plate)" filter="url(#grain)" opacity="0.26"/>
+<rect id="chrome-strip" x="22" y="476" width="947" height="12" rx="3" fill="url(#chrome)"/>
+<g id="orange-legends" fill="#e8782a" font-size="10.5" font-weight="400" text-anchor="middle">
+<text x="87.0" y="211.5">IF</text>
+<text x="146.0" y="211.5">THEN</text>
+<text x="205.0" y="211.5">ELSE</text>
+<text x="264.0" y="211.5">FOR</text>
+<text x="323.0" y="211.5">TO</text>
+<text x="382.0" y="211.5">NEXT</text>
+<text x="441.0" y="211.5">DEF</text>
+<text x="500.0" y="211.5">KEY</text>
+<text x="559.0" y="211.5">ADD</text>
+<text x="618.0" y="211.5">LR</text>
+<text x="684.5" y="210.5">PREDV</text>
+<text x="756.5" y="210.5">MEAN</text>
+<text x="828.5" y="210.5">SDEV</text>
+<text x="900.5" y="210.5">SQR</text>
+<text x="87.0" y="278.5">CALL</text>
+<text x="146.0" y="278.5">GOSUB</text>
+<text x="205.0" y="278.5">RETURN</text>
+<text x="264.0" y="278.5">GOTO</text>
+<text x="323.0" y="278.5">INPUT</text>
+<text x="382.0" y="278.5">PRINT</text>
+<text x="441.0" y="278.5">DISP</text>
+<text x="500.0" y="278.5">DIM</text>
+<text x="559.0" y="278.5">BEEP</text>
+<text x="618.0" y="278.5">FACT</text>
+<text x="684.5" y="277.5">SIN</text>
+<text x="756.5" y="277.5">COS</text>
+<text x="828.5" y="277.5">TAN</text>
+<text x="900.5" y="277.5">EXP</text>
+<text x="87.0" y="343.5">EDIT</text>
+<text x="146.0" y="343.5">CAT</text>
+<text x="205.0" y="343.5">NAME</text>
+<text x="264.0" y="343.5">PURGE</text>
+<text x="323.0" y="343.5">FETCH</text>
+<text x="382.0" y="343.5">LIST</text>
+<text x="441.0" y="343.5">DELETE</text>
+<text x="500.0" y="343.5">AUTO</text>
+<text x="559.0" y="343.5">COPY</text>
+<text x="618.0" y="343.5">RES</text>
+<text x="684.5" y="342.5">ASIN</text>
+<text x="756.5" y="342.5">ACOS</text>
+<text x="828.5" y="342.5">ATAN</text>
+<text x="900.5" y="342.5">LOG</text>
+<text x="87.0" y="408.5">OFF</text>
+<text x="264.0" y="408.5">SST</text>
+<text x="323.0" y="408.5">BACK</text>
+<text x="382.0" y="408.5">−CHAR</text>
+<text x="441.0" y="408.5">I/R</text>
+<text x="500.0" y="408.5">LC</text>
+<text x="559.0" y="408.5">−LINE</text>
+<text x="684.5" y="408.5">USER</text>
+<text x="756.5" y="407.5">VIEW</text>
+<text x="828.5" y="407.5">CALC</text>
+<text x="900.5" y="407.5">CONT</text>
+</g>
+<g id="keys-up">
+<g id="key101" transform="translate(64,215)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">Q</text>
+</g>
+<g id="key102" transform="translate(123,215)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">W</text>
+</g>
+<g id="key103" transform="translate(182,215)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">E</text>
+</g>
+<g id="key104" transform="translate(241,215)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">R</text>
+</g>
+<g id="key105" transform="translate(300,215)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">T</text>
+</g>
+<g id="key106" transform="translate(359,215)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">Y</text>
+</g>
+<g id="key107" transform="translate(418,215)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">U</text>
+</g>
+<g id="key108" transform="translate(477,215)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">I</text>
+</g>
+<g id="key109" transform="translate(536,215)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">O</text>
+</g>
+<g id="key110" transform="translate(595,215)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">P</text>
+</g>
+<g id="key111" transform="translate(656,214)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">7</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">!</text>
+</g>
+<g id="key112" transform="translate(728,214)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">8</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">(</text>
+</g>
+<g id="key113" transform="translate(800,214)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">9</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">)</text>
+</g>
+<g id="key114" transform="translate(872,214)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">/</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">^</text>
+</g>
+<g id="key201" transform="translate(64,282)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">A</text>
+</g>
+<g id="key202" transform="translate(123,282)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">S</text>
+</g>
+<g id="key203" transform="translate(182,282)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">D</text>
+</g>
+<g id="key204" transform="translate(241,282)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">F</text>
+</g>
+<g id="key205" transform="translate(300,282)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">G</text>
+</g>
+<g id="key206" transform="translate(359,282)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">H</text>
+</g>
+<g id="key207" transform="translate(418,282)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">J</text>
+</g>
+<g id="key208" transform="translate(477,282)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">K</text>
+</g>
+<g id="key209" transform="translate(536,282)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">L</text>
+</g>
+<g id="key210" transform="translate(595,282)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">=</text>
+</g>
+<g id="key211" transform="translate(656,281)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">4</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">$</text>
+</g>
+<g id="key212" transform="translate(728,281)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">5</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">%</text>
+</g>
+<g id="key213" transform="translate(800,281)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">6</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">&amp;</text>
+</g>
+<g id="key214" transform="translate(872,281)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">*</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">:</text>
+</g>
+<g id="key301" transform="translate(64,347)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">Z</text>
+</g>
+<g id="key302" transform="translate(123,347)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">X</text>
+</g>
+<g id="key303" transform="translate(182,347)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">C</text>
+</g>
+<g id="key304" transform="translate(241,347)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">V</text>
+</g>
+<g id="key305" transform="translate(300,347)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">B</text>
+</g>
+<g id="key306" transform="translate(359,347)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">N</text>
+</g>
+<g id="key307" transform="translate(418,347)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">M</text>
+</g>
+<g id="key308" transform="translate(477,347)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">(</text>
+</g>
+<g id="key309" transform="translate(536,347)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">)</text>
+</g>
+<g id="key310" transform="translate(595,347)">
+<rect width="46" height="107" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="104" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="101" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="50.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="91" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="91" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="90" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="47.5" fill="#f2f2f2" font-size="13" font-weight="500" text-anchor="middle">END</text>
+<text x="23.0" y="61.5" fill="#f2f2f2" font-size="13" font-weight="500" text-anchor="middle">LINE</text>
+<text x="23.0" y="100.5" fill="#4c9fe6" font-size="10" font-weight="500" text-anchor="middle">CMDS</text>
+</g>
+<g id="key311" transform="translate(656,346)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">1</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">&#x27;</text>
+</g>
+<g id="key312" transform="translate(728,346)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">2</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">&quot;</text>
+</g>
+<g id="key313" transform="translate(800,346)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">3</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">#</text>
+</g>
+<g id="key314" transform="translate(872,346)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">−</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">@</text>
+</g>
+<g id="key401" transform="translate(64,412)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">ON</text>
+<text x="23.0" y="34.5" fill="#4c9fe6" font-size="10.5" font-weight="500" text-anchor="middle">ATTN</text>
+</g>
+<g id="key402" transform="translate(123,412)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#porange)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="#000" fill-opacity="0.2"/>
+<text x="23.0" y="18.5" fill="#2a1608" font-size="14" font-weight="500" text-anchor="middle">f</text>
+</g>
+<g id="key403" transform="translate(182,412)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pblue)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="#000" fill-opacity="0.2"/>
+<text x="23.0" y="18.5" fill="#2a1608" font-size="14" font-weight="500" text-anchor="middle">g</text>
+</g>
+<g id="key404" transform="translate(241,412)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="17.8" fill="#f2f2f2" font-size="12" font-weight="500" text-anchor="middle">RUN</text>
+<text x="23.0" y="34.5" fill="#4c9fe6" font-size="10.5" font-weight="500" text-anchor="middle">CTRL</text>
+</g>
+<g id="key405" transform="translate(300,412)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">◀</text>
+<text x="23.0" y="34.5" fill="#4c9fe6" font-size="10.5" font-weight="500" text-anchor="middle">|◀</text>
+</g>
+<g id="key406" transform="translate(359,412)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">▶</text>
+<text x="23.0" y="34.5" fill="#4c9fe6" font-size="10.5" font-weight="500" text-anchor="middle">▶|</text>
+</g>
+<g id="key407" transform="translate(418,412)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="17.8" fill="#f2f2f2" font-size="12" font-weight="500" text-anchor="middle">SPC</text>
+<text x="23.0" y="34.5" fill="#4c9fe6" font-size="10.5" font-weight="500" text-anchor="middle">ERRM</text>
+</g>
+<g id="key408" transform="translate(477,412)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">▲</text>
+</g>
+<g id="key409" transform="translate(536,412)">
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="41" height="35" rx="4" fill="url(#pface)"/>
+<rect x="2.5" y="2" width="41" height="17.5" rx="4" fill="url(#pgloss)"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">▼</text>
+</g>
+<g id="key411" transform="translate(656,412)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">0</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="9" font-weight="600" text-anchor="middle">1 USER</text>
+</g>
+<g id="key412" transform="translate(728,411)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">.</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">&lt;</text>
+</g>
+<g id="key413" transform="translate(800,411)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">,</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">&gt;</text>
+</g>
+<g id="key414" transform="translate(872,411)">
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="2" width="52" height="34" rx="4" fill="url(#pcream)"/>
+<rect x="2.5" y="2" width="52" height="17.0" rx="4" fill="url(#pgloss2)"/>
+<rect x="2.5" y="15.6" width="52" height="20.4" rx="4" fill="url(#pshade)"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="18.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">+</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">?</text>
+</g>
+</g>
+<g id="annunciators-dim" fill="#6a6b65" font-weight="700" text-anchor="middle">
+<text id="ann4-dim" x="143.0" y="87" font-size="8" textLength="12" lengthAdjust="spacingAndGlyphs">←</text>
+<text id="ann5-dim" x="144.5" y="98" font-size="9" textLength="15" lengthAdjust="spacingAndGlyphs">AC</text>
+<text id="ann6-dim" x="155.5" y="109" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">USER</text>
+<text id="ann7-dim" x="157.5" y="120" font-size="9" textLength="23" lengthAdjust="spacingAndGlyphs">RAD</text>
+<text id="ann11-dim" x="174.5" y="87" font-size="9" textLength="7" lengthAdjust="spacingAndGlyphs">f</text>
+<text id="ann12-dim" x="166.5" y="87" font-size="9" textLength="7" lengthAdjust="spacingAndGlyphs">g</text>
+<text id="ann13-dim" x="166.5" y="98" font-size="9" textLength="23" lengthAdjust="spacingAndGlyphs">BAT</text>
+<text id="ann20-dim" x="592.0" y="84" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">0</text>
+<text id="ann21-dim" x="591.5" y="93" font-size="8" textLength="5" lengthAdjust="spacingAndGlyphs">1</text>
+<text id="ann22-dim" x="592.0" y="102" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">2</text>
+<text id="ann23-dim" x="592.0" y="111" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">3</text>
+<text id="ann24-dim" x="592.0" y="120" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">4</text>
+<text id="ann28-dim" x="605.5" y="86" font-size="9" textLength="15" lengthAdjust="spacingAndGlyphs">((*))</text>
+<text id="ann29-dim" x="623.0" y="86" font-size="8" textLength="12" lengthAdjust="spacingAndGlyphs">→</text>
+<text id="ann30-dim" x="612.5" y="97" font-size="9" textLength="33" lengthAdjust="spacingAndGlyphs">PRGM</text>
+<text id="ann31-dim" x="612.5" y="108" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">SUSP</text>
+<text id="ann32-dim" x="612.5" y="119" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">CALC</text>
+</g>
+</g>
+<g id="annunciators-lit" font-weight="700" text-anchor="middle" fill="#101010">
+<rect x="263" y="480" width="12" height="9" fill="#7e7f79"/>
+<text id="ann4-lit" x="269.0" y="488" font-size="8" textLength="12" lengthAdjust="spacingAndGlyphs">←</text>
+<rect x="0" y="480" width="15" height="10" fill="#7e7f79"/>
+<text id="ann5-lit" x="7.5" y="489" font-size="9" textLength="15" lengthAdjust="spacingAndGlyphs">AC</text>
+<rect x="42" y="480" width="31" height="10" fill="#7e7f79"/>
+<text id="ann6-lit" x="57.5" y="489" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">USER</text>
+<rect x="75" y="480" width="23" height="10" fill="#7e7f79"/>
+<text id="ann7-lit" x="86.5" y="489" font-size="9" textLength="23" lengthAdjust="spacingAndGlyphs">RAD</text>
+<rect x="209" y="480" width="7" height="10" fill="#7e7f79"/>
+<text id="ann11-lit" x="212.5" y="489" font-size="9" textLength="7" lengthAdjust="spacingAndGlyphs">f</text>
+<rect x="201" y="480" width="7" height="10" fill="#7e7f79"/>
+<text id="ann12-lit" x="204.5" y="489" font-size="9" textLength="7" lengthAdjust="spacingAndGlyphs">g</text>
+<rect x="17" y="480" width="23" height="10" fill="#7e7f79"/>
+<text id="ann13-lit" x="28.5" y="489" font-size="9" textLength="23" lengthAdjust="spacingAndGlyphs">BAT</text>
+<rect x="233" y="480" width="6" height="9" fill="#7e7f79"/>
+<text id="ann20-lit" x="236.0" y="488" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">0</text>
+<rect x="239" y="480" width="5" height="9" fill="#7e7f79"/>
+<text id="ann21-lit" x="241.5" y="488" font-size="8" textLength="5" lengthAdjust="spacingAndGlyphs">1</text>
+<rect x="244" y="480" width="6" height="9" fill="#7e7f79"/>
+<text id="ann22-lit" x="247.0" y="488" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">2</text>
+<rect x="250" y="480" width="6" height="9" fill="#7e7f79"/>
+<text id="ann23-lit" x="253.0" y="488" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">3</text>
+<rect x="256" y="480" width="6" height="9" fill="#7e7f79"/>
+<text id="ann24-lit" x="259.0" y="488" font-size="8" textLength="6" lengthAdjust="spacingAndGlyphs">4</text>
+<rect x="217" y="480" width="15" height="10" fill="#7e7f79"/>
+<text id="ann28-lit" x="224.5" y="489" font-size="9" textLength="15" lengthAdjust="spacingAndGlyphs">((*))</text>
+<rect x="276" y="480" width="12" height="9" fill="#7e7f79"/>
+<text id="ann29-lit" x="282.0" y="488" font-size="8" textLength="12" lengthAdjust="spacingAndGlyphs">→</text>
+<rect x="100" y="480" width="33" height="10" fill="#7e7f79"/>
+<text id="ann30-lit" x="116.5" y="489" font-size="9" textLength="33" lengthAdjust="spacingAndGlyphs">PRGM</text>
+<rect x="135" y="480" width="31" height="10" fill="#7e7f79"/>
+<text id="ann31-lit" x="150.5" y="489" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">SUSP</text>
+<rect x="168" y="480" width="31" height="10" fill="#7e7f79"/>
+<text id="ann32-lit" x="183.5" y="489" font-size="9" textLength="31" lengthAdjust="spacingAndGlyphs">CALC</text>
+</g>
+<g id="keys-down">
+<g id="key101-down" transform="translate(50,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">Q</text>
+</g>
+<g id="key102-down" transform="translate(98,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">W</text>
+</g>
+<g id="key103-down" transform="translate(146,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">E</text>
+</g>
+<g id="key104-down" transform="translate(194,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">R</text>
+</g>
+<g id="key105-down" transform="translate(242,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">T</text>
+</g>
+<g id="key106-down" transform="translate(290,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">Y</text>
+</g>
+<g id="key107-down" transform="translate(338,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">U</text>
+</g>
+<g id="key108-down" transform="translate(386,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">I</text>
+</g>
+<g id="key109-down" transform="translate(434,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">O</text>
+</g>
+<g id="key110-down" transform="translate(482,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">P</text>
+</g>
+<g id="key111-down" transform="translate(50,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">7</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">!</text>
+</g>
+<g id="key112-down" transform="translate(109,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">8</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">(</text>
+</g>
+<g id="key113-down" transform="translate(168,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">9</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">)</text>
+</g>
+<g id="key114-down" transform="translate(227,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">/</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">^</text>
+</g>
+<g id="key201-down" transform="translate(530,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">A</text>
+</g>
+<g id="key202-down" transform="translate(578,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">S</text>
+</g>
+<g id="key203-down" transform="translate(626,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">D</text>
+</g>
+<g id="key204-down" transform="translate(674,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">F</text>
+</g>
+<g id="key205-down" transform="translate(722,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">G</text>
+</g>
+<g id="key206-down" transform="translate(770,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">H</text>
+</g>
+<g id="key207-down" transform="translate(818,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">J</text>
+</g>
+<g id="key208-down" transform="translate(866,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">K</text>
+</g>
+<g id="key209-down" transform="translate(914,538)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">L</text>
+</g>
+<g id="key210-down" transform="translate(50,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">=</text>
+</g>
+<g id="key211-down" transform="translate(286,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">4</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">$</text>
+</g>
+<g id="key212-down" transform="translate(345,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">5</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">%</text>
+</g>
+<g id="key213-down" transform="translate(404,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">6</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">&amp;</text>
+</g>
+<g id="key214-down" transform="translate(463,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">*</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">:</text>
+</g>
+<g id="key301-down" transform="translate(98,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">Z</text>
+</g>
+<g id="key302-down" transform="translate(146,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">X</text>
+</g>
+<g id="key303-down" transform="translate(194,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">C</text>
+</g>
+<g id="key304-down" transform="translate(242,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">V</text>
+</g>
+<g id="key305-down" transform="translate(290,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">B</text>
+</g>
+<g id="key306-down" transform="translate(338,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">N</text>
+</g>
+<g id="key307-down" transform="translate(386,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">M</text>
+</g>
+<g id="key308-down" transform="translate(434,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">(</text>
+</g>
+<g id="key309-down" transform="translate(482,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">)</text>
+</g>
+<g id="key310-down" transform="translate(0,492)">
+<rect width="46" height="107" fill="#121212"/>
+<rect width="46" height="107" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="104" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="100" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="91" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="91" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="90" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="48.5" fill="#f2f2f2" font-size="13" font-weight="500" text-anchor="middle">END</text>
+<text x="23.0" y="62.5" fill="#f2f2f2" font-size="13" font-weight="500" text-anchor="middle">LINE</text>
+<text x="23.0" y="100.5" fill="#4c9fe6" font-size="10" font-weight="500" text-anchor="middle">CMDS</text>
+</g>
+<g id="key311-down" transform="translate(522,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">1</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">&#x27;</text>
+</g>
+<g id="key312-down" transform="translate(581,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">2</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">&quot;</text>
+</g>
+<g id="key313-down" transform="translate(640,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">3</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">#</text>
+</g>
+<g id="key314-down" transform="translate(699,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">−</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">@</text>
+</g>
+<g id="key401-down" transform="translate(530,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">ON</text>
+<text x="23.0" y="34.5" fill="#4c9fe6" font-size="10.5" font-weight="500" text-anchor="middle">ATTN</text>
+</g>
+<g id="key402-down" transform="translate(578,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#porange)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="26" width="41" height="12" rx="3.5" fill="#000" fill-opacity="0.2"/>
+<text x="23.0" y="19.5" fill="#2a1608" font-size="14" font-weight="500" text-anchor="middle">f</text>
+</g>
+<g id="key403-down" transform="translate(626,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pblue)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="26" width="41" height="12" rx="3.5" fill="#000" fill-opacity="0.2"/>
+<text x="23.0" y="19.5" fill="#2a1608" font-size="14" font-weight="500" text-anchor="middle">g</text>
+</g>
+<g id="key404-down" transform="translate(674,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.8" fill="#f2f2f2" font-size="12" font-weight="500" text-anchor="middle">RUN</text>
+<text x="23.0" y="34.5" fill="#4c9fe6" font-size="10.5" font-weight="500" text-anchor="middle">CTRL</text>
+</g>
+<g id="key405-down" transform="translate(722,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">◀</text>
+<text x="23.0" y="34.5" fill="#4c9fe6" font-size="10.5" font-weight="500" text-anchor="middle">|◀</text>
+</g>
+<g id="key406-down" transform="translate(770,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">▶</text>
+<text x="23.0" y="34.5" fill="#4c9fe6" font-size="10.5" font-weight="500" text-anchor="middle">▶|</text>
+</g>
+<g id="key407-down" transform="translate(818,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="18.8" fill="#f2f2f2" font-size="12" font-weight="500" text-anchor="middle">SPC</text>
+<text x="23.0" y="34.5" fill="#4c9fe6" font-size="10.5" font-weight="500" text-anchor="middle">ERRM</text>
+</g>
+<g id="key408-down" transform="translate(866,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">▲</text>
+</g>
+<g id="key409-down" transform="translate(914,584)">
+<rect width="46" height="41" fill="#121212"/>
+<rect width="46" height="41" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="43" height="38" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="41" height="34" rx="4" fill="url(#pfacedn)"/>
+<rect x="2.5" y="2" width="41" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="25" width="41" height="13" rx="3.5" fill="url(#pband)"/>
+<rect x="3" y="25" width="40" height="1" fill="#fff" fill-opacity="0.12"/>
+<rect x="2.5" y="24" width="41" height="1" fill="#000" fill-opacity="0.4"/>
+<text x="23.0" y="19.5" fill="#f2f2f2" font-size="14" font-weight="500" text-anchor="middle">▼</text>
+</g>
+<g id="key411-down" transform="translate(758,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">0</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="9" font-weight="600" text-anchor="middle">1 USER</text>
+</g>
+<g id="key412-down" transform="translate(817,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">.</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">&lt;</text>
+</g>
+<g id="key413-down" transform="translate(876,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">,</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">&gt;</text>
+</g>
+<g id="key414-down" transform="translate(935,492)">
+<rect width="57" height="40" fill="#121212"/>
+<rect width="57" height="40" rx="6" fill="url(#prim)"/>
+<rect x="1.5" y="1" width="54" height="37" rx="5" fill="#050505"/>
+<rect x="2.5" y="3" width="52" height="33" rx="4" fill="url(#pcreamdn)"/>
+<rect x="2.5" y="2" width="52" height="4" rx="2" fill="#000" fill-opacity="0.35"/>
+<rect x="2.5" y="24" width="52" height="13" rx="3.5" fill="url(#pcband)"/>
+<rect x="2.5" y="24" width="52" height="5" rx="2" fill="url(#pbsh)"/>
+<text x="28.5" y="19.8" fill="#1a1a18" font-size="16" font-weight="500" text-anchor="middle">+</text>
+<text x="28.5" y="33.5" fill="#1c4fb8" font-size="10.5" font-weight="600" text-anchor="middle">?</text>
+</g>
+</g>
+</svg>

@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="992" height="513" viewBox="0 0 992 513">
+<rect width="992" height="513" fill="#2a2a2a"/>
+<g id="faceplate-guide">
+<rect x="0" y="0" width="991" height="501" fill="#3a3a3a" stroke="#888"/>
+</g><g id="keys-up" fill="none" stroke="#e0a030" stroke-width="1">
+<rect id="key401" x="66" y="416" width="42" height="33" rx="3"/>
+<rect id="key101" x="66" y="219" width="42" height="33" rx="3"/>
+<rect id="key102" x="125" y="219" width="42" height="33" rx="3"/>
+<rect id="key103" x="184" y="219" width="42" height="33" rx="3"/>
+<rect id="key104" x="243" y="219" width="42" height="33" rx="3"/>
+<rect id="key105" x="302" y="219" width="42" height="33" rx="3"/>
+<rect id="key106" x="361" y="219" width="42" height="33" rx="3"/>
+<rect id="key107" x="420" y="219" width="42" height="33" rx="3"/>
+<rect id="key108" x="479" y="219" width="42" height="33" rx="3"/>
+<rect id="key109" x="538" y="219" width="42" height="33" rx="3"/>
+<rect id="key110" x="597" y="219" width="42" height="33" rx="3"/>
+<rect id="key111" x="658" y="218" width="53" height="32" rx="3"/>
+<rect id="key112" x="730" y="218" width="53" height="32" rx="3"/>
+<rect id="key113" x="802" y="218" width="53" height="32" rx="3"/>
+<rect id="key114" x="874" y="218" width="53" height="32" rx="3"/>
+<rect id="key201" x="66" y="286" width="42" height="33" rx="3"/>
+<rect id="key202" x="125" y="286" width="42" height="33" rx="3"/>
+<rect id="key203" x="184" y="286" width="42" height="33" rx="3"/>
+<rect id="key204" x="243" y="286" width="42" height="33" rx="3"/>
+<rect id="key205" x="302" y="286" width="42" height="33" rx="3"/>
+<rect id="key206" x="361" y="286" width="42" height="33" rx="3"/>
+<rect id="key207" x="420" y="286" width="42" height="33" rx="3"/>
+<rect id="key208" x="479" y="286" width="42" height="33" rx="3"/>
+<rect id="key209" x="538" y="286" width="42" height="33" rx="3"/>
+<rect id="key210" x="597" y="286" width="42" height="33" rx="3"/>
+<rect id="key211" x="658" y="285" width="53" height="32" rx="3"/>
+<rect id="key212" x="730" y="285" width="53" height="32" rx="3"/>
+<rect id="key213" x="802" y="285" width="53" height="32" rx="3"/>
+<rect id="key214" x="874" y="285" width="53" height="32" rx="3"/>
+<rect id="key301" x="66" y="351" width="42" height="33" rx="3"/>
+<rect id="key302" x="125" y="351" width="42" height="33" rx="3"/>
+<rect id="key303" x="184" y="351" width="42" height="33" rx="3"/>
+<rect id="key304" x="243" y="351" width="42" height="33" rx="3"/>
+<rect id="key305" x="302" y="351" width="42" height="33" rx="3"/>
+<rect id="key306" x="361" y="351" width="42" height="33" rx="3"/>
+<rect id="key307" x="420" y="351" width="42" height="33" rx="3"/>
+<rect id="key308" x="479" y="351" width="42" height="33" rx="3"/>
+<rect id="key309" x="538" y="351" width="42" height="33" rx="3"/>
+<rect id="key310" x="597" y="351" width="42" height="99" rx="3"/>
+<rect id="key311" x="658" y="350" width="53" height="32" rx="3"/>
+<rect id="key312" x="730" y="350" width="53" height="32" rx="3"/>
+<rect id="key313" x="802" y="350" width="53" height="32" rx="3"/>
+<rect id="key314" x="874" y="350" width="53" height="32" rx="3"/>
+<rect id="key402" x="125" y="416" width="42" height="33" rx="3"/>
+<rect id="key403" x="184" y="416" width="42" height="33" rx="3"/>
+<rect id="key404" x="243" y="416" width="42" height="33" rx="3"/>
+<rect id="key405" x="302" y="416" width="42" height="33" rx="3"/>
+<rect id="key406" x="361" y="416" width="42" height="33" rx="3"/>
+<rect id="key407" x="420" y="416" width="42" height="33" rx="3"/>
+<rect id="key408" x="479" y="416" width="42" height="33" rx="3"/>
+<rect id="key409" x="538" y="416" width="42" height="33" rx="3"/>
+<rect id="key411" x="658" y="416" width="53" height="32" rx="3"/>
+<rect id="key412" x="730" y="415" width="53" height="32" rx="3"/>
+<rect id="key413" x="802" y="415" width="53" height="32" rx="3"/>
+<rect id="key414" x="874" y="415" width="53" height="32" rx="3"/>
+</g><g id="keys-down" fill="none" stroke="#50a0e0" stroke-width="1">
+<rect id="key401-down" x="66" y="418" width="42" height="33" rx="3"/>
+<rect id="key101-down" x="66" y="221" width="42" height="33" rx="3"/>
+<rect id="key102-down" x="125" y="221" width="42" height="33" rx="3"/>
+<rect id="key103-down" x="184" y="221" width="42" height="33" rx="3"/>
+<rect id="key104-down" x="243" y="221" width="42" height="33" rx="3"/>
+<rect id="key105-down" x="302" y="221" width="42" height="33" rx="3"/>
+<rect id="key106-down" x="361" y="221" width="42" height="33" rx="3"/>
+<rect id="key107-down" x="420" y="221" width="42" height="33" rx="3"/>
+<rect id="key108-down" x="479" y="221" width="42" height="33" rx="3"/>
+<rect id="key109-down" x="538" y="221" width="42" height="33" rx="3"/>
+<rect id="key110-down" x="597" y="221" width="42" height="33" rx="3"/>
+<rect id="key111-down" x="658" y="220" width="53" height="32" rx="3"/>
+<rect id="key112-down" x="730" y="220" width="53" height="32" rx="3"/>
+<rect id="key113-down" x="802" y="220" width="53" height="32" rx="3"/>
+<rect id="key114-down" x="874" y="220" width="53" height="32" rx="3"/>
+<rect id="key201-down" x="66" y="288" width="42" height="33" rx="3"/>
+<rect id="key202-down" x="125" y="288" width="42" height="33" rx="3"/>
+<rect id="key203-down" x="184" y="288" width="42" height="33" rx="3"/>
+<rect id="key204-down" x="243" y="288" width="42" height="33" rx="3"/>
+<rect id="key205-down" x="302" y="288" width="42" height="33" rx="3"/>
+<rect id="key206-down" x="361" y="288" width="42" height="33" rx="3"/>
+<rect id="key207-down" x="420" y="288" width="42" height="33" rx="3"/>
+<rect id="key208-down" x="479" y="288" width="42" height="33" rx="3"/>
+<rect id="key209-down" x="538" y="288" width="42" height="33" rx="3"/>
+<rect id="key210-down" x="597" y="288" width="42" height="33" rx="3"/>
+<rect id="key211-down" x="658" y="287" width="53" height="32" rx="3"/>
+<rect id="key212-down" x="730" y="287" width="53" height="32" rx="3"/>
+<rect id="key213-down" x="802" y="287" width="53" height="32" rx="3"/>
+<rect id="key214-down" x="874" y="287" width="53" height="32" rx="3"/>
+<rect id="key301-down" x="66" y="353" width="42" height="33" rx="3"/>
+<rect id="key302-down" x="125" y="353" width="42" height="33" rx="3"/>
+<rect id="key303-down" x="184" y="353" width="42" height="33" rx="3"/>
+<rect id="key304-down" x="243" y="353" width="42" height="33" rx="3"/>
+<rect id="key305-down" x="302" y="353" width="42" height="33" rx="3"/>
+<rect id="key306-down" x="361" y="353" width="42" height="33" rx="3"/>
+<rect id="key307-down" x="420" y="353" width="42" height="33" rx="3"/>
+<rect id="key308-down" x="479" y="353" width="42" height="33" rx="3"/>
+<rect id="key309-down" x="538" y="353" width="42" height="33" rx="3"/>
+<rect id="key310-down" x="597" y="353" width="42" height="99" rx="3"/>
+<rect id="key311-down" x="658" y="352" width="53" height="32" rx="3"/>
+<rect id="key312-down" x="730" y="352" width="53" height="32" rx="3"/>
+<rect id="key313-down" x="802" y="352" width="53" height="32" rx="3"/>
+<rect id="key314-down" x="874" y="352" width="53" height="32" rx="3"/>
+<rect id="key402-down" x="125" y="418" width="42" height="33" rx="3"/>
+<rect id="key403-down" x="184" y="418" width="42" height="33" rx="3"/>
+<rect id="key404-down" x="243" y="418" width="42" height="33" rx="3"/>
+<rect id="key405-down" x="302" y="418" width="42" height="33" rx="3"/>
+<rect id="key406-down" x="361" y="418" width="42" height="33" rx="3"/>
+<rect id="key407-down" x="420" y="418" width="42" height="33" rx="3"/>
+<rect id="key408-down" x="479" y="418" width="42" height="33" rx="3"/>
+<rect id="key409-down" x="538" y="418" width="42" height="33" rx="3"/>
+<rect id="key411-down" x="658" y="418" width="53" height="32" rx="3"/>
+<rect id="key412-down" x="730" y="417" width="53" height="32" rx="3"/>
+<rect id="key413-down" x="802" y="417" width="53" height="32" rx="3"/>
+<rect id="key414-down" x="874" y="417" width="53" height="32" rx="3"/>
+</g>
+<rect id="lcd" x="186" y="86" width="396" height="24" fill="#7e7f79" stroke="#000"/>
+<g id="annunciators-lit" fill="none" stroke="#e05050" stroke-width="1">
+<rect id="ann4-lit" x="263" y="502" width="12" height="9"><title>i4</title></rect>
+<rect id="ann5-lit" x="0" y="502" width="15" height="10"><title>AC</title></rect>
+<rect id="ann6-lit" x="42" y="502" width="31" height="10"><title>USER</title></rect>
+<rect id="ann7-lit" x="75" y="502" width="23" height="10"><title>RAD</title></rect>
+<rect id="ann11-lit" x="209" y="502" width="7" height="10"><title>f</title></rect>
+<rect id="ann12-lit" x="201" y="502" width="7" height="10"><title>g</title></rect>
+<rect id="ann13-lit" x="17" y="502" width="23" height="10"><title>BAT</title></rect>
+<rect id="ann20-lit" x="233" y="502" width="6" height="9"><title>0</title></rect>
+<rect id="ann21-lit" x="239" y="502" width="5" height="9"><title>1</title></rect>
+<rect id="ann22-lit" x="244" y="502" width="6" height="9"><title>2</title></rect>
+<rect id="ann23-lit" x="250" y="502" width="6" height="9"><title>3</title></rect>
+<rect id="ann24-lit" x="256" y="502" width="6" height="9"><title>4</title></rect>
+<rect id="ann28-lit" x="217" y="502" width="15" height="10"><title>((*))</title></rect>
+<rect id="ann29-lit" x="276" y="502" width="12" height="9"><title>-></title></rect>
+<rect id="ann30-lit" x="100" y="502" width="33" height="10"><title>PRGM</title></rect>
+<rect id="ann31-lit" x="135" y="502" width="31" height="10"><title>SUSP</title></rect>
+<rect id="ann32-lit" x="168" y="502" width="31" height="10"><title>CALC</title></rect>
+</g><g id="annunciators-pos" fill="none" stroke="#e05050" stroke-dasharray="2 2">
+<rect id="ann4" x="137" y="79" width="12" height="9"/>
+<rect id="ann5" x="137" y="89" width="15" height="10"/>
+<rect id="ann6" x="140" y="100" width="31" height="10"/>
+<rect id="ann7" x="146" y="111" width="23" height="10"/>
+<rect id="ann11" x="171" y="78" width="7" height="10"/>
+<rect id="ann12" x="163" y="78" width="7" height="10"/>
+<rect id="ann13" x="155" y="89" width="23" height="10"/>
+<rect id="ann20" x="589" y="76" width="6" height="9"/>
+<rect id="ann21" x="589" y="85" width="5" height="9"/>
+<rect id="ann22" x="589" y="94" width="6" height="9"/>
+<rect id="ann23" x="589" y="103" width="6" height="9"/>
+<rect id="ann24" x="589" y="112" width="6" height="9"/>
+<rect id="ann28" x="598" y="77" width="15" height="10"/>
+<rect id="ann29" x="617" y="78" width="12" height="9"/>
+<rect id="ann30" x="596" y="88" width="33" height="10"/>
+<rect id="ann31" x="597" y="99" width="31" height="10"/>
+<rect id="ann32" x="597" y="110" width="31" height="10"/>
+</g></svg>

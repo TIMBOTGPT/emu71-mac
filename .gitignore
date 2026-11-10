@@ -1,0 +1,18 @@
+build/
+emu71
+Emu71.app/
+roms/*
+!roms/README.md
+.DS_Store
+# original third-party skin bitmaps / docs (not redistributed)
+skin/REAL71BL.BMP
+skin/REAL71BM.BMP
+skin/REAL71BL.png
+skin/REAL71BM.png
+skin/REAL71BM.KML
+skin/KBD-FR.KMI
+skin/KBD-GR.KMI
+skin/KBD-UK.KMI
+skin/KEYCODE.TXT
+skin/KEYS.TXT
+__pycache__/

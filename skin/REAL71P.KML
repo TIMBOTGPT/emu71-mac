@@ -1,0 +1,535 @@
+Global
+	Title    "Emu71 original dark skin"
+	Author   "Emu71 Mac port"
+	Hardware "Saturn"
+	Model    "T"		# Titan
+	Rom      "HP71B.ROM"
+	Bitmap   "REAL71P.png"
+	Debug    0
+End
+
+Background
+	Offset   0 0
+	Size     991 479
+End
+
+Lcd
+	Zoom 3
+	Offset   186 64
+	Color  1 113 113 111
+	Color  2 102 102 100
+	Color  3 90 90 88
+	Color  4 79 79 77
+	Color  5 68 68 66
+	Color  6 57 57 55
+	Color  7 45 45 43
+	Color  8 34 34 32
+	Color  9 30 30 28
+	Color 10 30 30 28
+	Color 11 30 30 28
+	Color 12 30 30 28
+	Color 13 30 30 28
+	Color 14 30 30 28
+	Color 15 30 30 28
+	Color 26 126 127 121	# background color table
+	Color 27 120 121 115
+	Color 28 114 115 109
+	Color 29 108 109 103
+	Color 30 102 103  97
+	Color 31  96  97  91
+End
+
+Annunciator 4			# <--
+	Size     12 9
+	Offset   137 57
+	Down     263 480
+End
+
+Annunciator 5			# AC
+	Size     15 10
+	Offset   137 67
+	Down     0 480
+End
+
+Annunciator 6			# USER
+	Size     31 10
+	Offset   140 78
+	Down     42 480
+End
+
+Annunciator 7			# RAD
+	Size     23 10
+	Offset   146 89
+	Down     75 480
+End
+
+Annunciator 11			# f
+	Size     7 10
+	Offset   171 56
+	Down     209 480
+End
+
+Annunciator 12			# g
+	Size     7 10
+	Offset   163 56
+	Down     201 480
+End
+
+Annunciator 13			# BAT
+	Size     23 10
+	Offset   155 67
+	Down     17 480
+End
+
+Annunciator 20			# 0
+	Size     6 9
+	Offset   589 54
+	Down     233 480
+End
+
+Annunciator 21			# 1
+	Size     5 9
+	Offset   589 63
+	Down     239 480
+End
+
+Annunciator 22			# 2
+	Size     6 9
+	Offset   589 72
+	Down     244 480
+End
+
+Annunciator 23			# 3
+	Size     6 9
+	Offset   589 81
+	Down     250 480
+End
+
+Annunciator 24			# 4
+	Size     6 9
+	Offset   589 90
+	Down     256 480
+End
+
+Annunciator 28			# ((*))
+	Size     15 10
+	Offset   598 55
+	Down     217 480
+End
+
+Annunciator 29			# -->
+	Size     12 9
+	Offset   617 56
+	Down     276 480
+End
+
+Annunciator 30			# PRGM
+	Size     33 10
+	Offset   596 66
+	Down     100 480
+End
+
+Annunciator 31			# SUSP
+	Size     31 10
+	Offset   597 77
+	Down     135 480
+End
+
+Annunciator 32			# CALC
+	Size     31 10
+	Offset   597 88
+	Down     168 480
+End
+
+Button 401			# ON, should be the first defined key
+	Type 0
+	Size     46 41
+	Offset   64 390
+	Down     530 584
+	OutIn 0 32769		# wired with OutIn 0 32768 and OutIn 0 1
+End
+
+Button 101
+	Type 0
+	Size     46 41
+	Offset   64 193
+	Down     50 538
+	OutIn 3 1
+End
+Button 102
+	Type 0
+	Size     46 41
+	Offset   123 193
+	Down     98 538
+	OutIn 3 2
+End
+Button 103
+	Type 0
+	Size     46 41
+	Offset   182 193
+	Down     146 538
+	OutIn 3 4
+End
+Button 104
+	Type 0
+	Size     46 41
+	Offset   241 193
+	Down     194 538
+	OutIn 3 8
+End
+Button 105
+	Type 0
+	Size     46 41
+	Offset   300 193
+	Down     242 538
+	OutIn 3 16
+End
+Button 106
+	Type 0
+	Size     46 41
+	Offset   359 193
+	Down     290 538
+	OutIn 3 32
+End
+Button 107
+	Type 0
+	Size     46 41
+	Offset   418 193
+	Down     338 538
+	OutIn 3 64
+End
+Button 108
+	Type 0
+	Size     46 41
+	Offset   477 193
+	Down     386 538
+	OutIn 3 128
+End
+Button 109
+	Type 0
+	Size     46 41
+	Offset   536 193
+	Down     434 538
+	OutIn 3 256
+End
+Button 110
+	Type 0
+	Size     46 41
+	Offset   595 193
+	Down     482 538
+	OutIn 3 512
+End
+Button 111
+	Type 0
+	Size     57 40
+	Offset   656 192
+	Down     50 492
+	OutIn 3 1024
+End
+Button 112
+	Type 0
+	Size     57 40
+	Offset   728 192
+	Down     109 492
+	OutIn 3 2048
+End
+Button 113
+	Type 0
+	Size     57 40
+	Offset   800 192
+	Down     168 492
+	OutIn 3 4096
+End
+Button 114
+	Type 0
+	Size     57 40
+	Offset   872 192
+	Down     227 492
+	OutIn 3 8192
+End
+
+Button 201
+	Type 0
+	Size     46 41
+	Offset   64 260
+	Down     530 538
+	OutIn 2 1
+End
+Button 202
+	Type 0
+	Size     46 41
+	Offset   123 260
+	Down     578 538
+	OutIn 2 2
+End
+Button 203
+	Type 0
+	Size     46 41
+	Offset   182 260
+	Down     626 538
+	OutIn 2 4
+End
+Button 204
+	Type 0
+	Size     46 41
+	Offset   241 260
+	Down     674 538
+	OutIn 2 8
+End
+Button 205
+	Type 0
+	Size     46 41
+	Offset   300 260
+	Down     722 538
+	OutIn 2 16
+End
+Button 206
+	Type 0
+	Size     46 41
+	Offset   359 260
+	Down     770 538
+	OutIn 2 32
+End
+Button 207
+	Type 0
+	Size     46 41
+	Offset   418 260
+	Down     818 538
+	OutIn 2 64
+End
+Button 208
+	Type 0
+	Size     46 41
+	Offset   477 260
+	Down     866 538
+	OutIn 2 128
+End
+Button 209
+	Type 0
+	Size     46 41
+	Offset   536 260
+	Down     914 538
+	OutIn 2 256
+End
+Button 210
+	Type 0
+	Size     46 41
+	Offset   595 260
+	Down     50 584
+	OutIn 2 512
+End
+Button 211
+	Type 0
+	Size     57 40
+	Offset   656 259
+	Down     286 492
+	OutIn 2 1024
+End
+Button 212
+	Type 0
+	Size     57 40
+	Offset   728 259
+	Down     345 492
+	OutIn 2 2048
+End
+Button 213
+	Type 0
+	Size     57 40
+	Offset   800 259
+	Down     404 492
+	OutIn 2 4096
+End
+Button 214
+	Type 0
+	Size     57 40
+	Offset   872 259
+	Down     463 492
+	OutIn 2 8192
+End
+
+Button 301
+	Type 0
+	Size     46 41
+	Offset   64 325
+	Down     98 584
+	OutIn 1 1
+End
+Button 302
+	Type 0
+	Size     46 41
+	Offset   123 325
+	Down     146 584
+	OutIn 1 2
+End
+Button 303
+	Type 0
+	Size     46 41
+	Offset   182 325
+	Down     194 584
+	OutIn 1 4
+End
+Button 304
+	Type 0
+	Size     46 41
+	Offset   241 325
+	Down     242 584
+	OutIn 1 8
+End
+Button 305
+	Type 0
+	Size     46 41
+	Offset   300 325
+	Down     290 584
+	OutIn 1 16
+End
+Button 306
+	Type 0
+	Size     46 41
+	Offset   359 325
+	Down     338 584
+	OutIn 1 32
+End
+Button 307
+	Type 0
+	Size     46 41
+	Offset   418 325
+	Down     386 584
+	OutIn 1 64
+End
+Button 308
+	Type 0
+	Size     46 41
+	Offset   477 325
+	Down     434 584
+	OutIn 1 128
+End
+Button 309
+	Type 0
+	Size     46 41
+	Offset   536 325
+	Down     482 584
+	OutIn 1 256
+End
+Button 310
+	Type 0
+	Size     46 107
+	Offset   595 325
+	Down     0 492
+	OutIn 1 512		# decoding first
+#	OutIn 0 512		# working both for END
+End
+Button 311
+	Type 0
+	Size     57 40
+	Offset   656 324
+	Down     522 492
+	OutIn 1 1024
+End
+Button 312
+	Type 0
+	Size     57 40
+	Offset   728 324
+	Down     581 492
+	OutIn 1 2048
+End
+Button 313
+	Type 0
+	Size     57 40
+	Offset   800 324
+	Down     640 492
+	OutIn 1 4096
+End
+Button 314
+	Type 0
+	Size     57 40
+	Offset   872 324
+	Down     699 492
+	OutIn 1 8192
+End
+
+Button 402
+	Type 0
+	Size     46 41
+	Offset   123 390
+	Down     578 584
+	OutIn 0 2
+End
+Button 403
+	Type 0
+	Size     46 41
+	Offset   182 390
+	Down     626 584
+	OutIn 0 4
+End
+Button 404
+	Type 0
+	Size     46 41
+	Offset   241 390
+	Down     674 584
+	OutIn 0 8
+End
+Button 405
+	Type 0
+	Size     46 41
+	Offset   300 390
+	Down     722 584
+	OutIn 0 16
+End
+Button 406
+	Type 0
+	Size     46 41
+	Offset   359 390
+	Down     770 584
+	OutIn 0 32
+End
+Button 407
+	Type 0
+	Size     46 41
+	Offset   418 390
+	Down     818 584
+	OutIn 0 64
+End
+Button 408
+	Type 0
+	Size     46 41
+	Offset   477 390
+	Down     866 584
+	OutIn 0 128
+End
+Button 409
+	Type 0
+	Size     46 41
+	Offset   536 390
+	Down     914 584
+	OutIn 0 256
+End
+Button 411
+	Type 0
+	Size     57 40
+	Offset   656 390
+	Down     758 492
+	OutIn 0 1024
+End
+Button 412
+	Type 0
+	Size     57 40
+	Offset   728 389
+	Down     817 492
+	OutIn 0 2048
+End
+Button 413
+	Type 0
+	Size     57 40
+	Offset   800 389
+	Down     876 492
+	OutIn 0 4096
+End
+Button 414
+	Type 0
+	Size     57 40
+	Offset   872 389
+	Down     935 492
+	OutIn 0 8192
+End
+
+Include "Keyb71b.kmi"
