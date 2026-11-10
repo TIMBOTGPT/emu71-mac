@@ -284,7 +284,7 @@ def main():
         if len(data) < 2: break
         f = struct.unpack(">H", data)[0]
         f0 = f; f = d.process(f)
-        if d.log and d.nframes < 80: print('frame %03X -> %03X  st=%02X addr=%02X' % (f0, f, d.ilstate, d.addr), flush=True)
+        if d.log and d.nframes < 600: print('frame %03X -> %03X  st=%02X addr=%02X' % (f0, f, d.ilstate, d.addr), flush=True)
         d.nframes += 1
         while back is None:
             try: back = socket.create_connection(("127.0.0.1", in_port), timeout=2)

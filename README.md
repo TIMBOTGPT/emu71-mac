@@ -62,3 +62,20 @@ redistributed here. `KBD-US.KMI` is his keyboard script.
 - This port: GNU General Public License, version 2 or (at your option) any later version. See `LICENSE`.
 - `src/stb_image.h`: public domain / MIT (Sean Barrett).
 - HP and HP-71B are trademarks of their owners; this project is not affiliated with or endorsed by HP.
+
+## External video and virtual disk (experimental)
+
+`--vid [WxH]` adds a separate video window (default 800x600, 16 indexed layers) driven by a mailbox device and a LEX
+(`lex/video.asm`): ALPHA DRAW GCLEAR GRAPH GSHOW GTARGET MOVE PEN PLOT SCALE XAXIS YAXIS.
+`GRAPH` shows the window, `ALPHA` hides it, `GTARGET n` picks the layer to draw on and `GSHOW n` the one displayed.
+Details are in `docs/video-architecture.md`. For development, `EMU71_LEXROM=/tmp/video.rom` loads the LEX
+(`tools/mklexrom.py lex/video.lex /tmp/video.rom`).
+
+Programs can be loaded from a virtual HP-IL disk instead of being typed:
+
+    tools/run_disk.sh examples/sombrero_spin.bas SPIN
+
+This builds a LIF image (`tools/lifimg.py`), starts the drive partner (`tools/il_disk.py`, address `:TAPE` on the loop,
+use `--hpil host:out:in`) and has the 71 run `RESTORE IO`, `COPY SPIN:TAPE TO SPIN`, `TRANSFORM SPIN INTO BASIC`,
+`RUN SPIN`. Notes: HP-71B statements are separated by `@`, and the device is `:TAPE`. Saving a program back to the host
+is not implemented yet.

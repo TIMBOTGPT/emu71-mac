@@ -553,18 +553,19 @@ int main(int argc, char **argv)
 	snprintf(skinDir, sizeof skinDir, "%s/../Resources/skin", base);
 	snprintf(romDir, sizeof romDir, "%s/../Resources/roms", base);
 	if (access(skinDir, R_OK)) { snprintf(skinDir, sizeof skinDir, "%s/skin", base); snprintf(romDir, sizeof romDir, "%s/roms", base); }
-	for (i = 1; i < argc; ++i) if (!strcmp(argv[i], "--vid")) { vidOn = 1; if (i + 1 < argc && argv[i + 1][0] != '-') { int w = 0, h = 0; if (sscanf(argv[i + 1], "%dx%d", &w, &h) == 2) { vidW = w; vidH = h; } } }
-	for (i = 1; i + 1 < argc; i += 2) {
-		if (!strcmp(argv[i], "--skin")) strncpy(skinDir, argv[i + 1], sizeof skinDir - 1);
-		if (!strcmp(argv[i], "--kml")) strncpy(kmlName, argv[i + 1], sizeof kmlName - 1);
-		if (!strcmp(argv[i], "--image")) strncpy(imgOverride, argv[i + 1], sizeof imgOverride - 1);
-		if (!strcmp(argv[i], "--scale")) winScale = atof(argv[i + 1]);
-		if (!strcmp(argv[i], "--vid")) { vidOn = 1; if (i + 1 < argc && argv[i + 1][0] != '-') { int w = 0, h = 0; if (sscanf(argv[i + 1], "%dx%d", &w, &h) == 2) { vidW = w; vidH = h; } } }
-		if (!strcmp(argv[i], "--ram")) strncpy(ramSpec, argv[i + 1], sizeof ramSpec - 1);
-		if (!strcmp(argv[i], "--hpil")) { hpilOn = 1; if (i + 1 < argc && argv[i + 1][0] != '-') { /* host:out:in */ char *c = strdup(argv[i + 1]); char *a = strtok(c, ":"), *b = strtok(NULL, ":"), *d = strtok(NULL, ":"); if (a) strncpy(hpilHost, a, sizeof hpilHost - 1); if (b) hpilOut = atoi(b); if (d) hpilIn = atoi(d); free(c); } }
-		if (!strcmp(argv[i], "--refw")) refW = atoi(argv[i + 1]);
-		if (!strcmp(argv[i], "--roms")) strncpy(romDir, argv[i + 1], sizeof romDir - 1);
+	for (i = 1; i < argc; ++i) {	/* options take one value; --vid and --hpil take an optional one */
+		const char *nx = i + 1 < argc ? argv[i + 1] : NULL;
+		if (!strcmp(argv[i], "--vid")) { vidOn = 1; if (nx && nx[0] != '-') { int w = 0, h = 0; if (sscanf(nx, "%dx%d", &w, &h) == 2) { vidW = w; vidH = h; } ++i; } }
+		else if (!strcmp(argv[i], "--hpil")) { hpilOn = 1; if (nx && nx[0] != '-') { char *c = strdup(nx); char *a2 = strtok(c, ":"), *b2 = strtok(NULL, ":"), *d2 = strtok(NULL, ":"); if (a2) strncpy(hpilHost, a2, sizeof hpilHost - 1); if (b2) hpilOut = atoi(b2); if (d2) hpilIn = atoi(d2); free(c); ++i; } }
+		else if (nx && !strcmp(argv[i], "--skin")) { strncpy(skinDir, nx, sizeof skinDir - 1); ++i; }
+		else if (nx && !strcmp(argv[i], "--kml")) { strncpy(kmlName, nx, sizeof kmlName - 1); ++i; }
+		else if (nx && !strcmp(argv[i], "--image")) { strncpy(imgOverride, nx, sizeof imgOverride - 1); ++i; }
+		else if (nx && !strcmp(argv[i], "--scale")) { winScale = atof(nx); ++i; }
+		else if (nx && !strcmp(argv[i], "--ram")) { strncpy(ramSpec, nx, sizeof ramSpec - 1); ++i; }
+		else if (nx && !strcmp(argv[i], "--refw")) { refW = atoi(nx); ++i; }
+		else if (nx && !strcmp(argv[i], "--roms")) { strncpy(romDir, nx, sizeof romDir - 1); ++i; }
 	}
+
 
 	InitializeCriticalSection(&csGDILock); InitializeCriticalSection(&csLcdLock);
 	InitializeCriticalSection(&csKeyLock); InitializeCriticalSection(&csTLock);
