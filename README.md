@@ -79,3 +79,18 @@ This builds a LIF image (`tools/lifimg.py`), starts the drive partner (`tools/il
 use `--hpil host:out:in`) and has the 71 run `RESTORE IO`, `COPY SPIN:TAPE TO SPIN`, `TRANSFORM SPIN INTO BASIC`,
 `RUN SPIN`. Notes: HP-71B statements are separated by `@`, and the device is `:TAPE`. Saving a program back to the host
 is not implemented yet.
+
+### Load and save with the OS file dialogs
+
+    ./emu71 --vid --disk ~/hp71disk.dat
+
+`--disk IMAGE` starts the virtual drive (creating the LIF image if needed). In the emulator window:
+
+- **F5** opens the macOS file chooser. The chosen text `.bas` file is put on the disk, then the 71 is driven through
+  `COPY`, `TRANSFORM ... INTO BASIC` and `RUN` (the 71 file name is the first 8 letters or digits of the host name).
+- **F6** opens a save panel. The 71 program last loaded with F5 is converted back to text, copied to the drive and
+  written to the chosen host file (line numbers come out as the 71 lists them, for example `0010`).
+
+The emulator runs unthrottled while it does this. `EMU71_LOAD`, `EMU71_SAVE`, `EMU71_AUTOF5` and `EMU71_AUTOF6`
+bypass the dialogs for scripted tests. F6 only knows the program loaded by F5; saving a program typed by hand
+needs a named file first.

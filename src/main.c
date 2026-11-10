@@ -542,6 +542,75 @@ static void exe_dir(char *out, size_t n)
 	else strcpy(out, ".");
 }
 
+
+/* ---- virtual disk + OS file dialogs (--disk IMAGE): F5 loads a host .bas file, F6 saves the 71 program back ---- */
+static int diskOn = 0; static char diskImg[512], repoDir[512], lastName[16], pendCmd[1200];
+static char kq[16384], kcur[16384]; static int kqn = 0;
+static void kq_put(const char *s) { size_t n = strlen(s); if (kqn + n < sizeof kq - 1) { memcpy(kq + kqn, s, n + 1); kqn += (int)n; } }
+static void kq_wait(int ms) { char b[24]; snprintf(b, sizeof b, "w%d,", ms); kq_put(b); }
+static void kq_line(const char *t, int waitMs)
+{
+	char b[24]; const char *c;
+	for (c = t; *c; ++c) {
+		int ch = (unsigned char)*c, vk = ch, sh = 0;
+		if (ch >= 'a' && ch <= 'z') vk = ch - 32;
+		else if (ch == '.') vk = 190; else if (ch == ',') vk = 188; else if (ch == '-') vk = 189; else if (ch == '=') vk = 187;
+		else if (ch == '/') vk = 191; else if (ch == ';') vk = 186;
+		else if (ch == '(') { vk = 57; sh = 1; } else if (ch == ')') { vk = 48; sh = 1; } else if (ch == '*') { vk = 56; sh = 1; }
+		else if (ch == '+') { vk = 187; sh = 1; } else if (ch == '"') { vk = 222; sh = 1; } else if (ch == ':') { vk = 186; sh = 1; }
+		else if (ch == '@') { vk = 50; sh = 1; }
+		snprintf(b, sizeof b, sh ? "s%d," : "%d,", vk); kq_put(b);
+	}
+	kq_put("13,"); kq_wait(waitMs); kq_put("27,");		/* ENTER, let the 71 work, ATTN clears any error left in the line */
+}
+static int osa(const char *body, char *out, size_t n)
+{
+	char cmd[1024]; FILE *f; size_t k;
+	snprintf(cmd, sizeof cmd, "osascript -e 'tell application \"System Events\"' -e 'activate' -e '%s' -e 'end tell' 2>/dev/null", body);
+	f = popen(cmd, "r"); if (!f) return 0;
+	out[0] = 0; if (fgets(out, (int)n, f)) { k = strlen(out); while (k && (out[k - 1] == '\n' || out[k - 1] == '\r')) out[--k] = 0; }
+	pclose(f); return out[0] != 0;
+}
+static void make_name(const char *path, char *name)
+{
+	const char *b = strrchr(path, '/'); int k = 0; b = b ? b + 1 : path;
+	for (; *b && *b != '.' && k < 8; ++b) if (isalnum((unsigned char)*b)) name[k++] = (char)toupper((unsigned char)*b);
+	name[k] = 0; if (!k) strcpy(name, "PROG");
+}
+static void disk_load(void)
+{
+	char path[512], name[16], cmd[1600], t[96];
+	if (getenv("EMU71_LOAD")) strncpy(path, getenv("EMU71_LOAD"), sizeof path - 1); else
+	if (!osa("POSIX path of (choose file with prompt \"Load a BASIC program (text with line numbers) into the 71\")", path, sizeof path) || strchr(path, '\'')) return;
+	make_name(path, name);
+	snprintf(cmd, sizeof cmd, "cd '%s' && python3 tools/lifimg.py del '%s' %s >/dev/null 2>&1; python3 tools/lifimg.py put '%s' %s '%s' >/dev/null", repoDir, diskImg, name, diskImg, name, path);
+	if (system(cmd)) { fprintf(stderr, "disk: could not put %s on the image\n", path); return; }
+	strcpy(lastName, name); SetSpeed(FALSE);
+	kq_put("27,w1500,27,w800,");
+	kq_line("RESTORE IO", 3000);
+	snprintf(t, sizeof t, "PURGE %s", name); kq_line(t, 1500);
+	snprintf(t, sizeof t, "COPY %s:TAPE TO %s", name, name); kq_line(t, 9000);
+	snprintf(t, sizeof t, "TRANSFORM %s INTO BASIC", name); kq_line(t, 6000);
+	snprintf(t, sizeof t, "RUN %s", name); kq_line(t, 500);
+}
+static void disk_save(void)
+{
+	char path[512], name[16], body[512], t[96];
+	if (!lastName[0]) { fprintf(stderr, "disk: F6 saves the program last loaded with F5 (no name known yet)\n"); return; }
+	strcpy(name, lastName);
+	snprintf(body, sizeof body, "POSIX path of (choose file name with prompt \"Save the 71 program %s as\" default name \"%s.bas\")", name, name);
+	if (getenv("EMU71_SAVE")) strncpy(path, getenv("EMU71_SAVE"), sizeof path - 1); else
+	if (!osa(body, path, sizeof path) || strchr(path, '\'')) return;
+	SetSpeed(FALSE);
+	kq_put("27,w1500,27,w800,");
+	kq_line("RESTORE IO", 3000);
+	snprintf(t, sizeof t, "PURGE %s:TAPE", name); kq_line(t, 2500);
+	snprintf(t, sizeof t, "TRANSFORM %s INTO TEXT", name); kq_line(t, 4000);
+	snprintf(t, sizeof t, "COPY %s TO %s:TAPE", name, name); kq_line(t, 9000);
+	snprintf(t, sizeof t, "TRANSFORM %s INTO BASIC", name); kq_line(t, 4000);
+	snprintf(pendCmd, sizeof pendCmd, "cd '%s' && python3 tools/lifimg.py get '%s' %s '%s' && echo 'disk: saved %s'", repoDir, diskImg, name, path, path);
+}
+
 int main(int argc, char **argv)
 {
 	char base[1024], skinDir[1024], romDir[1024], path[1100];
@@ -557,6 +626,7 @@ int main(int argc, char **argv)
 		const char *nx = i + 1 < argc ? argv[i + 1] : NULL;
 		if (!strcmp(argv[i], "--vid")) { vidOn = 1; if (nx && nx[0] != '-') { int w = 0, h = 0; if (sscanf(nx, "%dx%d", &w, &h) == 2) { vidW = w; vidH = h; } ++i; } }
 		else if (!strcmp(argv[i], "--hpil")) { hpilOn = 1; if (nx && nx[0] != '-') { char *c = strdup(nx); char *a2 = strtok(c, ":"), *b2 = strtok(NULL, ":"), *d2 = strtok(NULL, ":"); if (a2) strncpy(hpilHost, a2, sizeof hpilHost - 1); if (b2) hpilOut = atoi(b2); if (d2) hpilIn = atoi(d2); free(c); ++i; } }
+		else if (nx && !strcmp(argv[i], "--disk")) { diskOn = 1; strncpy(diskImg, nx, sizeof diskImg - 1); ++i; }
 		else if (nx && !strcmp(argv[i], "--skin")) { strncpy(skinDir, nx, sizeof skinDir - 1); ++i; }
 		else if (nx && !strcmp(argv[i], "--kml")) { strncpy(kmlName, nx, sizeof kmlName - 1); ++i; }
 		else if (nx && !strcmp(argv[i], "--image")) { strncpy(imgOverride, nx, sizeof imgOverride - 1); ++i; }
@@ -593,6 +663,15 @@ int main(int argc, char **argv)
 	snprintf(path, sizeof path, "%s/FORTHROM.BIN", romDir); add_rom_module(2, path);
 	snprintf(path, sizeof path, "%s/HRDFORTH.BIN", romDir); if (!getenv("EMU71_NOHRD")) add_hrd_module(2, path, 0xE0000);
 	add_ram_from_spec(ramSpec);
+	if (diskOn) {	/* start the virtual drive partner and point the HP-IL loop at it */
+		char exe[1024], cmd[2048]; uint32_t sz = sizeof exe; struct stat st;
+		if (_NSGetExecutablePath(exe, &sz) == 0) { char *d = dirname(exe); strncpy(repoDir, d, sizeof repoDir - 1); }
+		if (diskImg[0] != '/') { char t[512]; if (!getcwd(t, sizeof t)) t[0] = 0; snprintf(cmd, sizeof cmd, "%s/%s", t, diskImg); strncpy(diskImg, cmd, sizeof diskImg - 1); }
+		if (stat(diskImg, &st)) { snprintf(cmd, sizeof cmd, "cd '%s' && python3 tools/lifimg.py init '%s'", repoDir, diskImg); system(cmd); }
+		hpilOn = 1; strcpy(hpilHost, "127.0.0.1"); hpilOut = 50000 + (int)(getpid() % 10000) * 2; hpilIn = hpilOut + 1;
+		snprintf(cmd, sizeof cmd, "cd '%s' && python3 tools/il_disk.py '%s' %d %d >/tmp/il_disk.log 2>&1 &", repoDir, diskImg, hpilOut, hpilIn);
+		system(cmd); SDL_Delay(800);
+	}
 	if (hpilOn) { snprintf(path, sizeof path, "%s/Hpilrom.bin", romDir); add_hpil_module(getenv("HPILPORT") ? atoi(getenv("HPILPORT")) : 5, path); signal(SIGPIPE, SIG_IGN); strncat(ramSpec, "+hpil", sizeof ramSpec - strlen(ramSpec) - 1); }
 
 	if (vidOn) { char sp[24]; VideoSetSize(vidW, vidH); add_video_module(getenv("VIDPORT") ? atoi(getenv("VIDPORT")) : 5); snprintf(sp, sizeof sp, "+vid%dx%d", vidW, vidH); strncat(ramSpec, sp, sizeof ramSpec - strlen(ramSpec) - 1); }
@@ -668,16 +747,23 @@ int main(int argc, char **argv)
 					}
 			} else if (e.type == SDL_MOUSEBUTTONUP && e.button.button == SDL_BUTTON_LEFT) {
 				if (pressedBtn >= 0) { btn_event(pressedBtn, FALSE); pressedBtn = -1; }
+			} else if (diskOn && e.type == SDL_KEYDOWN && !e.key.repeat && (e.key.keysym.sym == SDLK_F5 || e.key.keysym.sym == SDLK_F6)) {
+				if (e.key.keysym.sym == SDLK_F5) disk_load(); else disk_save();
 			} else if ((e.type == SDL_KEYDOWN || e.type == SDL_KEYUP) && !e.key.repeat) {
 				vk_event(sdl_to_vk(e.key.keysym.sym), e.type == SDL_KEYDOWN);
 			}
 		}
+		{ static int a5 = 0, a6 = 0; if (diskOn && !a5 && getenv("EMU71_AUTOF5") && SDL_GetTicks() > (Uint32)(atof(getenv("EMU71_AUTOF5")) * 1000)) { a5 = 1; disk_load(); }
+		  if (diskOn && !a6 && getenv("EMU71_AUTOF6") && SDL_GetTicks() > (Uint32)(atof(getenv("EMU71_AUTOF6")) * 1000)) { a6 = 1; disk_save(); } }
 		{ static int fastDone = 0; if (!fastDone && getenv("EMU71_FASTAT") && SDL_GetTicks() > (Uint32)(atof(getenv("EMU71_FASTAT")) * 1000)) { fastDone = 1; SetSpeed(FALSE); } }
+		if (!script && kqn) { memcpy(kcur, kq, (size_t)kqn + 1); kqn = 0; kq[0] = 0; script = kcur; }
+		if (!script && !kqn && pendCmd[0] && SDL_GetTicks() > nextKey) { system(pendCmd); pendCmd[0] = 0; }
 		if (script && SDL_GetTicks() > nextKey) {
-			static int phase = 0, cur = 0, sh = 0;	/* "s186" = shifted key */
+			static int phase = 0, cur = 0, sh = 0;	/* "s186" = shifted key, "w500" = wait 500 ms */
+			if (!phase && *script == 'w') { Uint32 ms = (Uint32)atoi(script + 1); while (*script && *script != ',') ++script; if (*script == ',') ++script; if (!*script) script = NULL; nextKey = SDL_GetTicks() + ms; continue; }
 			if (!phase) { sh = (*script == 's'); cur = atoi(script + sh); if (sh) vk_event(16, 1); vk_event(cur, 1); phase = 1; }
 			else { vk_event(cur, 0); if (sh) vk_event(16, 0); phase = 0; while (*script && *script != ',') ++script; if (*script == ',') ++script; if (!*script) { script = NULL; if (getenv("EMU71_FAST")) SetSpeed(FALSE); } }
-			nextKey = SDL_GetTicks() + (getenv("EMU71_KEYMS") ? (Uint32)atoi(getenv("EMU71_KEYMS")) : 250);
+			nextKey = SDL_GetTicks() + (getenv("EMU71_KEYMS") ? (Uint32)atoi(getenv("EMU71_KEYMS")) : 60);
 		}
 		draw(ren, skin, lcdTex, lcdPix);
 		VideoPump();
