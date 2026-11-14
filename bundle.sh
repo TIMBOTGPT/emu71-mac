@@ -8,6 +8,9 @@ rm -rf $APP
 mkdir -p $APP/Contents/{MacOS,Resources,Frameworks}
 cp emu71 $APP/Contents/MacOS/emu71
 cp -R skin roms $APP/Contents/Resources/
+mkdir -p $APP/Contents/Resources/tools $APP/Contents/Resources/lex
+cp tools/lifimg.py tools/il_disk.py tools/mklexrom.py $APP/Contents/Resources/tools/
+cp lex/video.lex $APP/Contents/Resources/lex/
 SDL=$(otool -L emu71 | awk '/libSDL2/{print $1}' | head -1)
 cp "$SDL" $APP/Contents/Frameworks/libSDL2.dylib
 chmod u+w $APP/Contents/Frameworks/libSDL2.dylib

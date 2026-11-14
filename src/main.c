@@ -48,6 +48,7 @@ static char bmpName[256];
 static char kmlName[256] = "REAL71P.KML", imgOverride[512];
 static double winScale = 1.0;
 extern void lock_aspect(SDL_Window *, int, int);
+extern void install_file_menu(void);
 static int  refW = 0;          /* width of the reference sheet the KML coordinates refer to */
 static double skScale = 1.0;   /* texture width / refW */
 #define SC(v) ((int)((v) * skScale + 0.5))
@@ -624,6 +625,11 @@ int main(int argc, char **argv)
 	snprintf(skinDir, sizeof skinDir, "%s/../Resources/skin", base);
 	snprintf(romDir, sizeof romDir, "%s/../Resources/roms", base);
 	if (access(skinDir, R_OK)) { snprintf(skinDir, sizeof skinDir, "%s/skin", base); snprintf(romDir, sizeof romDir, "%s/roms", base); }
+	if (argc == 1 && !getenv("EMU71_KEYS") && !getenv("EMU71_NODISK")) {	/* plain launch (double-click): File menu / F5 / F6 need the virtual disk, programs may use the video LEX */
+		const char *h = getenv("HOME"); char d[1024];
+		snprintf(d, sizeof d, "%s/Library/Application Support/Emu71", h ? h : "."); mkdir(d, 0755);
+		snprintf(diskImg, sizeof diskImg, "%s/disk.dat", d); diskOn = 1; vidOn = 1;
+	}
 	for (i = 1; i < argc; ++i) {	/* options take one value; --vid and --hpil take an optional one */
 		const char *nx = i + 1 < argc ? argv[i + 1] : NULL;
 		if (!strcmp(argv[i], "--vid")) { vidOn = 1; if (nx && nx[0] != '-') { int w = 0, h = 0; if (sscanf(nx, "%dx%d", &w, &h) == 2) { vidW = w; vidH = h; } ++i; } }
@@ -668,6 +674,7 @@ int main(int argc, char **argv)
 	if (diskOn) {	/* start the virtual drive partner and point the HP-IL loop at it */
 		char exe[1024], cmd[2048]; uint32_t sz = sizeof exe; struct stat st;
 		if (_NSGetExecutablePath(exe, &sz) == 0) { char *d = dirname(exe); strncpy(repoDir, d, sizeof repoDir - 1); }
+		{ char t[1100]; snprintf(t, sizeof t, "%s/../Resources/tools/lifimg.py", repoDir); if (!access(t, R_OK)) { snprintf(t, sizeof t, "%s/../Resources", repoDir); strncpy(repoDir, t, sizeof repoDir - 1); } }	/* inside Emu71.app the tools live in Resources */
 		if (diskImg[0] != '/') { char t[512]; if (!getcwd(t, sizeof t)) t[0] = 0; snprintf(cmd, sizeof cmd, "%s/%s", t, diskImg); strncpy(diskImg, cmd, sizeof diskImg - 1); }
 		if (stat(diskImg, &st)) { snprintf(cmd, sizeof cmd, "cd '%s' && python3 tools/lifimg.py init '%s'", repoDir, diskImg); system(cmd); }
 		hpilOn = 1; strcpy(hpilHost, "127.0.0.1"); hpilOut = 50000 + (int)(getpid() % 10000) * 2; hpilIn = hpilOut + 1;
@@ -680,7 +687,7 @@ int main(int argc, char **argv)
 
 	if (vidOn && !getenv("EMU71_LEXROM")) {	/* --vid loads the video LEX automatically (built from lex/video.lex) */
 		char exe[1024], cmd[2048]; uint32_t sz = sizeof exe;
-		if (_NSGetExecutablePath(exe, &sz) == 0) { char *d = dirname(exe); snprintf(cmd, sizeof cmd, "cd '%s' && python3 tools/mklexrom.py lex/video.lex /tmp/emu71_video.rom >/dev/null 2>&1", d); if (system(cmd) == 0) setenv("EMU71_LEXROM", "/tmp/emu71_video.rom", 1); }
+		if (_NSGetExecutablePath(exe, &sz) == 0) { char *d = dirname(exe); char t[1100]; snprintf(t, sizeof t, "%s/../Resources", d); if (access(t, R_OK)) strncpy(t, d, sizeof t - 1); snprintf(cmd, sizeof cmd, "cd '%s' && python3 tools/mklexrom.py lex/video.lex /tmp/emu71_video.rom >/dev/null 2>&1", t); if (system(cmd) == 0) setenv("EMU71_LEXROM", "/tmp/emu71_video.rom", 1); }
 	}
 	if (getenv("EMU71_LEXROM") && strcmp(getenv("EMU71_LEXROM"), "none")) { if (add_rom_module(3, getenv("EMU71_LEXROM"))) strncat(ramSpec, "+lex", sizeof ramSpec - strlen(ramSpec) - 1); }
 	if (getenv("EMU71_LEXROM2")) { if (add_rom_module(4, getenv("EMU71_LEXROM2"))) strncat(ramSpec, "+lex2", sizeof ramSpec - strlen(ramSpec) - 1); }	/* second LEX for clash tests */
@@ -713,6 +720,7 @@ int main(int argc, char **argv)
 		                       (int)(bgW * sc), (int)(bgH * sc), SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
 		SDL_SetWindowMinimumSize(win, bgW / 2, bgH / 2);
 		lock_aspect(win, bgW, bgH);
+		install_file_menu();
 	}
 	ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	SDL_RenderSetLogicalSize(ren, bgW, bgH);
