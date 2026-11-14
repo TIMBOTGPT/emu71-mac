@@ -23,7 +23,7 @@ Read docs/video-architecture.md first, then README.md (video and disk sections).
   copy video.lex back (verified: asm71 reproduces the old binary byte for byte apart from the LIF date stamp).
 - asm71 (bug400/asm71, GPLv3) was cloned to ~/Projects/asm71 and built with `fpc -O2 -FEbuild -FUbuild -obuild/asm71 src/asm71.pas` (arm64, works).
 - examples/lorenz.bas: WORKING as of 2026-11-14 (rotating coloured attractor, seen on screen). Cause was not the numbers: the SX,SY
-  variable names broke TRANSFORM at load, so MOVE/DRAW lines were dropped (see gotchas). Renamed to X,Y. Not yet committed.
+  variable names broke TRANSFORM at load, so MOVE/DRAW lines were dropped (see gotchas). Renamed to X,Y. Committed in bd6b324.
 
 ## Known gotchas
 - HP-71B: statements separated by `@` (not `::`), no GET (use TRANSFORM), do not start key scripts with NEW (garbles input),
@@ -47,13 +47,13 @@ Read docs/video-architecture.md first, then README.md (video and disk sections).
 - Load log: /tmp/*.log from `EMU71_VIDLOG=1 tools/run_disk.sh` shows which video commands arrived; disk load takes about 90 s before RUN output appears.
 
 ## Still to do
-1. Fix lorenz.bas (above), then commit it with the main.c changes.
-2. DONE 2026-11-14 (uncommitted): F6 on a hand-typed program now asks for a name, runs `NAME <n>` on the workfile, then saves. Tested
+1. DONE: lorenz.bas fixed and committed with the main.c changes (bd6b324).
+2. DONE 2026-11-14 (committed in bd6b324): F6 on a hand-typed program now asks for a name, runs `NAME <n>` on the workfile, then saves. Tested
    with a two-line program (output matched). NAME fails if a 71 file of that name already exists (no PURGE on purpose).
    Also tested 2026-11-14: LIST/decompile round trip of all 12 keywords incl. IF..THEN DRAW ELSE MOVE is correct (only a cosmetic trailing
    space after a final no-arg statement). Error paths: too few/many args, string arg, GCLEAR with an arg are all rejected cleanly (71 shows
-   ERR:Excessive Chars for too many) and later statements still work. OPEN: device range errors (GTARGET 99, PEN 300) are returned by video.c
-   (err 3) but XQ in lex/video.asm never reads the result, so the user gets no error on the 71 (from reading the asm, not yet seen on screen).
+   ERR:Excessive Chars for too many) and later statements still work. Device range errors (GTARGET 99, PEN 300) were silent because XQ in
+   lex/video.asm never read the result (confirmed). The CHK fix is written and works but is uncommitted until its error number is right (see Uncommitted).
    Test harness note: after a syntax error the 71 keeps the line in its buffer, so send ATTN twice (27,27) between key-script lines.
 3. Remaining mailbox commands: GLABEL (string arg), CLIP, BOX, CIRCLE, POLY, GRID, FRAME, layer stack ops
    (GNEW/GPUSH/GPOP/GROLL), VWRITE/VREAD, GBLIT, GSTORE/GLOAD.
