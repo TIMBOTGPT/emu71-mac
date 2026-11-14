@@ -24,9 +24,17 @@
        CHAR   #D
        ENTRY  GCLEAR
        CHAR   #D
+       ENTRY  GNEW
+       CHAR   #D
+       ENTRY  GPOP
+       CHAR   #D
+       ENTRY  GPUSH
+       CHAR   #D
        ENTRY  GRAPH
        CHAR   #D
        ENTRY  GRID
+       CHAR   #D
+       ENTRY  GROLL
        CHAR   #D
        ENTRY  GSHOW
        CHAR   #D
@@ -63,28 +71,36 @@
        TOKEN  7
        KEY    'GCLEAR'
        TOKEN  8
-       KEY    'GRAPH'
+       KEY    'GNEW'
        TOKEN  9
-       KEY    'GRID'
+       KEY    'GPOP'
        TOKEN  10
-       KEY    'GSHOW'
+       KEY    'GPUSH'
        TOKEN  11
-       KEY    'GTARGET'
+       KEY    'GRAPH'
        TOKEN  12
-       KEY    'MOVE'
+       KEY    'GRID'
        TOKEN  13
-       KEY    'PEN'
+       KEY    'GROLL'
        TOKEN  14
-       KEY    'PLOT'
+       KEY    'GSHOW'
        TOKEN  15
-       KEY    'POLY'
+       KEY    'GTARGET'
        TOKEN  16
-       KEY    'SCALE'
+       KEY    'MOVE'
        TOKEN  17
-       KEY    'XAXIS'
+       KEY    'PEN'
        TOKEN  18
-       KEY    'YAXIS'
+       KEY    'PLOT'
        TOKEN  19
+       KEY    'POLY'
+       TOKEN  20
+       KEY    'SCALE'
+       TOKEN  21
+       KEY    'XAXIS'
+       TOKEN  22
+       KEY    'YAXIS'
+       TOKEN  23
        ENDTXT
 *
 *      Find the video mailbox (MMIO class 5) in the configuration buffer.
@@ -216,6 +232,22 @@ GRID   LC(4)  #4442
        REL(5) A3d
        REL(5) A3p
 POLY   LC(4)  #3322
+       GOTO   XQ
+       REL(5) A1d
+       REL(5) A1p
+GNEW   LC(4)  #1170
+       GOTO   XQ
+       REL(5) A1d
+       REL(5) A1p
+GPUSH  LC(4)  #1173
+       GOTO   XQ
+       REL(5) NAd
+       REL(5) NAp
+GPOP   LC(2)  #74
+       GOTO   NOARG
+       REL(5) A1d
+       REL(5) A1p
+GROLL  LC(4)  #1176
        GOTO   XQ
 *
 *      No-argument statement: C(1:0) = command.
