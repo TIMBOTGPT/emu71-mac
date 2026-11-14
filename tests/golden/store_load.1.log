@@ -1,0 +1,8 @@
+VIDEO: cmd 02 err 0 R0..R3 = 0 0 0 0
+VIDEO: cmd 10 err 0 R0..R3 = 0 799 0 599
+VIDEO: cmd 04 err 0 R0..R3 = 0 799 0 599
+VIDEO: cmd 05 err 0 R0..R3 = 2 799 0 599
+VIDEO: cmd 21 err 0 R0..R3 = 400 300 150 599
+VIDEO: cmd 91 err 0 R0..R3 = 400 300 150 599 len 5 text [CIRC1]
+VIDEO: cmd 04 err 0 R0..R3 = 400 300 150 599
+VIDEO: cmd 92 err 0 R0..R3 = 400 300 150 599 len 5 text [CIRC1]

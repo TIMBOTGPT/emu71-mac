@@ -1,0 +1,3 @@
+VIDEO: cmd 05 err 0 R0..R3 = 4 0 0 0
+VIDEO: cmd 02 err 0 R0..R3 = 4 0 0 0
+VIDEO: cmd 21 err 0 R0..R3 = 10 20 30 0

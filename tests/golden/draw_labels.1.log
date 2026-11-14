@@ -1,0 +1,27 @@
+VIDEO: cmd 02 err 0 R0..R3 = 0 0 0 0
+VIDEO: cmd 10 err 0 R0..R3 = 0 799 0 599
+VIDEO: cmd 04 err 0 R0..R3 = 0 799 0 599
+VIDEO: cmd 05 err 0 R0..R3 = 1 799 0 599
+VIDEO: cmd 13 err 0 R0..R3 = 50 500 0 599
+VIDEO: cmd 34 err 0 R0..R3 = 50 500 0 599
+VIDEO: cmd 30 err 0 R0..R3 = 50 500 0 599 len 8 text [HELLO WO]
+VIDEO: cmd 30 err 0 R0..R3 = 50 500 0 599 len 3 text [RLD]
+VIDEO: cmd 05 err 0 R0..R3 = 3 500 0 599
+VIDEO: cmd 13 err 0 R0..R3 = 50 450 0 599
+VIDEO: cmd 34 err 0 R0..R3 = 50 450 0 599
+VIDEO: cmd 30 err 0 R0..R3 = 50 450 0 599 len 8 text [THE QUIC]
+VIDEO: cmd 30 err 0 R0..R3 = 50 450 0 599 len 8 text [K BROWN ]
+VIDEO: cmd 30 err 0 R0..R3 = 50 450 0 599 len 8 text [FOX 0123]
+VIDEO: cmd 30 err 0 R0..R3 = 50 450 0 599 len 6 text [456789]
+VIDEO: cmd 05 err 0 R0..R3 = 5 450 0 599
+VIDEO: cmd 13 err 0 R0..R3 = 50 400 0 599
+VIDEO: cmd 34 err 0 R0..R3 = 50 400 0 599
+VIDEO: cmd 30 err 0 R0..R3 = 50 400 0 599 len 8 text [ABCDEFGH]
+VIDEO: cmd 30 err 0 R0..R3 = 50 400 0 599 len 8 text [IJKLMNOP]
+VIDEO: cmd 30 err 0 R0..R3 = 50 400 0 599 len 8 text [QRSTUVWX]
+VIDEO: cmd 30 err 0 R0..R3 = 50 400 0 599 len 2 text [YZ]
+VIDEO: cmd 05 err 0 R0..R3 = 6 400 0 599
+VIDEO: cmd 13 err 0 R0..R3 = 50 350 0 599
+VIDEO: cmd 34 err 0 R0..R3 = 50 350 0 599
+VIDEO: cmd 30 err 0 R0..R3 = 50 350 0 599 len 8 text [()*+,-./]
+VIDEO: cmd 30 err 0 R0..R3 = 50 350 0 599 len 4 text [:;=@]

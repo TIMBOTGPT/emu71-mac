@@ -1,0 +1,13 @@
+VIDEO: cmd 02 err 0 R0..R3 = 0 0 0 0
+VIDEO: cmd 10 err 0 R0..R3 = 0 799 0 599
+VIDEO: cmd 04 err 0 R0..R3 = 0 799 0 599
+VIDEO: cmd 83 err 0 R0..R3 = 0 800 2 599
+VIDEO: cmd 83 err 0 R0..R3 = 240000 800 3 599
+VIDEO: cmd 70 err 0 R0..R3 = 1 800 3 599
+VIDEO: cmd 72 err 0 R0..R3 = 1 800 3 599
+VIDEO: cmd 05 err 0 R0..R3 = 4 800 3 599
+VIDEO: cmd 19 err 0 R0..R3 = 1 800 3 599
+VIDEO: cmd 20 err 0 R0..R3 = 100 200 100 200
+VIDEO: cmd 72 err 0 R0..R3 = 0 200 100 200
+VIDEO: cmd 90 err 0 R0..R3 = 1 300 100 1
+VIDEO: cmd 84 err 0 R0..R3 = 3 300 100 1

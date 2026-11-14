@@ -767,9 +767,9 @@ int main(int argc, char **argv)
 		if (!script && !kqn && pendCmd[0] && SDL_GetTicks() > nextKey) { system(pendCmd); pendCmd[0] = 0; }
 		if (script && SDL_GetTicks() > nextKey) {
 			static int phase = 0, cur = 0, sh = 0;	/* "s186" = shifted key, "w500" = wait 500 ms */
-			if (!phase && *script == 'w') { Uint32 ms = (Uint32)atoi(script + 1); while (*script && *script != ',') ++script; if (*script == ',') ++script; if (!*script) script = NULL; nextKey = SDL_GetTicks() + ms; continue; }
+			if (!phase && *script == 'w') { Uint32 ms = (Uint32)atoi(script + 1); while (*script && *script != ',') ++script; if (*script == ',') ++script; if (!*script) { script = NULL; if (getenv("EMU71_DUMPIDLE")) dumpAfter = SDL_GetTicks() + ms + (Uint32)(atof(getenv("EMU71_DUMPIDLE")) * 1000); } nextKey = SDL_GetTicks() + ms; continue; }
 			if (!phase) { sh = (*script == 's'); cur = atoi(script + sh); if (sh) vk_event(16, 1); vk_event(cur, 1); phase = 1; }
-			else { vk_event(cur, 0); if (sh) vk_event(16, 0); phase = 0; while (*script && *script != ',') ++script; if (*script == ',') ++script; if (!*script) { script = NULL; if (getenv("EMU71_FAST")) SetSpeed(FALSE); } }
+			else { vk_event(cur, 0); if (sh) vk_event(16, 0); phase = 0; while (*script && *script != ',') ++script; if (*script == ',') ++script; if (!*script) { script = NULL; if (getenv("EMU71_FAST")) SetSpeed(FALSE); if (getenv("EMU71_DUMPIDLE")) dumpAfter = SDL_GetTicks() + (Uint32)(atof(getenv("EMU71_DUMPIDLE")) * 1000); } }
 			nextKey = SDL_GetTicks() + (getenv("EMU71_KEYMS") ? (Uint32)atoi(getenv("EMU71_KEYMS")) : 60);
 		}
 		draw(ren, skin, lcdTex, lcdPix);

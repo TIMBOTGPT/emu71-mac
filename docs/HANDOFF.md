@@ -17,8 +17,10 @@ Read docs/video-architecture.md first, then README.md (video and disk sections).
 ## Committed 2026-11-14 (nothing pending except the stray untracked files below)
 - src/main.c (bd6b324): no ATTN after RUN in the F5 sequence; --vid auto-loads the video LEX; F6 names a hand-typed workfile with NAME.
 - lex/video.asm + lex/video.lex (c29c9b7): CHK routine reads the device result code (mailbox ERRC, nibble #61) after every command and raises a 71 error:
-  device err 2 (no such layer) -> Insufficient Memory (#0018), any other nonzero -> Invalid Arg (#000B). Verified on screen for GTARGET 99 and SCALE 5,5,5,5.
-  Not yet checked on screen: PEN 300, GSHOW 20. Rebuild: copy lex/video.asm to a scratch dir, run ~/Projects/asm71/build/asm71 video.asm, copy video.lex back.
+  device err 2 (no such layer) -> Insufficient Memory (#0018), any other nonzero -> Invalid Arg (#000B).
+  Checked on screen 2026-11-14 (tests/cases/err_*): PEN 300, GSHOW 20, GTARGET 99, SCALE 5,5,5,5 and more all give ERR:Invalid Arg.
+  CORRECTION: an earlier note here said GTARGET 99 gave Insufficient Memory. It does not, layer numbers above 15 are a range error (device err 3),
+  so the Insufficient Memory branch (device err 2) cannot be reached from any keyword today. Rebuild: copy lex/video.asm to a scratch dir, run ~/Projects/asm71/build/asm71 video.asm, copy video.lex back.
 - Untracked, not committed, safe to delete if Mark agrees: examples/lorenz2.bas (uses illegal names), examples/lorenz_SX.bak, lex/video.lex.orig.
 - asm71 (bug400/asm71, GPLv3) was cloned to ~/Projects/asm71 and built with `fpc -O2 -FEbuild -FUbuild -obuild/asm71 src/asm71.pas` (arm64, works).
 - examples/lorenz.bas: WORKING as of 2026-11-14 (rotating coloured attractor, seen on screen). Cause was not the numbers: the SX,SY
@@ -61,9 +63,18 @@ Read docs/video-architecture.md first, then README.md (video and disk sections).
    Not covered: CLIP has no visible effect because there is no LIMIT keyword yet (host command 0x11 takes I0..I3, not REALs). Lowercase
    GLABEL text cannot be typed through tools/keys.py (it uppercases), so the lowercase glyphs are unchecked. FILL is an addition (BOX, CIRCLE
    and POLY need a fill switch and the mailbox only has four REAL slots). LDIR/CSIZE/LORG, COLORMAP and WHERE have host commands but no keyword.
-4. Still untested: keyword clashes with other LEX files (PEN, MOVE, DRAW, SCALE, XAXIS, YAXIS, ALPHA), state save/restore with the LEX mounted,
-   installing the LEX from a LIF file instead of the ROM hook. (Error paths and LIST/decompile are done, see item 2.)
-5. Tests with the EMU71_KEYS harness (deliverable 5). Optional: tools/run_disk.sh hardcodes EMU71_KEYMS=60, make it overridable.
+4. DONE 2026-11-14 (tests/cases/clash_pen, state_restore, lex_install_lif):
+   - Keyword clash with another LEX: tested with a throwaway LEX (tests/lex/clash.asm, ID 5D, defines PEN and ZZAP) in ports 3 and 4 via the new
+     EMU71_LEXROM2 hook. The LEX in the lower port wins PEN in both orders (it is port order, not LEX ID, because ID 5D beat ID 5C when it sat in port 3),
+     and the other LEX keeps all its other keywords (ZZAP, GRAPH, CIRCLE worked). Evidence is two load orders, so confidence is moderate-high for "first
+     mounted wins". Math ROM (port 1) and Forth ROM (port 2) are always mounted and have coexisted with the video LEX in every run, but they define no
+     clashing keyword (RECT is not used). Real third-party LEX files (PLOTLEX, ID 68 library) were not available and are untested.
+   - State save/restore with the LEX mounted works: variable, program with LEX statements, its LIST decompile and the mailbox mapping all survive
+     (run with a scratch HOME so the real state.bin stays untouched, `mkdir -p $HOME/Library/Application\ Support` first because state_path creates only the last
+     folder). Layer pixels live on the host and are NOT in state.bin, the picture is blank after a restore until the program redraws (GSTORE/GLOAD persist it).
+   - LEX install from a LIF file works with no LEX ROM mounted (EMU71_LEXROM=none): tools/lifimg.py putlif adds lex/video.lex (type E208) to the virtual disk,
+     `RESTORE IO`, `COPY VIDEO:TAPE TO VIDEO` makes the keywords live. The COPY wait of 90 s in the test is a generous guess, the real time was not measured.
+5. DONE 2026-11-14: tests/run_tests.py with tests/cases/*.t and tests/golden (see below). Still open: tools/run_disk.sh hardcodes EMU71_KEYMS=60, make it overridable.
 
 ## LEX authoring notes learned 2026-11-14 (afternoon)
 - asm71 needs KEY names in alphabetical order with ascending tokens, or the OS silently does not recognise the late keywords (FILL gave a syntax
@@ -77,3 +88,15 @@ Read docs/video-architecture.md first, then README.md (video and disk sections).
 - Typing a program is slow: a 29-line program needs about 130 s before RUN output exists, so tools/vidshot.sh needs SECS of about 4.5 s per line.
   EMU71_DUMP fires at a fixed time, an early dump shows a half-typed line.
 - tools/vidshot.sh prog.bas SECS OUTPREFIX types, runs, writes OUTPREFIX.png (video layer), _lcd.png and .log (EMU71_VIDLOG).
+
+## Regression tests (tests/)
+- `python3 tests/run_tests.py [--slow] [--update] [NAME ...]` runs tests/cases/*.t through EMU71_KEYS and compares the mailbox log, the LCD dump and the
+  video layer (PNG, pixel exact) with tests/golden. Hand-written `expect_log` / `expect_nolog` regexes check the meaning independently of the goldens.
+  The fast set takes about 10 minutes (measured 4 to 10 minutes) (typing is slow, two timer ticks per key). `lex_install_lif` is slow (about 3 minutes) and only runs with --slow or by name.
+  `--update` rewrites goldens, render them with tests/show_golden.py and look before committing. Goldens were checked by eye on 2026-11-14 and the five PNGs
+  are pixel-identical to the program renders (examples/shapes, layers, labels, pixels, store) that were checked on screen first.
+- New emulator hooks for tests: EMU71_DUMPIDLE=N (dump N s after the last scripted key), EMU71_LEXROM2 (second LEX, port 4), EMU71_LEXROM=none.
+- A wake-up pause is needed after the leading ATTNs (`27,27,w1500`), at KEYMS=60 the first typed character was lost without it.
+- Weak spots: parse-error cases (err_pen_noarg, err_pen_extra, err_pen_string) only prove the line was rejected and nothing reached the device, the LCD shows the
+  kept line, not the error text. Lowercase text cannot be typed. CLIP has no observable effect yet. lorenz/sombrero are not in the suite (minutes each).
+- The LCD compare blanks any fully set 5x7 cell (the blinking block cursor), a repeat run showed state_restore.2 flaking on it. Run 2 of the suite passed 20 of 21 before that fix, state_restore passed after it. A full second pass after the fix was not repeated. lex_install_lif passed in 152 s.
