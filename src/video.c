@@ -12,12 +12,15 @@
 #include "portmem.h"
 #include <pthread.h>
 #include <math.h>
+#include <sys/stat.h>
+#include <ctype.h>
+#include <unistd.h>
 #include "video.h"
 
 /* mailbox offsets */
 enum { R0 = 0x00, R1 = 0x10, R2 = 0x20, R3 = 0x30, I0 = 0x40, I1 = 0x44, I2 = 0x48, I3 = 0x4C, DATA = 0x50,
        STAT = 0x60, ERRC = 0x61, VER = 0x62, TGT = 0x63, LEN = 0x64, LPTR = 0x66, COL = 0x6B, PAL = 0x6D, FLAGS = 0x6F, CMD = 0x7E };
-enum { E_OK = 0, E_CMD = 1, E_LAYER = 2, E_RANGE = 3, E_SCALE = 4 };
+enum { E_OK = 0, E_CMD = 1, E_LAYER = 2, E_RANGE = 3, E_SCALE = 4, E_FILE = 5 };
 
 #define NLAYERS 16
 
@@ -187,6 +190,39 @@ static void glyph(BYTE *L, int x, int y, int ch, int c)
 	for (col = 0; col < 5; ++col) for (row = 0; row < 7; ++row) if (font5x7[ch - 32][col] & (1 << row)) setpix(L, x + col, y + row, c);
 }
 
+/* GSTORE/GLOAD: files live in one sandbox folder, EMU71_VIDDIR or ~/.emu71/video. Name = up to 8 of [A-Za-z0-9_-] from DATA. */
+static int vid_path(char *out, size_t n)
+{
+	int len = get_u(LEN, 2), i; char nm[9]; const char *dir = getenv("EMU71_VIDDIR"), *home = getenv("HOME");
+	char d[512];
+	if (len < 1 || len > 8) return 0;
+	for (i = 0; i < len; ++i) { int ch = get_u(DATA + 2 * i, 2); if (!(isalnum(ch) || ch == '_' || ch == '-')) return 0; nm[i] = (char)ch; }
+	nm[len] = 0;
+	if (dir) snprintf(d, sizeof d, "%s", dir); else snprintf(d, sizeof d, "%s/.emu71", home ? home : ".");
+	mkdir(d, 0755);
+	if (!dir) { char d2[560]; snprintf(d2, sizeof d2, "%s/video", d); mkdir(d2, 0755); snprintf(d, sizeof d, "%s", d2); }
+	snprintf(out, n, "%s/%s.v71", d, nm);
+	return 1;
+}
+static int vid_store(BYTE *L)
+{
+	char path[640]; FILE *f; int hdr[3] = { 0x31375645, V->W, V->H };		/* "EV71", W, H */
+	if (!vid_path(path, sizeof path)) return E_RANGE;
+	f = fopen(path, "wb"); if (!f) return E_FILE;
+	fwrite(hdr, 4, 3, f); fwrite(V->pal, 4, 256, f); fwrite(L, 1, (size_t)V->W * V->H, f);
+	fclose(f); return E_OK;
+}
+static int vid_load(BYTE *L)
+{
+	char path[640]; FILE *f; int hdr[3]; uint32_t pal[256]; BYTE *buf; size_t n = (size_t)V->W * V->H;
+	if (!vid_path(path, sizeof path)) return E_RANGE;
+	f = fopen(path, "rb"); if (!f) return E_FILE;
+	if (fread(hdr, 4, 3, f) != 3 || hdr[0] != 0x31375645 || hdr[1] != V->W || hdr[2] != V->H || fread(pal, 4, 256, f) != 256) { fclose(f); return E_FILE; }
+	buf = (BYTE *)malloc(n);
+	if (!buf || fread(buf, 1, n, f) != n) { free(buf); fclose(f); return E_FILE; }
+	fclose(f); memcpy(L, buf, n); memcpy(V->pal, pal, sizeof pal); free(buf); V->dirty = 1; return E_OK;
+}
+
 static void reset_state(void)
 {
 	int i;
@@ -314,6 +350,24 @@ static int exec_cmd(int cmd)
 		if (!A || !B) return E_LAYER;
 		V->layer[t] = B; V->layer[o] = A; V->dirty = 1; return E_OK;
 	}
+
+	case 0x83: { double dp = real_dec(V->mb + R0), dn = real_dec(V->mb + R1), dv = real_dec(V->mb + R2); long p, n;			/* VWRITE p,n,v: n pixels from linear offset p set to v */
+		if (!L) return E_LAYER;
+		if (dp < 0 || dn < 0 || dv < 0 || dv > 255 || dp + dn > (double)V->W * V->H) return E_RANGE;
+		p = (long)dp; n = (long)dn; memset(L + p, (int)dv, (size_t)n); put_u(LPTR, 5, (int)(p + n));
+		if (L == V->layer[V->shown]) V->dirty = 1; return E_OK; }
+	case 0x84: { double dp = real_dec(V->mb + R0);													/* VREAD(p): pixel at linear offset p, returned in R0 */
+		if (!L) return E_LAYER; if (dp < 0 || dp >= (double)V->W * V->H) return E_RANGE;
+		real_enc(V->mb + R0, L[(long)dp]); return E_OK; }
+	case 0x90: { int s = (int)real_dec(V->mb + R0), dx = clampi(real_dec(V->mb + R1)), dy = clampi(real_dec(V->mb + R2)), t = real_dec(V->mb + R3) != 0, xx, yy, c;	/* GBLIT s,dx,dy,t */
+		BYTE *S;																					/* copy layer s onto the target layer shifted by dx,dy (t=1: colour 0 is transparent) */
+		if (s < 0 || s >= NLAYERS) return E_RANGE;
+		if (!L) return E_LAYER; S = layer_get(s); if (!S) return E_LAYER; if (S == L) return E_RANGE;
+		for (yy = 0; yy < V->H; ++yy) { if (yy + dy < 0 || yy + dy >= V->H) continue;
+			for (xx = 0; xx < V->W; ++xx) { if (xx + dx < 0 || xx + dx >= V->W) continue; c = S[(size_t)yy * V->W + xx]; if (t && !c) continue; setpix(L, xx + dx, yy + dy, c); } }
+		V->dirty = 1; return E_OK; }
+	case 0x91: if (!L) return E_LAYER; return vid_store(L);										/* GSTORE name */
+	case 0x92: if (!L) return E_LAYER; return vid_load(L);										/* GLOAD name */
 	case 0x80: return E_OK;																			/* LSEEK: LPTR written directly */
 	case 0x81: case 0x82: {																			/* VPOKE / VPEEK with auto-increment */
 		int p = get_u(LPTR, 5);
@@ -365,7 +419,12 @@ static VOID WriteIOVid(HANDLE h, BYTE *a, DWORD d, LPDWORD ps)
 	if (trigger) {
 		int err = exec_cmd(get_u(CMD, 2));
 		V->mb[ERRC] = err;
-		if (getenv("EMU71_VIDLOG")) fprintf(stderr, "VIDEO: cmd %02X err %d R0..R3 = %g %g %g %g\n", get_u(CMD, 2), err, real_dec(V->mb + R0), real_dec(V->mb + R1), real_dec(V->mb + R2), real_dec(V->mb + R3));
+		if (getenv("EMU71_VIDLOG")) {
+			int c = get_u(CMD, 2), k, n = get_u(LEN, 2); char tx[17] = "";
+			fprintf(stderr, "VIDEO: cmd %02X err %d R0..R3 = %g %g %g %g", c, err, real_dec(V->mb + R0), real_dec(V->mb + R1), real_dec(V->mb + R2), real_dec(V->mb + R3));
+			if (c == 0x30 || c == 0x91 || c == 0x92) { if (n > 16) n = 16; for (k = 0; k < n; ++k) { int ch = get_u(DATA + 2 * k, 2); tx[k] = (ch >= 32 && ch < 127) ? ch : '.'; } tx[n] = 0; fprintf(stderr, " len %d text [%s]", get_u(LEN, 2), tx); }
+			fprintf(stderr, "\n");
+		}
 		V->mb[STAT] = (err ? 2 : 0) | (V->visible ? 4 : 0) | (V->dirty ? 8 : 0);
 	}
 	pthread_mutex_unlock(&V->mu);

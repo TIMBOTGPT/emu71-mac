@@ -1,11 +1,12 @@
 # Handoff: Emu71 video + virtual disk (as of 2026-11-14)
 
-Repo: ~/Projects/emu71-mac (github.com/TIMBOTGPT/emu71-mac, branch main, last pushed commit c29c9b7).
+Repo: ~/Projects/emu71-mac (github.com/TIMBOTGPT/emu71-mac, branch main, last pushed commit see `git log`, video LEX commands complete as of 2026-11-14 afternoon).
 Read docs/video-architecture.md first, then README.md (video and disk sections).
 
 ## What works (tested)
 - `--vid [WxH]` video device, default 800x600, 16 indexed layers (src/video.c). LEX keywords in lex/video.asm:
-  ALPHA DRAW GCLEAR GRAPH GSHOW GTARGET MOVE PEN PLOT SCALE XAXIS YAXIS. GRAPH shows the window, ALPHA hides it.
+  ALPHA BOX CIRCLE CLIP DRAW FILL FRAME GBLIT GCLEAR GLABEL GLOAD GNEW GPOP GPUSH GRAPH GRID GROLL GSHOW GSTORE GTARGET MOVE PEN PLOT POLY
+  SCALE VREAD() VWRITE XAXIS YAXIS (semantics in README). GRAPH shows the window, ALPHA hides it.
   `--vid` builds and loads the LEX itself (uncommitted change, see below).
 - Virtual HP-IL disk: `--disk IMAGE` starts tools/il_disk.py (AMIGO drive, device `:TAPE`, not `:DISK`) and tools/lifimg.py
   makes and edits the LIF image. F5 = open dialog (macOS osascript), puts the .bas on the image and drives the 71 through
@@ -54,8 +55,25 @@ Read docs/video-architecture.md first, then README.md (video and disk sections).
    ERR:Excessive Chars for too many) and later statements still work. Device range errors (GTARGET 99, PEN 300) were silent because XQ in
    lex/video.asm never read the result (confirmed). FIXED and committed in c29c9b7 (CHK, see above).
    Test harness note: after a syntax error the 71 keeps the line in its buffer, so send ATTN twice (27,27) between key-script lines.
-3. Remaining mailbox commands: GLABEL (string arg), CLIP, BOX, CIRCLE, POLY, GRID, FRAME, layer stack ops
-   (GNEW/GPUSH/GPOP/GROLL), VWRITE/VREAD, GBLIT, GSTORE/GLOAD.
+3. DONE 2026-11-14: all mailbox commands have keywords and were checked on screen (examples/shapes.bas, layers.bas, labels.bas, pixels.bas,
+   store.bas). Error paths checked on screen: PEN 300, GSHOW 20, GPOP on an empty stack, GROLL 1, GLOAD of a missing file, GSTORE with a
+   name over 8 chars, VREAD(500000) all give ERR:Invalid Arg. LIST decompile checked for GSTORE "AB" and X=VREAD(5)+1.
+   Not covered: CLIP has no visible effect because there is no LIMIT keyword yet (host command 0x11 takes I0..I3, not REALs). Lowercase
+   GLABEL text cannot be typed through tools/keys.py (it uppercases), so the lowercase glyphs are unchecked. FILL is an addition (BOX, CIRCLE
+   and POLY need a fill switch and the mailbox only has four REAL slots). LDIR/CSIZE/LORG, COLORMAP and WHERE have host commands but no keyword.
 4. Still untested: keyword clashes with other LEX files (PEN, MOVE, DRAW, SCALE, XAXIS, YAXIS, ALPHA), state save/restore with the LEX mounted,
    installing the LEX from a LIF file instead of the ROM hook. (Error paths and LIST/decompile are done, see item 2.)
 5. Tests with the EMU71_KEYS harness (deliverable 5). Optional: tools/run_disk.sh hardcodes EMU71_KEYMS=60, make it overridable.
+
+## LEX authoring notes learned 2026-11-14 (afternoon)
+- asm71 needs KEY names in alphabetical order with ascending tokens, or the OS silently does not recognise the late keywords (FILL gave a syntax
+  error, BOX gave Excess Chars). Regenerate the ENTRY/KEY tables from the KEY names, tokens 1..N follow the sorted order (they were renumbered, which
+  only matters for tokenized programs in saved state, .bas files are text).
+- GONC/GOYES reach about 127 nibbles. Far jumps to NOVID failed with "Jump or value too large", so the new code has inline error stubs.
+- String arguments: EXPEXC then REVPOP (POP1S returns the text reversed, seen as "DLROW OL"). A(A) = length in nibbles, D1 = first character.
+  Parse is `P=0 / GOVLNG =STRNGP`, decompile reuses FIXDC. GLABEL sends 8 characters per command (#34 starts at the pen, #30 per chunk).
+- Numeric function (VREAD): `NIBHEX 8` / `NIBHEX 11` (one numeric parameter, min 1 max 1) before the entry, CHAR #F, POP1N gives the REAL in A
+  (DEC mode, so SETHEX at once), save D0/D1, result REAL read back from mailbox R0, restore D0/D1, GOVLNG =FNRTN4.
+- Typing a program is slow: a 29-line program needs about 130 s before RUN output exists, so tools/vidshot.sh needs SECS of about 4.5 s per line.
+  EMU71_DUMP fires at a fixed time, an early dump shows a half-typed line.
+- tools/vidshot.sh prog.bas SECS OUTPREFIX types, runs, writes OUTPREFIX.png (video layer), _lcd.png and .log (EMU71_VIDLOG).

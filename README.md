@@ -66,7 +66,13 @@ redistributed here. `KBD-US.KMI` is his keyboard script.
 ## External video and virtual disk (experimental)
 
 `--vid [WxH]` adds a separate video window (default 800x600, 16 indexed layers) driven by a mailbox device and a LEX
-(`lex/video.asm`): ALPHA DRAW GCLEAR GRAPH GSHOW GTARGET MOVE PEN PLOT SCALE XAXIS YAXIS.
+(`lex/video.asm`): ALPHA BOX CIRCLE CLIP DRAW FILL FRAME GBLIT GCLEAR GLABEL GLOAD GNEW GPOP GPUSH GRAPH GRID GROLL GSHOW GSTORE
+GTARGET MOVE PEN PLOT POLY SCALE VREAD() VWRITE XAXIS YAXIS. Semantics: FILL 0/1 switches BOX, CIRCLE, POLY between outline and fill.
+POLY x,y,m (m: 0 start, 1 vertex, 2 last vertex and close). GRID x0,y0,xt,yt. CIRCLE radius is in x-scale units. GNEW n clears layer n,
+GPUSH n / GPOP save and restore the target, GROLL n rotates layers 0..n-1 (layer i takes layer i+1). GBLIT s,dx,dy,t copies layer s onto
+the target shifted by dx,dy pixels (t=1: colour 0 transparent). VWRITE p,n,v sets n pixels from linear offset p to v, VREAD(p) returns one.
+GLABEL "text" draws 5x7 text at the pen. GSTORE/GLOAD "NAME" (up to 8 of A-Z 0-9 _ -) save and load the target layer with its palette
+under `~/.emu71/video/` (override with EMU71_VIDDIR).
 `GRAPH` shows the window, `ALPHA` hides it, `GTARGET n` picks the layer to draw on and `GSHOW n` the one displayed.
 Details are in `docs/video-architecture.md`. For development, `EMU71_LEXROM=/tmp/video.rom` loads the LEX
 (`tools/mklexrom.py lex/video.lex /tmp/video.rom`).

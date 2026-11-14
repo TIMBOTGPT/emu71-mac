@@ -22,7 +22,13 @@
        CHAR   #D
        ENTRY  FRAME
        CHAR   #D
+       ENTRY  GBLIT
+       CHAR   #D
        ENTRY  GCLEAR
+       CHAR   #D
+       ENTRY  GLABEL
+       CHAR   #D
+       ENTRY  GLOAD
        CHAR   #D
        ENTRY  GNEW
        CHAR   #D
@@ -38,6 +44,8 @@
        CHAR   #D
        ENTRY  GSHOW
        CHAR   #D
+       ENTRY  GSTORE
+       CHAR   #D
        ENTRY  GTARGET
        CHAR   #D
        ENTRY  MOVE
@@ -49,6 +57,10 @@
        ENTRY  POLY
        CHAR   #D
        ENTRY  SCALE
+       CHAR   #D
+       ENTRY  VREAD
+       CHAR   #F
+       ENTRY  VWRITE
        CHAR   #D
        ENTRY  XAXIS
        CHAR   #D
@@ -69,38 +81,50 @@
        TOKEN  6
        KEY    'FRAME'
        TOKEN  7
-       KEY    'GCLEAR'
+       KEY    'GBLIT'
        TOKEN  8
-       KEY    'GNEW'
+       KEY    'GCLEAR'
        TOKEN  9
-       KEY    'GPOP'
+       KEY    'GLABEL'
        TOKEN  10
-       KEY    'GPUSH'
+       KEY    'GLOAD'
        TOKEN  11
-       KEY    'GRAPH'
+       KEY    'GNEW'
        TOKEN  12
-       KEY    'GRID'
+       KEY    'GPOP'
        TOKEN  13
-       KEY    'GROLL'
+       KEY    'GPUSH'
        TOKEN  14
-       KEY    'GSHOW'
+       KEY    'GRAPH'
        TOKEN  15
-       KEY    'GTARGET'
+       KEY    'GRID'
        TOKEN  16
-       KEY    'MOVE'
+       KEY    'GROLL'
        TOKEN  17
-       KEY    'PEN'
+       KEY    'GSHOW'
        TOKEN  18
-       KEY    'PLOT'
+       KEY    'GSTORE'
        TOKEN  19
-       KEY    'POLY'
+       KEY    'GTARGET'
        TOKEN  20
-       KEY    'SCALE'
+       KEY    'MOVE'
        TOKEN  21
-       KEY    'XAXIS'
+       KEY    'PEN'
        TOKEN  22
-       KEY    'YAXIS'
+       KEY    'PLOT'
        TOKEN  23
+       KEY    'POLY'
+       TOKEN  24
+       KEY    'SCALE'
+       TOKEN  25
+       KEY    'VREAD'
+       TOKEN  26
+       KEY    'VWRITE'
+       TOKEN  27
+       KEY    'XAXIS'
+       TOKEN  28
+       KEY    'YAXIS'
+       TOKEN  29
        ENDTXT
 *
 *      Find the video mailbox (MMIO class 5) in the configuration buffer.
@@ -249,6 +273,14 @@ GPOP   LC(2)  #74
        REL(5) A1p
 GROLL  LC(4)  #1176
        GOTO   XQ
+       REL(5) A3d
+       REL(5) A3p
+VWRITE LC(4)  #3383
+       GOTO   XQ
+       REL(5) A4d
+       REL(5) A4p
+GBLIT  LC(4)  #4490
+       GOTO   XQ
 *
 *      No-argument statement: C(1:0) = command.
 *
@@ -320,6 +352,172 @@ XQ30   A=DAT1 W
        C=R3
        DAT0=C B
        GOTO   CHK
+*
+*      String-argument statements.  The OS evaluates the string (EXPEXC), POP1S leaves A(A) = length in
+*      nibbles and D1 = first character.  Text goes into the mailbox DATA field, 8 characters per command.
+*
+SPd    GOVLNG =FIXDC
+SPp    P=     0
+       GOVLNG =STRNGP
+*
+*      GLABEL string: command #34 starts the label at the pen position, then #30 for each chunk of 8 characters.
+*
+       REL(5) SPd
+       REL(5) SPp
+GLABEL SETHEX
+       GOSBVL =EXPEXC
+       GOSBVL =REVPOP
+       R3=A
+       CD1EX
+       R2=C
+       GOSUB  FINDV
+       GOC    FVK0
+       LC(4)  #000B
+       GOVLNG =BSERR
+FVK0
+       R4=A
+       LC(2)  #34
+       GOSUB  SENDR4
+GL10   C=R3
+       ?C=0   A
+       GOYES  GL90
+       A=C    A
+       LC(5)  16
+       ?A<=C  A
+       GOYES  GL20
+       A=C    A
+GL20   B=A    A
+       A=R4
+       LC(5)  #50
+       A=A+C  A
+       D0=A
+       C=R2
+       D1=C
+       A=DAT1 W
+       DAT0=A W
+       A=R4
+       LC(5)  #64
+       A=A+C  A
+       D0=A
+       C=0    W
+       C=B    A
+       CSRB
+       DAT0=C B
+       LC(2)  #30
+       GOSUB  SENDR4
+       C=R2
+       C=C+B  A
+       R2=C
+       C=R3
+       C=C-B  A
+       R3=C
+       GOTO   GL10
+GL90   GOVLNG =NXTSTM
+*
+*      GSTORE name / GLOAD name: file name (up to 8 characters) in DATA, length in LEN (the host rejects > 8).
+*
+       REL(5) SPd
+       REL(5) SPp
+GSTORE LC(2)  #91
+       GOTO   FILEQ
+       REL(5) SPd
+       REL(5) SPp
+GLOAD  LC(2)  #92
+FILEQ  SETHEX
+       D1=(5) =STMTR0
+       DAT1=C A
+       GOSBVL =EXPEXC
+       GOSBVL =REVPOP
+       R3=A
+       CD1EX
+       R2=C
+       GOSUB  FINDV
+       GOC    FVK1
+       LC(4)  #000B
+       GOVLNG =BSERR
+FVK1
+       R4=A
+       LC(5)  #50
+       A=A+C  A
+       D0=A
+       C=R2
+       D1=C
+       A=DAT1 W
+       DAT0=A W
+       A=R4
+       LC(5)  #64
+       A=A+C  A
+       D0=A
+       A=R3
+       C=0    W
+       C=A    A
+       CSRB
+       A=C    A
+       LC(5)  255
+       ?A<=C  A
+       GOYES  FQ10
+       A=C    A
+FQ10   C=A    A
+       DAT0=C B
+       D1=(5) =STMTR0
+       C=DAT1 A
+       GOSUB  SENDR4
+       GOVLNG =NXTSTM
+*
+*      VREAD(p): numeric function.  The REAL argument goes to mailbox R0, command #84 returns the pixel in R0.
+*
+       NIBHEX 8
+       NIBHEX 11
+VREAD  GOSBVL =POP1N
+       SETHEX
+       R3=A
+       CD0EX
+       R1=C
+       CD1EX
+       R2=C
+       GOSUB  FINDV
+       GOC    FVK2
+       LC(4)  #000B
+       GOVLNG =BSERR
+FVK2
+       R4=A
+       D0=A
+       C=R3
+       DAT0=C W
+       LC(2)  #84
+       GOSUB  SENDR4
+       C=R4
+       D0=C
+       C=DAT0 W
+       A=R1
+       D0=A
+       A=R2
+       D1=A
+       GOVLNG =FNRTN4
+*
+*      Write command C(1:0) to the mailbox whose base is in R4, then check the device result code.
+*
+SENDR4 P=     0
+       D=C    A
+       A=R4
+       LC(5)  #7E
+       A=A+C  A
+       D0=A
+       C=D    A
+       DAT0=C B
+ERRCK  A=R4
+       LC(5)  #61
+       A=A+C  A
+       D0=A
+       A=0    A
+       A=DAT0 P
+       ?A=0   P
+       RTNYES
+       LC(1)  2
+       ?A=C   P
+       GOYES  CKMEM
+       LC(4)  #000B
+       GOVLNG =BSERR
 *
 *      Read the device result code (mailbox ERRC, nibble #61) after a command.
 *      Entry: A(A) = mailbox base + #7E (the command address just written).
