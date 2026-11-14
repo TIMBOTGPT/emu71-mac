@@ -10,11 +10,23 @@
 *
        ENTRY  ALPHA
        CHAR   #D
+       ENTRY  BOX
+       CHAR   #D
+       ENTRY  CIRCLE
+       CHAR   #D
+       ENTRY  CLIP
+       CHAR   #D
        ENTRY  DRAW
+       CHAR   #D
+       ENTRY  FILL
+       CHAR   #D
+       ENTRY  FRAME
        CHAR   #D
        ENTRY  GCLEAR
        CHAR   #D
        ENTRY  GRAPH
+       CHAR   #D
+       ENTRY  GRID
        CHAR   #D
        ENTRY  GSHOW
        CHAR   #D
@@ -26,6 +38,8 @@
        CHAR   #D
        ENTRY  PLOT
        CHAR   #D
+       ENTRY  POLY
+       CHAR   #D
        ENTRY  SCALE
        CHAR   #D
        ENTRY  XAXIS
@@ -35,28 +49,42 @@
 *
        KEY    'ALPHA'
        TOKEN  1
-       KEY    'DRAW'
+       KEY    'BOX'
        TOKEN  2
-       KEY    'GCLEAR'
+       KEY    'CIRCLE'
        TOKEN  3
-       KEY    'GRAPH'
+       KEY    'CLIP'
        TOKEN  4
-       KEY    'GSHOW'
+       KEY    'DRAW'
        TOKEN  5
-       KEY    'GTARGET'
+       KEY    'FILL'
        TOKEN  6
-       KEY    'MOVE'
+       KEY    'FRAME'
        TOKEN  7
-       KEY    'PEN'
+       KEY    'GCLEAR'
        TOKEN  8
-       KEY    'PLOT'
+       KEY    'GRAPH'
        TOKEN  9
-       KEY    'SCALE'
+       KEY    'GRID'
        TOKEN  10
-       KEY    'XAXIS'
+       KEY    'GSHOW'
        TOKEN  11
-       KEY    'YAXIS'
+       KEY    'GTARGET'
        TOKEN  12
+       KEY    'MOVE'
+       TOKEN  13
+       KEY    'PEN'
+       TOKEN  14
+       KEY    'PLOT'
+       TOKEN  15
+       KEY    'POLY'
+       TOKEN  16
+       KEY    'SCALE'
+       TOKEN  17
+       KEY    'XAXIS'
+       TOKEN  18
+       KEY    'YAXIS'
+       TOKEN  19
        ENDTXT
 *
 *      Find the video mailbox (MMIO class 5) in the configuration buffer.
@@ -160,6 +188,34 @@ XAXIS  LC(4)  #4440
        REL(5) A4d
        REL(5) A4p
 YAXIS  LC(4)  #4441
+       GOTO   XQ
+       REL(5) A4d
+       REL(5) A4p
+BOX    LC(4)  #4420
+       GOTO   XQ
+       REL(5) A3d
+       REL(5) A3p
+CIRCLE LC(4)  #3321
+       GOTO   XQ
+       REL(5) A1d
+       REL(5) A1p
+CLIP   LC(4)  #1112
+       GOTO   XQ
+       REL(5) A1d
+       REL(5) A1p
+FILL   LC(4)  #1119
+       GOTO   XQ
+       REL(5) NAd
+       REL(5) NAp
+FRAME  LC(2)  #43
+       GOTO   NOARG
+       REL(5) A4d
+       REL(5) A4p
+GRID   LC(4)  #4442
+       GOTO   XQ
+       REL(5) A3d
+       REL(5) A3p
+POLY   LC(4)  #3322
        GOTO   XQ
 *
 *      No-argument statement: C(1:0) = command.

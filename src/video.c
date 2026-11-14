@@ -32,6 +32,8 @@ typedef struct {
 	int    lx0, ly0, lx1, ly1;		/* pixel limit rectangle, inclusive, origin top-left */
 	double penx, peny;
 	int    pendown, color;
+	int    fill, clip, lbx, lby, npoly, sp, stk[NLAYERS], lblen;
+	int    polyx[256], polyy[256];
 	uint32_t pal[256];
 	int    visible, dirty;
 	pthread_mutex_t mu;
@@ -90,7 +92,8 @@ static BYTE *layer_get(int n)
 }
 static void setpix(BYTE *L, int x, int y, int c)
 {
-	if (x < V->lx0 || x > V->lx1 || y < V->ly0 || y > V->ly1) return;
+	if (V->clip) { if (x < V->lx0 || x > V->lx1 || y < V->ly0 || y > V->ly1) return; }
+	else if (x < 0 || x >= V->W || y < 0 || y >= V->H) return;
 	L[(size_t)y * V->W + x] = (BYTE)c;
 	if (L == V->layer[V->shown]) V->dirty = 1;
 }
@@ -109,12 +112,88 @@ static void line(BYTE *L, int x0, int y0, int x1, int y1, int c)
 	}
 }
 
+
+static const unsigned char font5x7[95][5] = {
+{0x00,0x00,0x00,0x00,0x00},{0x00,0x00,0x5F,0x00,0x00},{0x00,0x07,0x00,0x07,0x00},{0x14,0x7F,0x14,0x7F,0x14},
+{0x24,0x2A,0x7F,0x2A,0x12},{0x23,0x13,0x08,0x64,0x62},{0x36,0x49,0x56,0x20,0x50},{0x00,0x05,0x03,0x00,0x00},
+{0x00,0x1C,0x22,0x41,0x00},{0x00,0x41,0x22,0x1C,0x00},{0x2A,0x1C,0x7F,0x1C,0x2A},{0x08,0x08,0x3E,0x08,0x08},
+{0x00,0x50,0x30,0x00,0x00},{0x08,0x08,0x08,0x08,0x08},{0x00,0x60,0x60,0x00,0x00},{0x20,0x10,0x08,0x04,0x02},
+{0x3E,0x51,0x49,0x45,0x3E},{0x00,0x42,0x7F,0x40,0x00},{0x42,0x61,0x51,0x49,0x46},{0x21,0x41,0x45,0x4B,0x31},
+{0x18,0x14,0x12,0x7F,0x10},{0x27,0x45,0x45,0x45,0x39},{0x3C,0x4A,0x49,0x49,0x30},{0x01,0x71,0x09,0x05,0x03},
+{0x36,0x49,0x49,0x49,0x36},{0x06,0x49,0x49,0x29,0x1E},{0x00,0x36,0x36,0x00,0x00},{0x00,0x56,0x36,0x00,0x00},
+{0x08,0x14,0x22,0x41,0x00},{0x14,0x14,0x14,0x14,0x14},{0x00,0x41,0x22,0x14,0x08},{0x02,0x01,0x51,0x09,0x06},
+{0x32,0x49,0x79,0x41,0x3E},{0x7E,0x11,0x11,0x11,0x7E},{0x7F,0x49,0x49,0x49,0x36},{0x3E,0x41,0x41,0x41,0x22},
+{0x7F,0x41,0x41,0x22,0x1C},{0x7F,0x49,0x49,0x49,0x41},{0x7F,0x09,0x09,0x09,0x01},{0x3E,0x41,0x49,0x49,0x7A},
+{0x7F,0x08,0x08,0x08,0x7F},{0x00,0x41,0x7F,0x41,0x00},{0x20,0x40,0x41,0x3F,0x01},{0x7F,0x08,0x14,0x22,0x41},
+{0x7F,0x40,0x40,0x40,0x40},{0x7F,0x02,0x0C,0x02,0x7F},{0x7F,0x04,0x08,0x10,0x7F},{0x3E,0x41,0x41,0x41,0x3E},
+{0x7F,0x09,0x09,0x09,0x06},{0x3E,0x41,0x51,0x21,0x5E},{0x7F,0x09,0x19,0x29,0x46},{0x46,0x49,0x49,0x49,0x31},
+{0x01,0x01,0x7F,0x01,0x01},{0x3F,0x40,0x40,0x40,0x3F},{0x1F,0x20,0x40,0x20,0x1F},{0x3F,0x40,0x38,0x40,0x3F},
+{0x63,0x14,0x08,0x14,0x63},{0x07,0x08,0x70,0x08,0x07},{0x61,0x51,0x49,0x45,0x43},{0x00,0x7F,0x41,0x41,0x00},
+{0x02,0x04,0x08,0x10,0x20},{0x00,0x41,0x41,0x7F,0x00},{0x04,0x02,0x01,0x02,0x04},{0x40,0x40,0x40,0x40,0x40},
+{0x00,0x01,0x02,0x04,0x00},{0x20,0x54,0x54,0x54,0x78},{0x7F,0x48,0x44,0x44,0x38},{0x38,0x44,0x44,0x44,0x20},
+{0x38,0x44,0x44,0x48,0x7F},{0x38,0x54,0x54,0x54,0x18},{0x08,0x7E,0x09,0x01,0x02},{0x0C,0x52,0x52,0x52,0x3E},
+{0x7F,0x08,0x04,0x04,0x78},{0x00,0x44,0x7D,0x40,0x00},{0x20,0x40,0x44,0x3D,0x00},{0x7F,0x10,0x28,0x44,0x00},
+{0x00,0x41,0x7F,0x40,0x00},{0x7C,0x04,0x18,0x04,0x78},{0x7C,0x08,0x04,0x04,0x78},{0x38,0x44,0x44,0x44,0x38},
+{0x7C,0x14,0x14,0x14,0x08},{0x08,0x14,0x14,0x18,0x7C},{0x7C,0x08,0x04,0x04,0x08},{0x48,0x54,0x54,0x54,0x20},
+{0x04,0x3F,0x44,0x40,0x20},{0x3C,0x40,0x40,0x20,0x7C},{0x1C,0x20,0x40,0x20,0x1C},{0x3C,0x40,0x30,0x40,0x3C},
+{0x44,0x28,0x10,0x28,0x44},{0x0C,0x50,0x50,0x50,0x3C},{0x44,0x64,0x54,0x4C,0x44},{0x00,0x08,0x36,0x41,0x00},
+{0x00,0x00,0x7F,0x00,0x00},{0x00,0x41,0x36,0x08,0x00},{0x08,0x04,0x08,0x10,0x08}
+};
+
+static void hline(BYTE *L, int x0, int x1, int y, int c) { int x; if (x0 > x1) { x = x0; x0 = x1; x1 = x; } if (x1 - x0 > 20000) return; for (x = x0; x <= x1; ++x) setpix(L, x, y, c); }
+static void boxpx(BYTE *L, int x0, int y0, int x1, int y1, int fill, int c)
+{
+	int y, t;
+	if (x0 > x1) { t = x0; x0 = x1; x1 = t; }
+	if (y0 > y1) { t = y0; y0 = y1; y1 = t; }
+	if (fill) { for (y = y0; y <= y1; ++y) { if (y < -1 || y > V->H) continue; hline(L, x0, x1, y, c); } }
+	else { line(L, x0, y0, x1, y0, c); line(L, x1, y0, x1, y1, c); line(L, x1, y1, x0, y1, c); line(L, x0, y1, x0, y0, c); }
+}
+static void circlepx(BYTE *L, int cx, int cy, int r, int fill, int c)
+{
+	int x = r, y = 0, err = 1 - r;
+	if (r < 0 || r > 20000) return;
+	while (x >= y) {
+		if (fill) { hline(L, cx - x, cx + x, cy + y, c); hline(L, cx - x, cx + x, cy - y, c); hline(L, cx - y, cx + y, cy + x, c); hline(L, cx - y, cx + y, cy - x, c); }
+		else { setpix(L, cx + x, cy + y, c); setpix(L, cx - x, cy + y, c); setpix(L, cx + x, cy - y, c); setpix(L, cx - x, cy - y, c);
+		       setpix(L, cx + y, cy + x, c); setpix(L, cx - y, cy + x, c); setpix(L, cx + y, cy - x, c); setpix(L, cx - y, cy - x, c); }
+		++y;
+		if (err < 0) err += 2 * y + 1; else { --x; err += 2 * (y - x) + 1; }
+	}
+}
+static void polypx(BYTE *L, int fill, int c)
+{
+	int n = V->npoly, i, j, y, ymin = 1 << 30, ymax = -(1 << 30), xs[256], k, t;
+	if (n < 2) return;
+	if (!fill) { for (i = 0; i < n; ++i) { j = (i + 1) % n; line(L, V->polyx[i], V->polyy[i], V->polyx[j], V->polyy[j], c); } return; }
+	for (i = 0; i < n; ++i) { if (V->polyy[i] < ymin) ymin = V->polyy[i]; if (V->polyy[i] > ymax) ymax = V->polyy[i]; }
+	if (ymin < 0) ymin = 0;
+	if (ymax >= V->H) ymax = V->H - 1;
+	for (y = ymin; y <= ymax; ++y) {
+		k = 0;
+		for (i = 0; i < n; ++i) {
+			int x0 = V->polyx[i], y0 = V->polyy[i], x1 = V->polyx[(i + 1) % n], y1 = V->polyy[(i + 1) % n];
+			if ((y0 <= y && y1 > y) || (y1 <= y && y0 > y)) xs[k++] = x0 + (int)floor((double)(y - y0) * (x1 - x0) / (y1 - y0) + 0.5);
+		}
+		for (i = 1; i < k; ++i) { t = xs[i]; for (j = i - 1; j >= 0 && xs[j] > t; --j) xs[j + 1] = xs[j]; xs[j + 1] = t; }
+		for (i = 0; i + 1 < k; i += 2) hline(L, xs[i], xs[i + 1], y, c);
+	}
+	for (i = 0; i < n; ++i) { j = (i + 1) % n; line(L, V->polyx[i], V->polyy[i], V->polyx[j], V->polyy[j], c); }
+}
+static void glyph(BYTE *L, int x, int y, int ch, int c)
+{
+	int col, row;
+	if (ch < 32 || ch > 126) ch = '?';
+	for (col = 0; col < 5; ++col) for (row = 0; row < 7; ++row) if (font5x7[ch - 32][col] & (1 << row)) setpix(L, x + col, y + row, c);
+}
+
 static void reset_state(void)
 {
 	int i;
 	V->xmin = 0; V->xmax = V->W - 1; V->ymin = 0; V->ymax = V->H - 1;
 	V->lx0 = 0; V->ly0 = 0; V->lx1 = V->W - 1; V->ly1 = V->H - 1;
 	V->penx = V->peny = 0; V->pendown = 1; V->color = 1; V->shown = 0;
+	V->fill = 0; V->clip = 1; V->npoly = 0; V->sp = 0;
 	for (i = 0; i < NLAYERS; ++i) if (V->layer[i]) memset(V->layer[i], 0, (size_t)V->W * V->H);
 	for (i = 0; i < 256; ++i) {
 		static const uint32_t base[8] = { 0x000000, 0xFFFFFF, 0xFF3030, 0x30FF30, 0x3050FF, 0xFFFF30, 0x30FFFF, 0xFF30FF };
@@ -179,6 +258,42 @@ static int exec_cmd(int cmd)
 		}
 		V->dirty = 1; return E_OK;
 	}
+
+	case 0x12: V->clip = real_dec(V->mb + R0) != 0; return E_OK;										/* CLIP n */
+	case 0x19: V->fill = real_dec(V->mb + R0) != 0; return E_OK;										/* FILL n */
+	case 0x20: if (!L) return E_LAYER;																/* BOX x0,x1,y0,y1 */
+		boxpx(L, wx2px(real_dec(V->mb + R0)), wy2py(real_dec(V->mb + R2)), wx2px(real_dec(V->mb + R1)), wy2py(real_dec(V->mb + R3)), V->fill, V->color);
+		V->dirty = 1; return E_OK;
+	case 0x21: { double r = real_dec(V->mb + R2); int rp;												/* CIRCLE x,y,r */
+		if (!L) return E_LAYER; if (r < 0) return E_RANGE;
+		rp = clampi(r / (V->xmax - V->xmin) * (V->lx1 - V->lx0));
+		circlepx(L, wx2px(real_dec(V->mb + R0)), wy2py(real_dec(V->mb + R1)), rp, V->fill, V->color); V->dirty = 1; return E_OK; }
+	case 0x22: { int m = (int)real_dec(V->mb + R2);													/* POLY x,y,m: 0 begin, 1 vertex, 2 vertex and close */
+		if (!L) return E_LAYER; if (m < 0 || m > 2) return E_RANGE;
+		if (m == 0) V->npoly = 0;
+		if (V->npoly >= 256) return E_RANGE;
+		V->polyx[V->npoly] = wx2px(real_dec(V->mb + R0)); V->polyy[V->npoly] = wy2py(real_dec(V->mb + R1)); ++V->npoly;
+		if (m == 2) { polypx(L, V->fill, V->color); V->npoly = 0; V->dirty = 1; }
+		return E_OK; }
+	case 0x42: { double x0 = real_dec(V->mb + R0), y0 = real_dec(V->mb + R1), xt = real_dec(V->mb + R2), yt = real_dec(V->mb + R3), t;	/* GRID x0,y0,xt,yt */
+		if (!L) return E_LAYER; if (xt <= 0 || yt <= 0 || (V->xmax - V->xmin) / xt > 2000 || (V->ymax - V->ymin) / yt > 2000) return E_RANGE;
+		for (t = x0 + ceil((V->xmin - x0) / xt) * xt; t <= V->xmax + xt * 1e-9; t += xt) line(L, wx2px(t), V->ly0, wx2px(t), V->ly1, V->color);
+		for (t = y0 + ceil((V->ymin - y0) / yt) * yt; t <= V->ymax + yt * 1e-9; t += yt) line(L, V->lx0, wy2py(t), V->lx1, wy2py(t), V->color);
+		V->dirty = 1; return E_OK; }
+	case 0x43: if (!L) return E_LAYER; boxpx(L, V->lx0, V->ly0, V->lx1, V->ly1, 0, V->color); V->dirty = 1; return E_OK;	/* FRAME */
+	case 0x70: x = (int)real_dec(V->mb + R0); if (x < 0 || x >= NLAYERS) return E_RANGE;					/* GNEW n: allocate and clear */
+		if (!layer_get(x)) return E_LAYER; memset(V->layer[x], 0, (size_t)V->W * V->H); V->dirty = 1; return E_OK;
+	case 0x73: x = (int)real_dec(V->mb + R0); if (x < 0 || x >= NLAYERS || V->sp >= NLAYERS) return E_RANGE;	/* GPUSH n: push target, target = n */
+		if (!layer_get(x)) return E_LAYER; V->stk[V->sp++] = get_u(TGT, 1); put_u(TGT, 1, x); return E_OK;
+	case 0x74: if (V->sp <= 0) return E_RANGE; put_u(TGT, 1, V->stk[--V->sp]); return E_OK;					/* GPOP */
+	case 0x76: { int n = (int)real_dec(V->mb + R0), i; BYTE *f;											/* GROLL n: layer i <- layer i+1, layer n-1 <- old layer 0 */
+		if (n < 2 || n > NLAYERS) return E_RANGE;
+		f = V->layer[0]; for (i = 0; i < n - 1; ++i) V->layer[i] = V->layer[i + 1]; V->layer[n - 1] = f; V->dirty = 1; return E_OK; }
+	case 0x34: V->lbx = wx2px(V->penx); V->lby = wy2py(V->peny); return E_OK;							/* GLABEL begin: cursor = pen position */
+	case 0x30: { int n = get_u(LEN, 2), i;																/* GLABEL chunk: n chars from DATA, drawn at the cursor */
+		if (!L) return E_LAYER; if (n < 0 || n > 8) return E_RANGE;
+		for (i = 0; i < n; ++i) { glyph(L, V->lbx, V->lby, get_u(DATA + 2 * i, 2), V->color); V->lbx += 6; }
+		V->dirty = 1; return E_OK; }
 	case 0x18: real_enc(V->mb + R0, V->penx); real_enc(V->mb + R1, V->peny); return E_OK;	/* WHERE */
 	case 0x50: if (!L) return E_LAYER; x = get_s16(I0); y = get_s16(I1);							/* PGET */
 		if (x < 0 || y < 0 || x >= V->W || y >= V->H) return E_RANGE;
