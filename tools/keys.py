@@ -3,7 +3,7 @@
 usage: keys.py 'SCALE -3.14,3.14,-1,1' 'GRAPH' ..."""
 import sys
 vk = {' ': 32, '.': 190, ',': 188, '-': 189, '=': 187, '/': 191, ';': 186}
-shifted = {'(': 57, ')': 48, '*': 56, '+': 187, '"': 222, ':': 186, '@': 50}
+shifted = {'(': 57, ')': 48, '*': 56, '+': 187, '"': 222, ':': 186, '@': 50, '$': 52}
 out = [27, 27]
 for line in sys.argv[1:]:
     if line.startswith('~'):                      # '~N' = N harmless shift taps (about 0.3 s each at 150 ms)

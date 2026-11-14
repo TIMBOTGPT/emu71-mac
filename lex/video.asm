@@ -172,7 +172,7 @@ NOARG  R3=C
        D0=A
        C=R3
        DAT0=C B
-       GOVLNG =NXTSTM
+       GOTO   CHK
 NOVID  LC(4)  #000B
        GOVLNG =BSERR
 *
@@ -231,7 +231,28 @@ XQ30   A=DAT1 W
        D0=A
        C=R3
        DAT0=C B
-       GOVLNG =NXTSTM
+       GOTO   CHK
+*
+*      Read the device result code (mailbox ERRC, nibble #61) after a command.
+*      Entry: A(A) = mailbox base + #7E (the command address just written).
+*      0 = ok.  2 (no such layer) -> Insufficient Memory (#0018), anything else -> Invalid Arg (#000B).
+*
+CHK    P=     0
+       LC(5)  #1D
+       A=A-C  A
+       D0=A
+       A=0    A
+       A=DAT0 P
+       ?A=0   P
+       GOYES  CK90
+       LC(1)  2
+       ?A=C   P
+       GOYES  CKMEM
+       LC(4)  #000B
+       GOVLNG =BSERR
+CKMEM  LC(4)  #0018
+       GOVLNG =BSERR
+CK90   GOVLNG =NXTSTM
 *
 *      Parse routines: n numeric arguments separated by commas.
 *

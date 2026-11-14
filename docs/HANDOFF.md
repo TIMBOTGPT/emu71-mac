@@ -43,7 +43,8 @@ Read docs/video-architecture.md first, then README.md (video and disk sections).
   garbles the next line (annunciator `f` lit). (2) After a rejected line the 71 keeps the text in its buffer, so send ATTN twice (27,27) after each line, e.g.
   `| sed 's/,13,/,13,27,27,w600,/g'`, but NOT after the final RUN line, ATTN there suspends the program (annunciator SUSP). (3) `$` has no mapping in keys.py
   and the shell expands `$(`, so avoid string functions in scripted lines. (4) Wait about 90 s for a run, 150 ms per key (EMU71_KEYMS=150).
-- Error numbers (ERRN) measured in the emulator: 24 Insufficient Memory, 30 Stmt Not Found. SQR(-1) and FIX 20 raise no error on the 71.
+- Error numbers (ERRN) measured in the emulator: 24 Insufficient Memory, 30 Stmt Not Found, 11 Invalid Arg, 1..4 are math warnings (underflow, exponent(0), TAN=Inf).
+- Video LEX now raises a real 71 error after each command (CHK in lex/video.asm): device err 2 (no such layer) -> Insufficient Memory (24), other nonzero -> Invalid Arg (11). Verified on screen for GTARGET 99 and SCALE 5,5,5,5. SQR(-1) and FIX 20 raise no error on the 71.
 - Load log: /tmp/*.log from `EMU71_VIDLOG=1 tools/run_disk.sh` shows which video commands arrived; disk load takes about 90 s before RUN output appears.
 
 ## Still to do
