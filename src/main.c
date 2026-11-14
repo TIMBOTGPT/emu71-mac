@@ -561,7 +561,7 @@ static void kq_line(const char *t, int waitMs)
 		else if (ch == '@') { vk = 50; sh = 1; }
 		snprintf(b, sizeof b, sh ? "s%d," : "%d,", vk); kq_put(b);
 	}
-	kq_put("13,"); kq_wait(waitMs); kq_put("27,");		/* ENTER, let the 71 work, ATTN clears any error left in the line */
+	kq_put("13,"); kq_wait(waitMs < 0 ? -waitMs : waitMs); if (waitMs >= 0) kq_put("27,");		/* ENTER, let the 71 work, ATTN clears any error left in the line */
 }
 static int osa(const char *body, char *out, size_t n)
 {
@@ -591,18 +591,20 @@ static void disk_load(void)
 	snprintf(t, sizeof t, "PURGE %s", name); kq_line(t, 1500);
 	snprintf(t, sizeof t, "COPY %s:TAPE TO %s", name, name); kq_line(t, 9000);
 	snprintf(t, sizeof t, "TRANSFORM %s INTO BASIC", name); kq_line(t, 6000);
-	snprintf(t, sizeof t, "RUN %s", name); kq_line(t, 500);
+	snprintf(t, sizeof t, "RUN %s", name); kq_line(t, -500);
 }
 static void disk_save(void)
 {
 	char path[512], name[16], body[512], t[96];
-	if (!lastName[0]) { fprintf(stderr, "disk: F6 saves the program last loaded with F5 (no name known yet)\n"); return; }
-	strcpy(name, lastName);
-	snprintf(body, sizeof body, "POSIX path of (choose file name with prompt \"Save the 71 program %s as\" default name \"%s.bas\")", name, name);
+	int fresh = !lastName[0];	/* no F5 load yet: the program was typed by hand, so it sits in the unnamed workfile */
+	if (fresh) snprintf(body, sizeof body, "POSIX path of (choose file name with prompt \"Save the program in the 71 workfile as\" default name \"program.bas\")");
+	else { strcpy(name, lastName); snprintf(body, sizeof body, "POSIX path of (choose file name with prompt \"Save the 71 program %s as\" default name \"%s.bas\")", name, name); }
 	if (getenv("EMU71_SAVE")) strncpy(path, getenv("EMU71_SAVE"), sizeof path - 1); else
 	if (!osa(body, path, sizeof path) || strchr(path, '\'')) return;
+	if (fresh) make_name(path, name);
 	SetSpeed(FALSE);
 	kq_put("27,w1500,27,w800,");
+	if (fresh) { snprintf(t, sizeof t, "NAME %s", name); kq_line(t, 1500); strcpy(lastName, name); }	/* NAME gives the workfile a typeable name; fails if that name already exists */
 	kq_line("RESTORE IO", 3000);
 	snprintf(t, sizeof t, "PURGE %s:TAPE", name); kq_line(t, 2500);
 	snprintf(t, sizeof t, "TRANSFORM %s INTO TEXT", name); kq_line(t, 4000);
@@ -676,6 +678,10 @@ int main(int argc, char **argv)
 
 	if (vidOn) { char sp[24]; VideoSetSize(vidW, vidH); add_video_module(getenv("VIDPORT") ? atoi(getenv("VIDPORT")) : 5); snprintf(sp, sizeof sp, "+vid%dx%d", vidW, vidH); strncat(ramSpec, sp, sizeof ramSpec - strlen(ramSpec) - 1); }
 
+	if (vidOn && !getenv("EMU71_LEXROM")) {	/* --vid loads the video LEX automatically (built from lex/video.lex) */
+		char exe[1024], cmd[2048]; uint32_t sz = sizeof exe;
+		if (_NSGetExecutablePath(exe, &sz) == 0) { char *d = dirname(exe); snprintf(cmd, sizeof cmd, "cd '%s' && python3 tools/mklexrom.py lex/video.lex /tmp/emu71_video.rom >/dev/null 2>&1", d); if (system(cmd) == 0) setenv("EMU71_LEXROM", "/tmp/emu71_video.rom", 1); }
+	}
 	if (getenv("EMU71_LEXROM")) { if (add_rom_module(3, getenv("EMU71_LEXROM"))) strncat(ramSpec, "+lex", sizeof ramSpec - strlen(ramSpec) - 1); }
 
 	ZeroMemory(&Chipset, sizeof Chipset);
