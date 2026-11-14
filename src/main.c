@@ -682,7 +682,8 @@ int main(int argc, char **argv)
 		char exe[1024], cmd[2048]; uint32_t sz = sizeof exe;
 		if (_NSGetExecutablePath(exe, &sz) == 0) { char *d = dirname(exe); snprintf(cmd, sizeof cmd, "cd '%s' && python3 tools/mklexrom.py lex/video.lex /tmp/emu71_video.rom >/dev/null 2>&1", d); if (system(cmd) == 0) setenv("EMU71_LEXROM", "/tmp/emu71_video.rom", 1); }
 	}
-	if (getenv("EMU71_LEXROM")) { if (add_rom_module(3, getenv("EMU71_LEXROM"))) strncat(ramSpec, "+lex", sizeof ramSpec - strlen(ramSpec) - 1); }
+	if (getenv("EMU71_LEXROM") && strcmp(getenv("EMU71_LEXROM"), "none")) { if (add_rom_module(3, getenv("EMU71_LEXROM"))) strncat(ramSpec, "+lex", sizeof ramSpec - strlen(ramSpec) - 1); }
+	if (getenv("EMU71_LEXROM2")) { if (add_rom_module(4, getenv("EMU71_LEXROM2"))) strncat(ramSpec, "+lex2", sizeof ramSpec - strlen(ramSpec) - 1); }	/* second LEX for clash tests */
 
 	ZeroMemory(&Chipset, sizeof Chipset);
 	if (state_load()) {

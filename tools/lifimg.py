@@ -4,6 +4,7 @@
   lifimg.py init IMAGE                       create a blank formatted 77x2x16 image (like INITIALIZE :TAPE)
   lifimg.py dir  IMAGE                       list the directory
   lifimg.py put  IMAGE NAME FILE [--type TEXT|BASIC71]   add a host text file as a LIF file
+  lifimg.py putlif IMAGE FILE                add a finished LIF file (32-byte directory entry + data, e.g. asm71 output) unchanged except start/length
   lifimg.py get  IMAGE NAME [OUTFILE]        extract a LIF1 text file (to stdout by default)
   lifimg.py del  IMAGE NAME                  mark a file purged
 
@@ -96,6 +97,27 @@ def cmd_put(a):
     img.save()
     print("%s: %d bytes, %d sectors at %d" % (name, len(data), blocks, start))
 
+def cmd_putlif(a):
+    img = Img(a[0]); raw = open(a[1], 'rb').read()
+    e = bytearray(raw[:32]); body = raw[32:]
+    name = bytes(e[:10])
+    if img.find(name.decode('latin-1').strip()): sys.exit("%s already exists" % name.decode('latin-1').strip())
+    blocks = (len(body) + SECT - 1) // SECT
+    start = img.next_free_sector()
+    if (start + blocks) * SECT > len(img.d): sys.exit("disk full")
+    slot = img.end_slot()
+    e[12:16] = start.to_bytes(4, 'big'); e[16:20] = blocks.to_bytes(4, 'big')
+    img.d[slot:slot + 32] = e
+    nxt = slot + 32
+    sec_end = (slot // SECT + 1) * SECT
+    if nxt < sec_end: img.d[nxt:nxt + 32] = b'\xff' * 32
+    else:
+        ns = slot // SECT + 1
+        if ns < img.dirstart + img.dirlen: img.d[ns * SECT:ns * SECT + 32] = b'\xff' * 32
+    img.d[start * SECT:start * SECT + blocks * SECT] = body.ljust(blocks * SECT, b' ')
+    img.save()
+    print("%s: type %04X, %d bytes, %d sectors at %d" % (name.decode('latin-1').strip(), i2(e, 10, 2), len(body), blocks, start))
+
 def cmd_dir(a):
     img = Img(a[0])
     print("volume %r dir %d+%d" % (bytes(img.d[2:8]).decode('latin-1'), img.dirstart, img.dirlen))
@@ -133,4 +155,4 @@ def cmd_init(a):
 
 if __name__ == '__main__':
     if len(sys.argv) < 3: sys.exit(__doc__)
-    {'init': cmd_init, 'dir': cmd_dir, 'put': cmd_put, 'get': cmd_get, 'del': cmd_del}[sys.argv[1]](sys.argv[2:])
+    {'init': cmd_init, 'dir': cmd_dir, 'put': cmd_put, 'putlif': cmd_putlif, 'get': cmd_get, 'del': cmd_del}[sys.argv[1]](sys.argv[2:])
