@@ -1,6 +1,6 @@
 # Handoff: Emu71 video + virtual disk (as of 2026-11-14)
 
-Repo: ~/Projects/emu71-mac (github.com/TIMBOTGPT/emu71-mac, branch main, last pushed commit a1efb75).
+Repo: ~/Projects/emu71-mac (github.com/TIMBOTGPT/emu71-mac, branch main, last pushed commit c29c9b7).
 Read docs/video-architecture.md first, then README.md (video and disk sections).
 
 ## What works (tested)
@@ -13,14 +13,12 @@ Read docs/video-architecture.md first, then README.md (video and disk sections).
   Scripted tests: EMU71_LOAD, EMU71_SAVE, EMU71_AUTOF5, EMU71_AUTOF6.
 - examples/sombrero_spin.bas (coloured rotating sombrero, 12 pre-rendered layers cycled with GSHOW) runs from disk (tools/run_disk.sh).
 
-## Uncommitted on the Mac
-- (2026-11-14, committed) src/main.c: no ATTN after RUN in the F5 sequence; --vid auto-loads the video LEX; F6 names a hand-typed workfile with NAME.
-- (2026-11-14, NOT committed, work in progress) lex/video.asm + lex/video.lex: new CHK routine reads the device result code (mailbox ERRC, nibble #61)
-  after every command and raises a 71 error, so bad layer/colour numbers are no longer silent. Verified: GTARGET 99 now gives an error on the 71.
-  Still wrong: the error number. 30 is "Stmt Not Found" (placeholder). Measured numbers so far: 24 = Insufficient Memory (used for device error 2, no such
-  layer), 30 = Stmt Not Found, 80 = raised by `DELAY -1` (message not yet read). Need the number whose text is "Invalid Arg", then replace #001E in CHK
-  and rebuild. lex/video.lex.orig is the previous binary. Rebuild: copy lex/video.asm to a scratch dir, run ~/Projects/asm71/build/asm71 video.asm,
-  copy video.lex back (verified: asm71 reproduces the old binary byte for byte apart from the LIF date stamp).
+## Committed 2026-11-14 (nothing pending except the stray untracked files below)
+- src/main.c (bd6b324): no ATTN after RUN in the F5 sequence; --vid auto-loads the video LEX; F6 names a hand-typed workfile with NAME.
+- lex/video.asm + lex/video.lex (c29c9b7): CHK routine reads the device result code (mailbox ERRC, nibble #61) after every command and raises a 71 error:
+  device err 2 (no such layer) -> Insufficient Memory (#0018), any other nonzero -> Invalid Arg (#000B). Verified on screen for GTARGET 99 and SCALE 5,5,5,5.
+  Not yet checked on screen: PEN 300, GSHOW 20. Rebuild: copy lex/video.asm to a scratch dir, run ~/Projects/asm71/build/asm71 video.asm, copy video.lex back.
+- Untracked, not committed, safe to delete if Mark agrees: examples/lorenz2.bas (uses illegal names), examples/lorenz_SX.bak, lex/video.lex.orig.
 - asm71 (bug400/asm71, GPLv3) was cloned to ~/Projects/asm71 and built with `fpc -O2 -FEbuild -FUbuild -obuild/asm71 src/asm71.pas` (arm64, works).
 - examples/lorenz.bas: WORKING as of 2026-11-14 (rotating coloured attractor, seen on screen). Cause was not the numbers: the SX,SY
   variable names broke TRANSFORM at load, so MOVE/DRAW lines were dropped (see gotchas). Renamed to X,Y. Committed in bd6b324.
@@ -43,8 +41,8 @@ Read docs/video-architecture.md first, then README.md (video and disk sections).
   garbles the next line (annunciator `f` lit). (2) After a rejected line the 71 keeps the text in its buffer, so send ATTN twice (27,27) after each line, e.g.
   `| sed 's/,13,/,13,27,27,w600,/g'`, but NOT after the final RUN line, ATTN there suspends the program (annunciator SUSP). (3) `$` has no mapping in keys.py
   and the shell expands `$(`, so avoid string functions in scripted lines. (4) Wait about 90 s for a run, 150 ms per key (EMU71_KEYMS=150).
-- Error numbers (ERRN) measured in the emulator: 24 Insufficient Memory, 30 Stmt Not Found, 11 Invalid Arg, 1..4 are math warnings (underflow, exponent(0), TAN=Inf).
-- Video LEX now raises a real 71 error after each command (CHK in lex/video.asm): device err 2 (no such layer) -> Insufficient Memory (24), other nonzero -> Invalid Arg (11). Verified on screen for GTARGET 99 and SCALE 5,5,5,5. SQR(-1) and FIX 20 raise no error on the 71.
+- Error numbers (ERRN) measured in the emulator: 24 Insufficient Memory, 30 Stmt Not Found, 11 Invalid Arg (measured with ON ERROR GOTO in a program, ERRN typed directly after a restart is unreliable), 1..4 are math warnings (underflow, exponent(0), TAN=Inf).
+- Video LEX now raises a real 71 error after each command (CHK in lex/video.asm): device err 2 (no such layer) -> Insufficient Memory (24), other nonzero -> Invalid Arg (11). SQR(-1) and FIX 20 raise no error on the 71.
 - Load log: /tmp/*.log from `EMU71_VIDLOG=1 tools/run_disk.sh` shows which video commands arrived; disk load takes about 90 s before RUN output appears.
 
 ## Still to do
@@ -54,11 +52,10 @@ Read docs/video-architecture.md first, then README.md (video and disk sections).
    Also tested 2026-11-14: LIST/decompile round trip of all 12 keywords incl. IF..THEN DRAW ELSE MOVE is correct (only a cosmetic trailing
    space after a final no-arg statement). Error paths: too few/many args, string arg, GCLEAR with an arg are all rejected cleanly (71 shows
    ERR:Excessive Chars for too many) and later statements still work. Device range errors (GTARGET 99, PEN 300) were silent because XQ in
-   lex/video.asm never read the result (confirmed). The CHK fix is written and works but is uncommitted until its error number is right (see Uncommitted).
+   lex/video.asm never read the result (confirmed). FIXED and committed in c29c9b7 (CHK, see above).
    Test harness note: after a syntax error the 71 keeps the line in its buffer, so send ATTN twice (27,27) between key-script lines.
 3. Remaining mailbox commands: GLABEL (string arg), CLIP, BOX, CIRCLE, POLY, GRID, FRAME, layer stack ops
    (GNEW/GPUSH/GPOP/GROLL), VWRITE/VREAD, GBLIT, GSTORE/GLOAD.
 4. Still untested: keyword clashes with other LEX files (PEN, MOVE, DRAW, SCALE, XAXIS, YAXIS, ALPHA), state save/restore with the LEX mounted,
    installing the LEX from a LIF file instead of the ROM hook. (Error paths and LIST/decompile are done, see item 2.)
-   Finish the CHK error number (see Uncommitted), then commit lex/video.asm and lex/video.lex.
-5. Tests with the EMU71_KEYS harness (deliverable 5).
+5. Tests with the EMU71_KEYS harness (deliverable 5). Optional: tools/run_disk.sh hardcodes EMU71_KEYMS=60, make it overridable.
